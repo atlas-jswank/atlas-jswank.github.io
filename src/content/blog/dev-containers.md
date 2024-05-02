@@ -7,7 +7,7 @@ author: Jeremiah Swank
 authorImage: /jswank.jpg
 ---
 
-## What are Development Containers?
+### What are Development Containers?
 
 Development containers allow you to develop your application inside a docker container running on your local computer. If you run your application in production in Alpine Linux, then it make sense to also use Alpine linux in development.
 
@@ -19,7 +19,7 @@ This guide will cover using development containers in VS Code but the [Developme
 
 ![placeholder](/dev-container-stages.png)
 
-## Requirements
+### Requirements
 
 Make sure you have the following installed:
 
@@ -27,7 +27,7 @@ Make sure you have the following installed:
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Dev Containers VS Code Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 
-## Running code in a container
+### Running code in a container
 
 Create a basic node file: `src/hello.js`:
 
@@ -35,12 +35,7 @@ Create a basic node file: `src/hello.js`:
 console.log("Hello World!");
 ```
 
-Let's say we want to be able to run and test our node code in a container that is preconfigured with node. Let's create a local configuration for our dev container:
-
-```zsh
-mkdir .devcontainer
-touch .devcontainer/devcontainer.json
-```
+Let's say we want to be able to run and test our node code in a container that is preconfigured with node. Let's create a local configuration for our dev container. Create a `.devcontainer` directory and a `devcontainer.json` file inside the directroy.
 
 Add the following configuration to `.devcontainer/devcontainer.json`:
 
@@ -68,7 +63,7 @@ Hello World!
 
 The `node:21-alipine` image has everything needed to run node code without any more setup.
 
-## Exiting/Reopening the container
+### Exiting/Reopening the container
 
 At any point you may want to exit the container. To exit the development contiainer. Open the command pallete in VS Code `(Ctrl/Command + Shift + P)` and select `Dev Containers: Reopen Folder Locally`.
 
@@ -78,15 +73,11 @@ To jump back into the container, open the command pallete in VS Code `(Ctrl/Comm
 
 ![placeholder](/dev-containers-1.png)
 
-## Custom Dockerfile: Installing git
+### Custom Dockerfile: Installing git
 
 The `node:21-alpine` image is great for running a node application but it lacks some of the tools needed for development. For example, you will likely want to use git from inside the container.
 
-We can create a custom docker image that includes the tools we need. Create a docker file:
-
-```bash
-touch .devcontainer/Dockerfile
-```
+We can create a custom docker image that includes the tools we need. Create a file names `Dockerfile` in the `.devcontainer` directory.
 
 Add the following to the `.devcontainer/Dockerfile`:
 
@@ -121,15 +112,11 @@ Initialized empty Git repository in /workspaces/devcontainers-demo/.git/
 /workspaces/devcontainers-demo $
 ```
 
-## Using docker compose to mount local files
+### Using docker compose to mount local files
 
 At this point you would need to resetup your local git configuration and ssh keys to work with github. You would also have to repeat this any time you rebuild the container.
 
-To get around this we can load our local machine's git configuration and ssh keys into the container. To do this we will use a docker compose file. Create a `docker-compose.yml` file:
-
-```bash
-touch .devcontainer/docker-compose.yml
-```
+To get around this we can load our local machine's git configuration and ssh keys into the container. To do this we will use a docker compose file. Create a `docker-compose.yml` file in the `.devcontainer` directory.
 
 Add the following to the `.devcontainer/docker-compose.yml`:
 
@@ -166,7 +153,7 @@ Rebuild the container by opening the command pallete in VS Code `(Ctrl/Command +
 
 VS Code will relaunch in the new container. You should now be able to clone and push to github using ssh.
 
-## Adding a postgres database
+### Adding a postgres database
 
 One the benefits to using development containers is the ability to spin up multiple containers containing resources such as postgresql, mongodb, redis, etc.
 
@@ -200,11 +187,6 @@ services:
 Now rebuild the container (Open the command pallete in VS Code `(Ctrl/Command + Shift + P)` and select `Dev Containers: Rebuild Container`).
 
 We can test the postgres service is up and running by running some node.js code.
-Create a `src/postgres.js` file:
-
-```bash
-touch src/postgres.js
-```
 
 Install the `pg` package:
 
@@ -212,7 +194,7 @@ Install the `pg` package:
 npm install pg
 ```
 
-Paste in the following code:
+Create a `src/postgres.js` file and paste the following code into `src/postgres.js`:
 
 ```js
 const { Client } = require("pg");
@@ -244,7 +226,7 @@ Jack Smith 42
 /workspaces/devcontainers-demo $
 ```
 
-## Adding mongodb
+### Adding mongodb
 
 We can follow a similar process for other services such as mongodb. Add a mongodb service to the `docker-compose.yml` file:
 
@@ -278,19 +260,13 @@ services:
 
 Rebuild the container (Open the command pallete in VS Code `(Ctrl/Command + Shift + P)` and select `Dev Containers: Rebuild Container`).
 
-Create a `src/mongo.js` file:
-
-```bash
-touch src/mongo.js
-```
-
 Install the `mongodb` package:
 
 ```bash
 npm install mongodb
 ```
 
-Paste in the following code to `src/mongo.js`:
+Create a `src/mongo.js` file and paste in the following code into `src/mongo.js`:
 
 ```js
 const { MongoClient } = require("mongodb");
@@ -335,7 +311,7 @@ Running the code should insert some records into mongodb and then read them back
 /workspaces/devcontainers-demo $
 ```
 
-## Adding extensions
+### Adding extensions
 
 You may have noticed when using development containers your vs code extentions are not installed by default. You can manually install extensions from Extensions explorer. Just select "Install in Dev Container" on the extension page.
 
@@ -377,10 +353,10 @@ You should now be able to explore the `employees` table we created in our code.
 
 ![placeholder](/dev-containers-7.png)
 
-## Recap
+### Recap
 
 At this point you should have a functioning node js environment working with a postgres db and mongodb but there is so much more you can do with development containers (Like use [localstack](https://github.com/localstack/localstack) to run a fully functional AWS Cloud environment locally in docker)
 
-For more information checkout the [development containers docs](https://containers.dev/).
+Source Code: [atlas-devcontainers-demo](https://github.com/atlas-jswank/atlas-devcontainers-demo)
 
-Also checkout the source from this article on github: [https://github.com/atlas-jswank/atlas-devcontainers-demo](https://github.com/atlas-jswank/atlas-devcontainers-demo)
+Documentation: [Development Containers](https://containers.dev/).

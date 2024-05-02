@@ -3,10 +3,12 @@ import type { CollectionEntry } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import FormattedDate from "../components/FormattedDate.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, heroImage, author, authorImage } = Astro.props;
+const { title, description, heroImage, pubDate, author, authorImage } =
+  Astro.props;
 ---
 
 <html lang="en">
@@ -18,12 +20,14 @@ const { title, description, heroImage, author, authorImage } = Astro.props;
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        margin: 5rem;
+        padding-top: 48px;
+        color: var(--blue-light);
+      }
+      .author span {
+        line-height: 1.3;
       }
       .author-image {
         border-radius: 50px;
-        margin-right: 10px;
-        margin-bottom: 10px;
       }
       main {
         width: 100%;
@@ -90,22 +94,22 @@ const { title, description, heroImage, author, authorImage } = Astro.props;
         </div>
         <div class="prose-wrapper">
           <div class="prose">
+            <div class="author">
+              <img
+                width={70}
+                height={70}
+                src={authorImage}
+                alt="author"
+                class="author-image"
+              />
+              <span>{author}</span>
+              <span><FormattedDate date={pubDate} /></span>
+            </div>
             <div class="title">
               <h1>{title}</h1>
             </div>
             <slot />
             <hr />
-            <div class="author">
-              Written by:
-              {author}
-              <img
-                width={50}
-                height={50}
-                src={authorImage}
-                alt="author"
-                class="author-image"
-              />
-            </div>
           </div>
         </div>
       </article>
