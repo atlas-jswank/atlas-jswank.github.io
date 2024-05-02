@@ -54,7 +54,7 @@ Add the following configuration to `.devcontainer/devcontainer.json`:
 
 The will use the `node:21-alpine` image as our local dev environment. This container comes with Node 21 preinstalled on Alpine linux.
 
-Open the command pallete in VS Code (`Ctrl/Command + Shift + P`) and select `Dev Containers: Reopen in Container`.
+Open the command pallete in VS Code `(Ctrl/Command + Shift + P)` and select `Dev Containers: Reopen in Container`.
 
 ![placeholder](/dev-containers-1.png)
 
@@ -70,11 +70,11 @@ The `node:21-alipine` image has everything need to run node code without any mor
 
 ## Exiting/Reopening the container
 
-At any point you may want to exit the container. To exit the development contiainer. Open the command pallete in VS Code (`Ctrl/Command + Shift + P`) and select `Dev Containers: Reopen Folder Locally`.
+At any point you may want to exit the container. To exit the development contiainer. Open the command pallete in VS Code `(Ctrl/Command + Shift + P)` and select `Dev Containers: Reopen Folder Locally`.
 
 ![placeholder](/dev-containers-3.png)
 
-To reopen the container, open the command pallete in VS Code (`Ctrl/Command + Shift + P`) and select `Dev Containers: Reopen in Containers`.
+To reopen the container, open the command pallete in VS Code `(Ctrl/Command + Shift + P)` and select `Dev Containers: Reopen in Containers`.
 
 ![placeholder](/dev-containers-1.png)
 
@@ -110,7 +110,7 @@ Then update the `.devcontainer/devcontainer.json` to use the new image:
 }
 ```
 
-Now you will need to rebuild the container for the changes to take effect. From the command pallete in VS Code (`Ctrl/Command + Shift + P`) and select `Dev Containers: Rebuild Container`. VS Code will relaunch in the new container. You can now use the git cli in the terminal.
+Now you will need to rebuild the container for the changes to take effect. From the command pallete in VS Code `(Ctrl/Command + Shift + P)` and select `Dev Containers: Rebuild Container`. VS Code will relaunch in the new container. You can now use the git cli in the terminal.
 
 ```zsh
 /workspaces/devcontainers-demo $ which git
@@ -158,7 +158,7 @@ Here we are creating a devcontainer service that uses the Dockerfile we created.
 }
 ```
 
-Rebuild the container by opening the command pallete in VS Code (`Ctrl/Command + Shift + P`) and select `Dev Containers: Rebuild Container`. VS Code will relaunch in the new container. You should now be able to clone and push to github using ssh.
+Rebuild the container by opening the command pallete in VS Code `(Ctrl/Command + Shift + P)` and select `Dev Containers: Rebuild Container`. VS Code will relaunch in the new container. You should now be able to clone and push to github using ssh.
 
 ## Adding a postgres database
 
@@ -191,7 +191,7 @@ services:
 
 **IMPORTANT**: Dont forget the links value in the devcontainer section so that the postgres service can be accessed from the devcontainer service.
 
-Now rebuild the container (Open the command pallete in VS Code (`Ctrl/Command + Shift + P`) and select `Dev Containers: Rebuild Container`).
+Now rebuild the container (Open the command pallete in VS Code `(Ctrl/Command + Shift + P)` and select `Dev Containers: Rebuild Container`).
 
 We can test the postgres service is up and running by running some node.js code.
 Create a `src/postgres.js` file:
@@ -270,7 +270,7 @@ services:
       - /data/db
 ```
 
-Rebuild the container (Open the command pallete in VS Code (`Ctrl/Command + Shift + P`) and select `Dev Containers: Rebuild Container`).
+Rebuild the container (Open the command pallete in VS Code `(Ctrl/Command + Shift + P)` and select `Dev Containers: Rebuild Container`).
 
 Create a `src/mongo.js` file:
 
@@ -349,7 +349,7 @@ You can also set some extensions to automatically install in the dev container. 
 }
 ```
 
-Rebuild the container (Open the command pallete in VS Code (`Ctrl/Command + Shift + P`) and select `Dev Containers: Rebuild Container`).
+Rebuild the container (Open the command pallete in VS Code `(Ctrl/Command + Shift + P)` and select `Dev Containers: Rebuild Container`).
 
 After the container is rebuilt it will have the PostgreSQL Explorer and MongoDB explorer installed.
 

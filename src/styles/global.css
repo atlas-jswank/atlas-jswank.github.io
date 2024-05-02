@@ -108,9 +108,9 @@ img {
 }
 code {
   padding: 8px 10px;
-  background-color: var(--blue);
+  background-color: var(--blue-light);
   border-radius: 2px;
-  color: var(--teal);
+  color: var(--beige);
   border-radius: 5px;
 }
 pre {
