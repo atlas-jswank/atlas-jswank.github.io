@@ -7,6 +7,8 @@ author: Jeremiah Swank
 authorImage: /jswank.jpg
 ---
 
+![placeholder](/dev-container-stages.png)
+
 ### What are Development Containers?
 
 Development containers allow you to develop your application inside a docker container running on your local computer. If you run your application in production in Alpine Linux, then it make sense to also use Alpine linux in development.
@@ -15,9 +17,7 @@ One of the benefits to development containers is the configuration can be checke
 
 Development containers remove the need to install dependencies on you local machine and dramatically shorten the time it takes to start local development.
 
-This guide will cover using development containers in VS Code but the [Development Container Specification](https://containers.dev/implementors/spec/) is open source and being adopted in other IDEs such as IntelliJ.
-
-![placeholder](/dev-container-stages.png)
+This guide will cover using development containers in VS Code but the [Development Container Specification](https://containers.dev/implementors/spec/) is open source and being adopted in other IDEs such as [IntelliJ](https://www.jetbrains.com/help/idea/connect-to-devcontainer.html).
 
 ### Requirements
 
