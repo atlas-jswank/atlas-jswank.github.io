@@ -123,7 +123,7 @@ Initialized empty Git repository in /workspaces/devcontainers-demo/.git/
 
 ## Using docker compose to mount local files
 
-At this point you would need to resetup your local git configuration and ssh keys to work with github. You would also have to repeat this can time you rebuild the container. 
+At this point you would need to resetup your local git configuration and ssh keys to work with github. You would also have to repeat this any time you rebuild the container.
 
 To get around this we can load our local machine's git configuration and ssh keys into the container. To do this we will use a docker compose file. Create a `docker-compose.yml` file:
 
@@ -149,7 +149,7 @@ services:
     command: sleep infinity
 ```
 
-Here we are creating a devcontainer service that uses the Dockerfile we created. We then mount three volumes onto the container: one for our workspace files, one for git configuration files and one for our ssh keys. 
+Here we are creating a devcontainer service that uses the Dockerfile we created. We then mount three volumes onto the container: one for our workspace files, one for git configuration files and one for our ssh keys.
 
 Now, update the `.devcontainer/devcontainer.json` to use the new docker compose file:
 
@@ -162,13 +162,13 @@ Now, update the `.devcontainer/devcontainer.json` to use the new docker compose 
 }
 ```
 
-Rebuild the container by opening the command pallete in VS Code `(Ctrl/Command + Shift + P)` and select `Dev Containers: Rebuild Container`. 
+Rebuild the container by opening the command pallete in VS Code `(Ctrl/Command + Shift + P)` and select `Dev Containers: Rebuild Container`.
 
 VS Code will relaunch in the new container. You should now be able to clone and push to github using ssh.
 
 ## Adding a postgres database
 
-One the benefits to using development containers is the ability to spin up multiple containers conatining resources such as postgresql, mongodb, redis, etc.
+One the benefits to using development containers is the ability to spin up multiple containers containing resources such as postgresql, mongodb, redis, etc.
 
 Add a postgres service to the `docker-compose.yml` file:
 
@@ -235,7 +235,7 @@ const { Client } = require("pg");
 })().catch(console.error);
 ```
 
-Runing the code should create a database table, insert some rows, read from the table and output the data.
+Running the code should create a database table, insert some rows, read from the table and output the data.
 
 ```zsh
 /workspaces/devcontainers-demo $ node src/postgres.js
@@ -379,7 +379,7 @@ You should now be able to explore the `employees` table we created in our code.
 
 ## Recap
 
-At this point you should have a functioning node js environment working with a postgres db and mpngodb but there is so much more you can do with development containers (Like use [localstack](https://github.com/localstack/localstack) to run a fully function AWS Cloud environment locally in docker)
+At this point you should have a functioning node js environment working with a postgres db and mongodb but there is so much more you can do with development containers (Like use [localstack](https://github.com/localstack/localstack) to run a fully functional AWS Cloud environment locally in docker)
 
 For more information checkout the [development containers docs](https://containers.dev/).
 
