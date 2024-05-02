@@ -337,7 +337,7 @@ Running the code should insert some records into mongodb and then read them back
 
 ## Adding extensions
 
-You may have noticed when using development containers your vs code extentions are not installed by default. You can manually install extensiongs from Extensions explorer. Just select "Install in Dev Container" on the extension page.
+You may have noticed when using development containers your vs code extentions are not installed by default. You can manually install extensions from Extensions explorer. Just select "Install in Dev Container" on the extension page.
 
 You can also set some extensions to automatically install in the dev container. We are going to add a postgres database explorer and monbodb explorer so we can inspect our resources while in the container. Update the `.devcontainer/devcontainer.json` to include the following extensions:
 
