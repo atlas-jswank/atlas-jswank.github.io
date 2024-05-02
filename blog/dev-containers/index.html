@@ -72,7 +72,7 @@
 <span class="line"><span style="color:#1ED2AF">/workspaces/devcontainers-demo</span><span style="color:#E1E4E8"> $</span></span>
 <span class="line"></span></code></pre>
 <h2 id="using-docker-compose-to-mount-local-files">Using docker compose to mount local files</h2>
-<p>At this point you would need to resetup your local git configuration and ssh keys to work with github. You would also have to repeat this can time you rebuild the container.</p>
+<p>At this point you would need to resetup your local git configuration and ssh keys to work with github. You would also have to repeat this any time you rebuild the container.</p>
 <p>To get around this we can load our local machine’s git configuration and ssh keys into the container. To do this we will use a docker compose file. Create a <code>docker-compose.yml</code> file:</p>
 <pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#1ED2AF">touch</span><span style="color:#F7F0DC"> .devcontainer/docker-compose.yml</span></span>
 <span class="line"></span></code></pre>
@@ -103,7 +103,7 @@
 <p>Rebuild the container by opening the command pallete in VS Code <code>(Ctrl/Command + Shift + P)</code> and select <code>Dev Containers: Rebuild Container</code>.</p>
 <p>VS Code will relaunch in the new container. You should now be able to clone and push to github using ssh.</p>
 <h2 id="adding-a-postgres-database">Adding a postgres database</h2>
-<p>One the benefits to using development containers is the ability to spin up multiple containers conatining resources such as postgresql, mongodb, redis, etc.</p>
+<p>One the benefits to using development containers is the ability to spin up multiple containers containing resources such as postgresql, mongodb, redis, etc.</p>
 <p>Add a postgres service to the <code>docker-compose.yml</code> file:</p>
 <pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#1ED2AF">version</span><span style="color:#E1E4E8">: </span><span style="color:#F7F0DC">"3.8"</span></span>
 <span class="line"><span style="color:#1ED2AF">services</span><span style="color:#E1E4E8">:</span></span>
@@ -155,7 +155,7 @@ Create a <code>src/postgres.js</code> file:</p>
 <span class="line"><span style="color:#D00414">  await</span><span style="color:#E1E4E8"> client.</span><span style="color:#1ED2AF">end</span><span style="color:#E1E4E8">();</span></span>
 <span class="line"><span style="color:#E1E4E8">})().</span><span style="color:#1ED2AF">catch</span><span style="color:#E1E4E8">(console.error);</span></span>
 <span class="line"></span></code></pre>
-<p>Runing the code should create a database table, insert some rows, read from the table and output the data.</p>
+<p>Running the code should create a database table, insert some rows, read from the table and output the data.</p>
 <pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="zsh"><code><span class="line"><span style="color:#1ED2AF">/workspaces/devcontainers-demo</span><span style="color:#E1E4E8"> $ </span><span style="color:#F7F0DC">node</span><span style="color:#F7F0DC"> src/postgres.js</span></span>
 <span class="line"><span style="color:#1ED2AF">John</span><span style="color:#F7F0DC"> Doe</span><span style="color:#1ED2AF"> 34</span></span>
 <span class="line"><span style="color:#1ED2AF">Jack</span><span style="color:#F7F0DC"> Smith</span><span style="color:#1ED2AF"> 42</span></span>
@@ -264,7 +264,7 @@ Create a <code>src/postgres.js</code> file:</p>
 <p>You should now be able to explore the <code>employees</code> table we created in our code.</p>
 <p><img src="/dev-containers-7.png" alt="placeholder"></p>
 <h2 id="recap">Recap</h2>
-<p>At this point you should have a functioning node js environment working with a postgres db and mpngodb but there is so much more you can do with development containers (Like use <a href="https://github.com/localstack/localstack">localstack</a> to run a fully function AWS Cloud environment locally in docker)</p>
+<p>At this point you should have a functioning node js environment working with a postgres db and mongodb but there is so much more you can do with development containers (Like use <a href="https://github.com/localstack/localstack">localstack</a> to run a fully functional AWS Cloud environment locally in docker)</p>
 <p>For more information checkout the <a href="https://containers.dev/">development containers docs</a>.</p>
 <p>Also checkout the source from this article on github: <a href="https://github.com/atlas-jswank/atlas-devcontainers-demo">https://github.com/atlas-jswank/atlas-devcontainers-demo</a></p>  <hr data-astro-cid-bvzihdzo> <div class="author" data-astro-cid-bvzihdzo>
 Written by:
