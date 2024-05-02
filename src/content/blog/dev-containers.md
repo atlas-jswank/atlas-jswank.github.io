@@ -52,13 +52,13 @@ Add the following configuration to `.devcontainer/devcontainer.json`:
 }
 ```
 
-The will use the `node:21-alpine` image as our local dev environment. This container comes with Node 21 preinstalled on Alpine linux.
+This configuration will use the `node:21-alpine` image as our local dev environment. This container comes with Node 21 preinstalled on Alpine linux.
 
 Open the command pallete in VS Code `(Ctrl/Command + Shift + P)` and select `Dev Containers: Reopen in Container`.
 
 ![placeholder](/dev-containers-1.png)
 
-VS Code will relaunch. Your terminal should now be a linux shell. Run `node src/hello.js` from the terminal and see the file runs succesfully.
+VS Code will relaunch. Your terminal should now be a linux shell. Run `node src/hello.js` from the terminal and see the file runs successfully.
 
 ```bash
 /workspaces/devcontainers-demo $ node src/hello.js
@@ -66,7 +66,7 @@ Hello World!
 /workspaces/devcontainers-demo $
 ```
 
-The `node:21-alipine` image has everything need to run node code without any more setup.
+The `node:21-alipine` image has everything needed to run node code without any more setup.
 
 ## Exiting/Reopening the container
 
@@ -74,7 +74,7 @@ At any point you may want to exit the container. To exit the development contiai
 
 ![placeholder](/dev-containers-3.png)
 
-To reopen the container, open the command pallete in VS Code `(Ctrl/Command + Shift + P)` and select `Dev Containers: Reopen in Containers`.
+To jump back into the container, open the command pallete in VS Code `(Ctrl/Command + Shift + P)` and select `Dev Containers: Reopen in Container`.
 
 ![placeholder](/dev-containers-1.png)
 
@@ -123,7 +123,9 @@ Initialized empty Git repository in /workspaces/devcontainers-demo/.git/
 
 ## Using docker compose to mount local files
 
-At this point you will need to resetup your local git configuration and ssh keys to work with github. To get around this we can load our local machine's git configuration and ssh keys into the container. To do this we will use a docker compose file. Create a `docker-compose.yml` file:
+At this point you would need to resetup your local git configuration and ssh keys to work with github. You would also have to repeat this can time you rebuild the container. 
+
+To get around this we can load our local machine's git configuration and ssh keys into the container. To do this we will use a docker compose file. Create a `docker-compose.yml` file:
 
 ```bash
 touch .devcontainer/docker-compose.yml
@@ -147,7 +149,9 @@ services:
     command: sleep infinity
 ```
 
-Here we are creating a devcontainer service that uses the Dockerfile we created. We then mount three volumes onto the container: one for our worksapce files, one for git configuration files and one for our ssh keys. Now, update the `.devcontainer/devcontainer.json` to use the new docker compose file:
+Here we are creating a devcontainer service that uses the Dockerfile we created. We then mount three volumes onto the container: one for our workspace files, one for git configuration files and one for our ssh keys. 
+
+Now, update the `.devcontainer/devcontainer.json` to use the new docker compose file:
 
 ```json
 {
@@ -158,13 +162,15 @@ Here we are creating a devcontainer service that uses the Dockerfile we created.
 }
 ```
 
-Rebuild the container by opening the command pallete in VS Code `(Ctrl/Command + Shift + P)` and select `Dev Containers: Rebuild Container`. VS Code will relaunch in the new container. You should now be able to clone and push to github using ssh.
+Rebuild the container by opening the command pallete in VS Code `(Ctrl/Command + Shift + P)` and select `Dev Containers: Rebuild Container`. 
+
+VS Code will relaunch in the new container. You should now be able to clone and push to github using ssh.
 
 ## Adding a postgres database
 
 One the benefits to using development containers is the ability to spin up multiple containers conatining resources such as postgresql, mongodb, redis, etc.
 
-Add a postgress service to the `docker-compose.yml` file:
+Add a postgres service to the `docker-compose.yml` file:
 
 ```yaml
 version: "3.8"
@@ -321,11 +327,11 @@ const { MongoClient } = require("mongodb");
 })().catch(console.error);
 ```
 
-Running the code should insert some records into mondo and then read then back out:
+Running the code should insert some records into mongodb and then read them back out:
 
 ```zsh
 /workspaces/devcontainers-demo $ node src/mongo.js
-2 sale(s) occurred in 2014.
+1 sale(s) occurred in 2014.
 /workspaces/devcontainers-demo $
 ```
 
@@ -353,11 +359,11 @@ Rebuild the container (Open the command pallete in VS Code `(Ctrl/Command + Shif
 
 After the container is rebuilt it will have the PostgreSQL Explorer and MongoDB explorer installed.
 
-Open the MongoDb panel from the side of VS Code. Add the mogodb using the connection string `mongodb://mongo:27017`. You can now explor the `sales-db` collection we created in our code.
+Open the MongoDb panel from the side of VS Code. Add the mogodb server using the connection string `mongodb://mongo:27017`. You can now explore the `sales-db` collection we created in our code.
 
 ![placeholder](/dev-containers-6.png)
 
-Open the PostgreSQL panel from the side of VS Code. Add the postgres using:
+Open the PostgreSQL panel from the side of VS Code. Add the postgres server using:
 
 ```
 hostname: postgres
@@ -373,6 +379,8 @@ You should now be able to explore the `employees` table we created in our code.
 
 ## Recap
 
-At this point you should have a functioning node js environment working with a postgres db and mpngodb but there is so much more you can do with development containers (Like use [localstack](https://github.com/localstack/localstack) to run a fully function AWS Cloud envinrpment locally in docker)
+At this point you should have a functioning node js environment working with a postgres db and mpngodb but there is so much more you can do with development containers (Like use [localstack](https://github.com/localstack/localstack) to run a fully function AWS Cloud environment locally in docker)
 
 For more information checkout the [development containers docs](https://containers.dev/).
+
+Also checkout the source from this article on github: [https://github.com/atlas-jswank/atlas-devcontainers-demo](https://github.com/atlas-jswank/atlas-devcontainers-demo)
