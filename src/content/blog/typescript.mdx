@@ -1,0 +1,243 @@
+---
+title: "Why you need to use Typescript"
+description: "Lorem ipsum dolor sit amet"
+pubDate: "May 16 2024"
+heroImage: "/typescript.png"
+author: Jeremiah Swank
+authorImage: /jswank.jpg
+---
+import Tabs from '../../components/Tabs.astro';
+import TabItem from '../../components/TabItem.astro';
+
+![placholder](/typescript-1.png)
+
+#### Example 1
+
+<Tabs>
+  <TabItem label="Javascript" icon="javascript">
+```ts
+const rectangle = {
+  width: 10,
+  height: 15,
+};
+
+const area = rectangle.width * rectangle.heigth;
+console.log(`Area: ${area}`);
+```
+  </TabItem>
+  <TabItem label="Typescript" icon="typescript">
+```ts twoslash
+// @errors: 2551
+const rectangle = {
+  width: 10,
+  height: 15,
+};
+
+const area = rectangle.width * rectangle.heigth;
+console.log(`Area: ${area}`);
+```
+  </TabItem>
+  <TabItem label="Output" icon="bash">
+```bash
+$ node area.js 
+Area: NaN
+```
+  </TabItem>
+</Tabs>
+#### Example 2
+
+<Tabs>
+  <TabItem label="Javascript" icon="javascript">
+```ts
+import readline from "readline-sync";
+
+var grade = readline.question("Grade: ");
+
+if (90 < grade < 100) {
+  console.log("A: Pass");
+} else if (80 < grade < 90) {
+  console.log("B: Pass");
+} else if (70 < grade < 80) {
+  console.log("C: Pass");
+} else if (60 < grade < 70) {
+  console.log("D: Pass");
+} else {
+  console.log("F: Fail");
+}
+```
+  </TabItem>
+  <TabItem label="Typescript" icon="typescript">
+```ts twoslash
+// @errors: 2365
+//@ts-ignore
+// ---cut---
+import readline from "readline-sync";
+
+var grade = readline.question("Grade: ");
+
+if (90 < grade < 100) {
+  console.log("A: Pass");
+} else if (80 < grade < 90) {
+  console.log("B: Pass");
+} else if (70 < grade < 80) {
+  console.log("C: Pass");
+} else if (60 < grade < 70) {
+  console.log("D: Pass");
+} else {
+  console.log("F: Fail");
+}
+```
+  </TabItem>
+  <TabItem label="Output" icon="bash">
+```bash
+$ node grade.js 
+Grade: 95
+A: Pass
+
+$ node grade.js 
+Grade: 79
+A: Pass
+
+$ node grade.js 
+Grade: 42
+A: Pass
+
+$ node grade.js 
+Grade: chicken
+A: Pass
+```
+  </TabItem>
+</Tabs>
+#### Example 3
+<Tabs>
+  <TabItem label="Javascript" icon="javascript">
+```ts
+const diceRoll = rollDice(100);
+if (diceRoll > 99) {
+  mutallyAssuredDestruction();
+} else if (diceRoll > 98) {
+  gainMoney();
+} else if (diceRoll > 80) {
+  fortuneTellerPredictsDoom();
+} else if (diceRoll > 60) {
+  npcTurnsTraitor();
+} else if (diceRoll > 40) {
+  blackmailed();
+} else {
+  runAway();
+}
+```
+  </TabItem>
+  <TabItem label="Typescript" icon="typescript">
+```ts twoslash
+// @errors: 2554
+function rollDice(n:number):number {return 0;}
+function mutallyAssuredDestruction(){}
+function gainMoney(numberOfGoldPieces:number){}
+function fortuneTellerPredictsDoom(){}
+function npcTurnsTraitor(){}
+function blackmailed(){}
+function runAway(){}
+// ---cut---
+const diceRoll = rollDice(100);
+if (diceRoll > 99) {
+  mutallyAssuredDestruction();
+} else if (diceRoll > 98) {
+  gainMoney();
+} else if (diceRoll > 80) {
+  fortuneTellerPredictsDoom();
+} else if (diceRoll > 60) {
+  npcTurnsTraitor();
+} else if (diceRoll > 40) {
+  blackmailed();
+} else {
+  runAway();
+}
+```
+  </TabItem>
+  <TabItem label="Output" icon="bash">
+```text
+$ node dice.js 
+You run away!
+
+$ node dice.js 
+The fortune teller predicts doom!
+
+$ node dice.js 
+You've been blackmailed!
+
+$ node dice.js 
+You run away!
+
+$ node dice.js 
+You run away!
+```
+  </TabItem>
+</Tabs>
+#### Example 4
+
+<Tabs>
+  <TabItem label="Javascript" icon="javascript">
+```ts
+const users = [{
+   name: "John",
+   role: {
+     id: 1,
+     name: "Admin",
+   },
+ }, {
+   name: "Jane",
+ }];
+
+for (let u of users) {
+ console.log(`${u.name} is ${u.role.name}`);
+}
+
+```
+  </TabItem>
+  <TabItem label="Typescript" icon="typescript">
+```ts twoslash
+// @errors: 18048
+const users = [{
+   name: "John",
+   role: {
+     id: 1,
+     name: "Admin",
+   },
+ }, {
+   name: "Jane",
+ }];
+
+for (let u of users) {
+ console.log(`${u.name} is ${u.role.name}`);
+}
+
+```
+  </TabItem>
+  <TabItem label="Output" icon="bash">
+```
+$ node null.js 
+John is Admin
+TypeError: Cannot read properties of undefined (reading 'name')
+    at file:////src/null.js:15:38
+    at ModuleJob.run (node:internal/modules/esm/module_job:218:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:329:24)
+    at async loadESM (node:internal/process/esm_loader:28:7)
+    at async handleMainPromise (node:internal/modules/run_main:113:12)
+
+
+```
+  </TabItem>
+</Tabs>
+
+```ts
+[] + {}   // '[object Object]'
+{} + []   // 0
+{} + {}   // '[object Object][object Object]'
+[] + []   // ''
+0 == []   // true
+0 == "0"  // true
+"0" == [] // false
+2 + "2"   // '22'
+2 - "2"   // 0
+```

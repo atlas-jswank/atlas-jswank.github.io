@@ -1,0 +1,19 @@
+---
+import { TabItemTagname } from "./rehype-tabs";
+import type { BuiltInIcons } from "./BuiltInIcons";
+
+interface Props {
+  icon?: keyof typeof BuiltInIcons;
+  label: string;
+}
+
+const { label, icon } = Astro.props;
+
+if (!label) {
+  throw new Error("Missing prop `label` on `<TabItem>` component.");
+}
+---
+
+<TabItemTagname data-label={label} data-icon={icon}>
+  <slot />
+</TabItemTagname>

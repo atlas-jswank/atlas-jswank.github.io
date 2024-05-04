@@ -1,0 +1,233 @@
+---
+title: "React Hooks"
+description: "Lorem ipsum dolor sit amet"
+pubDate: "May 4 2024"
+heroImage: "/react-hooks.png"
+author: Jeremiah Swank
+authorImage: /jswank.jpg
+---
+Hooks were introduced in React 16.8. Before hooks, functional components could only be used as pure components without state. If you wanted to utilize state in a component you had to use a class based component. Hooks give the ability to perform impure operations like updating state or making api calls from funtional components.
+
+### Benefits of Hooks
+
+__Resuability:__ Hooks allow you to "plug" state into a component. The state hook itself can be externalized and reused accross component. Consider this `useBlogPostData` hook:
+
+
+```tsx
+export default function BlogPost() {
+  const { loading, data, error } = useBlogPostData();
+  
+  if(loading) return <p>Loading...</p>;
+  
+  if(error) return <p>Error: {error.message}</p>;
+  
+  return <p>Title: {data.title}</p>;
+}
+
+```
+You could implement a custom hook that retreives data from an api. You can render different components based on the request data (aka request is loading or there was an error).
+
+__Tesability:__ Because the state hook is external to the component can also could write unit tests for the state hook itself without renering a react component.
+
+__Simplicity:__ Class based components can be confusing to implement. People have trouble understanding how `this` works in class based components. Hooks bring all of the functionality of class based component to functional components without the cmplexity of javascript classes.
+
+### Built in hooks
+
+React comes with some hooks that serve common use cases.
+
+#### useState
+
+The `useState` hook is probably the most commonly used hook. It gives you a state variable that can be mutated.
+
+```tsx
+import React, { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+```
+Here we have a state variable called `count`. The `setCount` function can be used to update the state variable triggering a rerender of the component. The value passed into the `useState` hook (in this case '0') is the initial value of the state variable.
+
+Its possible to declare multiple state hooks in a single component:
+
+```tsx
+function FooBar() {
+  // Declare multiple state variables!
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [age, setAge] = useState(0);
+  // ...
+}
+```
+
+More info on useState [here](https://react.dev/reference/react/useState)
+
+#### useEffect
+
+The `useEffect` hook is used whenever you would like to do something that has a "side effect" outside the component like making an api call or updating the DOM.
+
+If you are familiar with class based components the `useEffect` hook serves the same purose as the lifecycle methods (`componentDidMount`, `componentDidUpdate`, and `componentWillUnmount`).
+
+```tsx
+import React, { useEffect } from "react";
+
+function Example() {
+
+  // Similar to componentDidMount and componentWillUnmount:
+  useEffect(() => {
+    document.title = `Status: Online`;
+
+    return () => document.title = `Status: Offline`;
+  });
+
+  return <p>Presence Detector</p>;
+}
+
+```
+The `useEffect` hook will run whenever the component first mounts. 
+
+To do something when the component unmounts, return a function from the `useEffect` hook.
+
+In this case, when the component mounts the page title will change to "Status: Online". And when the component unmounts the title will be changed to "Status: Offline".
+
+`useEffect` hooks can also rerun anytime the value of another variable changes. Consider the following code for the home page of a blog with panigation:
+
+```tsx
+import React, { useEffect } from "react";
+
+function HomePage() {
+  const [pageNumber, setPageNumber] = useState(1);
+  const [pageData, setPageData] = useState([]);
+  
+
+  // Runs on componentDidMount and componentDidUpdate
+  useEffect(() => {
+    fetchPageOfDate(pageNumber)
+      .then((data) => setPageData(data));
+  }, [pageNumber]); // <---- updates anytime pageNumber changes
+
+  
+  return (
+    <>
+      <MainContent content={pageData} />
+      <button 
+        onClick={() => setPageNumber(pageNumber + 1)}
+      >
+        Next
+      </button>
+    </>
+  );
+}
+
+```
+
+Notice there is an array passed into the useEffect hook at the end. This tells the useEffect hook to rerun anytime the value of `pageNumber` changes. You can pass in more variables as needed. The useEffect hook will run anytime any of the variables change.
+
+A user can click the Nect button and a new page of blog posts will be loaded and rendered.
+
+[More Info on useEffect](https://react.dev/reference/react/useEffect)
+
+
+### Custom Hooks
+
+Over time you will likely start to get a lot of state hooks in a single component. It can be a good idea to extract the state out into a custom hook. This will make the functional component code cleaner. The state logic could be reused in multiple components. It could also be unit tested without rendering a component.
+
+Here is an example:
+```tsx
+function useProfileData() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [age, setAge] = useState(0);
+
+  // Return anything you would like to expose outside the hook
+  return {
+    fulleName: firstName + " " + lastName,
+    ageInDogYears: age * 7,
+  };
+}
+
+function UserProfile() {
+  const { fulleName, ageInDogYears } = useProfileData();
+
+  return (
+    <div>
+      <h2>{fulleName}</h2>
+      <h3>Age: {ageInDogYears}</h3>
+    </div>
+  );
+}
+```
+
+For a custom hook the function's name should starts with ”use” and it should call other Hooks. The `useSomething` naming convention is used by the [linter plugin](https://www.npmjs.com/package/eslint-plugin-react-hooks) to be able to find bugs in the code using Hooks.
+
+### Rules of Hooks
+
+Hooks can be a little non-intuitive when learning but are very powerful way of writing reusubale clean code in react.
+
+#### Call at top level
+
+Hooks should always be called the top of the component or custom hook and do not surround hooks in conditional statements, loops, or nested functions (exluding a custom hook). 
+
+This is because everytime the react component rerenders the hooks must be called in the exact same order. If the order or number of hooks changes react will not know which value belongs to which hook.
+
+
+__Incorrect:__
+```tsx
+function MyFoo(props) {
+
+  // This will cause the hook to called inconsostently
+  if (!props.show) {
+    return;
+  }
+  const [value, setValue] = useState();
+
+  return <div>Foo Bar: {value}</div>;
+}
+```
+
+__Correct:__
+```tsx
+function MyFoo(props) {
+  const [value, setValue] = useState();
+
+  // Now it does not affect when the hook is called
+  if (!props.show) {
+    return;
+  }
+
+  return <div>Foo Bar: {value}</div>;
+}
+```
+
+__Also Incorrect:__
+```tsx
+function MyFoo(props) {
+  //Hook is called multiple times
+  for (let i = 0; i < 10; i++) {
+    const [value, setValue] = useState();
+  }
+
+  return <div>Foo Bar: {value}</div>;
+}
+```
+
+The easiest way to make sure you are using hooks correctly is to use the [linter plugin](https://www.npmjs.com/package/eslint-plugin-react-hooks).
+
+#### Only call from Function components or custom hooks
+
+Hooks cannot be used un a plain javascript function or in a class based component. They can only be used in functional components or custom hooks.
+
+#### More information
+
+React Documentation: [Rules of Hooks](https://react.dev/reference/rules/rules-of-hooks)
+
+If hooks seem like magic learn how to [implements hooks from scratch](https://www.swyx.io/hooks)
