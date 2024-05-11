@@ -443,6 +443,9 @@ const customTheme = {
 // https://astro.build/config
 export default defineConfig({
   site: 'https://example.com',
+  build: {
+    assets: 'assets'
+  },
   integrations: [mdx({
     remarkPlugins: [[shikiTwoslash.default, {
       theme: customTheme

@@ -9,7 +9,61 @@ authorImage: /jswank.jpg
 import Tabs from '../../components/Tabs.astro';
 import TabItem from '../../components/TabItem.astro';
 
+### What is Typescript?
+
+Typescript is a statically typed superset of javascript that can be compiled to plain javascript. 
+
+__Statically typed:__ All variables have a type such as string, number, boolean, etc. Once the type has been defined it cannot be changed without typescript getting mad.
+
+__Superset of javascript:__ The added syntax is completely optional because all javascript is typescript. You can just write plain javascript without learning any new syntax and reap the benefits of type checking due to the implicit types inferred by the compiler.
+
+__Compiles to javascript:__ typescript is not understood by browsers or node so a compiler is used to convert typescript to plain javascript. You can then run the javascript anywhere you wouldn normally run javascript like in the browser or on a server with node. (Although newer JS runtimes such as deno and bun support typescript directly without a compiler).
+
+__TLDR__: Its javascript with types.
+
+### Why use Typescript?
+
+__Popularity:__ Just looking at the number of package downloads from npm compared to react, typescript has over double the amount of downloads according to [npm trends](https://npmtrends.com/):
+
 ![placholder](/typescript-1.png)
+
+__Code quality:__ Using typescript increases the quality and understandability of your code. Defining types provides documentation to future developers on the intent of a variable or function.
+
+__Reduced Bugs:__ Its is better to find issues at compile time rather than runtime. Typescript allows you to solve a  lot of common javascript problems when compiling as oppsed to running your application. 
+
+__Refacorable:__ Types make refactoring code easier. How many times have you had working code, changed something, and then no longer had working code? This happens all the time. Typescript can help you more easily find where your code is breaking.
+
+
+### How does javascript handle typing?
+
+Javascript's approach to typing is often refered to as "duck typing". If it looks like a duck and quacks like a duck then it is probably a duck. In javascript if it looks like a string and is being  treated like a string then javascript will assume its a string.
+
+Whats the problem with that? Well the way javascript can handle types can be hard to predict leading to weird edge cases. 
+
+For example you may assume `a + b` is the same thing as `b + a` but that is not always the case in javascript. Just switching the order produces different results which can be non-intuitive:
+```ts
+[] + {}   // '[object Object]'
+{} + []   // 0
+```
+
+Lets consider another basic logic princaipal. If `a == b` and `b == c` then `a == c`... Not in javascript:
+
+```ts
+0 == []   // true
+0 == "0"  // true
+"0" == [] // false
+```
+
+The common thing between these two examples is the use of diferent types together forcing javascript to make some assuptions about the developers intentions. 
+
+Typescript forces the developer to be explicit about their intentions and by default does not allow you to mix types in these ways preventing a lot of issues. 
+
+__TLDR:__ Typescript makes code more intuitive and predictable than javascript.
+
+### Common isses solved by typescript
+
+Here are some examples of issues that can be solved with type script. Look at the javascript and see if you can predict whtat the output will be. You can check yourself by looking at the output tab. Click the typescript tab to see how typescript would handle these scenarios
+
 
 #### Example 1
 
@@ -44,6 +98,11 @@ Area: NaN
 ```
   </TabItem>
 </Tabs>
+
+<details>
+  <summary>__See Explanation__</summary>
+  Javascript will let you reference properties and methods that do not exists. This is most commonly seen with typos. Javascript will not warn you if you make a typo but typesript will.
+</details>
 #### Example 2
 
 <Tabs>
@@ -108,6 +167,11 @@ A: Pass
 ```
   </TabItem>
 </Tabs>
+
+<details>
+  <summary>__See Explanation__</summary>
+  These are perfectly valid boolean conditions in javascript but do not evaluate intuitively. No matter what the value of grade is it will always evaluate to true even for non-numbers. Typescript would not let you do this.
+</details>
 #### Example 3
 <Tabs>
   <TabItem label="Javascript" icon="javascript">
@@ -174,6 +238,15 @@ You run away!
 ```
   </TabItem>
 </Tabs>
+<details>
+  <summary>__See Explanation__</summary>
+  
+  This is very much a real world problem. Here you cannot tell there is an issue with the code. In fact when running the code it seems to be working without any issues. But there is a bug that only happens one percent of the time because a function  coming from somewhere else such as an external package or module is not being called correctly. 
+  
+  Typescript can tell when you misuse a function if it expects parameters that you are not passing or if you are misusing the returned value based on the return type.
+</details>
+
+
 #### Example 4
 
 <Tabs>
@@ -230,14 +303,22 @@ TypeError: Cannot read properties of undefined (reading 'name')
   </TabItem>
 </Tabs>
 
-```ts
-[] + {}   // '[object Object]'
-{} + []   // 0
-{} + {}   // '[object Object][object Object]'
-[] + []   // ''
-0 == []   // true
-0 == "0"  // true
-"0" == [] // false
-2 + "2"   // '22'
-2 - "2"   // 0
-```
+<details>
+  <summary>__See Explanation__</summary>
+  Typescript is pretty strict about null handling. If it thinks a value could possible be null or undefined then you are forced to null check the value first. This is a good practice that developers often overlook when writing plain javascript.
+</details>
+
+### How do I use typescript?
+
+Like previously said, javascript is valid typescript so if you are using javascript you dont need to change your syntax, just add `//@ts-check` to the top of your JS files and if your editor support type checking it will start showing you types errors in your javascript. 
+
+This will not enable all the features of typescript including the additional syntax which we did not dig into in this post. So if you want to use typescript fully you will need to set up a compiler like the typescript compiler or babel to convert your typescript files to javascript.
+
+
+### Additional Resources
+
+* [Typescript Deep Dive](https://basarat.gitbook.io/typescript): This book is free and avaiable online
+* [Learn Typescript](https://www.typescript-training.com/) Several in depth courses from Frontend Masters
+* [The Definitive TypeScript Guide](https://www.sitepen.com/blog/update-the-definitive-typescript-guide) Most of the thing you need to know about typescript, less in depth than the previous resources
+* [Typescript Cheat Sheet](https://www.sitepen.com/blog/typescript-cheat-sheet)
+* [React Typescript Cheat Sheets](https://react-typescript-cheatsheet.netlify.app/)
