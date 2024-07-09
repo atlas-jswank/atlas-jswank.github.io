@@ -17,7 +17,7 @@ __Statically typed:__ All variables have a type such as string, number, boolean,
 
 __Superset of javascript:__ The added syntax is completely optional because all javascript is typescript. You can just write plain javascript without learning any new syntax and reap the benefits of type checking due to the implicit types inferred by the compiler.
 
-__Compiles to javascript:__ typescript is not understood by browsers or node so a compiler is used to convert typescript to plain javascript. You can then run the javascript anywhere you wouldn normally run javascript like in the browser or on a server with node. (Although newer JS runtimes such as deno and bun support typescript directly without a compiler).
+__Compiles to javascript:__ The additional syntax in typescript is not understood by browsers or node so a compiler is used to convert the typescript specific syntax to plain javascript. You can then run the javascript anywhere you would normally run javascript like in the browser or on a server with node. (Although newer JS runtimes such as deno and bun support typescript directly without a compiler).
 
 __TLDR__: Its javascript with types.
 
@@ -31,7 +31,7 @@ __Code quality:__ Using typescript increases the quality and understandability o
 
 __Reduced Bugs:__ Its is better to find issues at compile time rather than runtime. Typescript allows you to solve a  lot of common javascript problems when compiling as oppsed to running your application. 
 
-__Refacorable:__ Types make refactoring code easier. How many times have you had working code, changed something, and then no longer had working code? This happens all the time. Typescript can help you more easily find where your code is breaking.
+__Refactorable:__ Types make refactoring code easier. How many times have you had working code, changed something, and then no longer had working code? This happens all the time. Typescript can help you more easily find where your code is breaking.
 
 
 ### How does javascript handle typing?
@@ -312,7 +312,7 @@ TypeError: Cannot read properties of undefined (reading 'name')
 
 Like previously said, javascript is valid typescript so if you are using javascript you dont need to change your syntax, just add `//@ts-check` to the top of your JS files and if your editor support type checking it will start showing you types errors in your javascript. 
 
-This will not enable all the features of typescript including the additional syntax which we did not dig into in this post. So if you want to use typescript fully you will need to set up a compiler like the typescript compiler or babel to convert your typescript files to javascript.
+This will not enable all the features of typescript including the additional syntax which we did not dig into in this post. So if you want to use typescript fully you will need to set up a compiler like `tsc` or `babel` to convert your typescript files to javascript.
 
 
 ### Additional Resources

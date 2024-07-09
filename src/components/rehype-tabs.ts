@@ -11,11 +11,11 @@ interface Panel {
   icon?: keyof typeof BuiltInIcons;
 }
 
-declare module "vfile" {
-  interface DataMap {
-    panels: Panel[];
-  }
-}
+// declare module "vfile" {
+//   interface DataMap {
+//     panels: Panel[];
+//   }
+// }
 
 export const TabItemTagname = "starlight-tab-item";
 
