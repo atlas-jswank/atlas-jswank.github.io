@@ -2,7 +2,7 @@
 title: "Development Containers in VS Code"
 description: "Lorem ipsum dolor sit amet"
 pubDate: "May 02 2024"
-heroImage: "/dev-containers.png"
+heroImage: "/dev-containers.webp"
 author: Jeremiah Swank
 authorImage: /jswank.jpg
 ---

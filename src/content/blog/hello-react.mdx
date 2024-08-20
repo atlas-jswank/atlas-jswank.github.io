@@ -1,0 +1,43 @@
+---
+title: "Hello React"
+description: "Lorem ipsum dolor sit amet"
+pubDate: "July 07 2024"
+heroImage: "/hello-react.webp"
+author: Jeremiah Swank
+authorImage: /jswank.jpg
+---
+
+### What is React?
+
+[React](https://react.dev/) is a popular JavaScript library developed by Facebook for building user interfaces, particularly single-page applications where a dynamic and responsive user experience is essential. It allows developers to create reusable UI components that manage their own state and can be composed to build complex user interfaces.
+
+#### Benefits of React
+
+* **Component-Based Architecture:** React encourages the development of modular and reusable components, making code easier to maintain and scale.
+* **Virtual DOM:** React uses a virtual DOM to efficiently update and render changes in the UI, which improves performance by minimizing direct manipulation of the actual DOM.
+* **Declarative Syntax:** React’s declarative approach makes it easier to reason about your application’s state and the UI, resulting in more predictable and manageable code.
+* **Strong Ecosystem:** React boasts a robust ecosystem with tools and libraries like React Router for navigation, Redux for state management, and Next.js for server-side rendering and static site generation.
+
+Overall, React.js provides a powerful and flexible framework for building high-performance, dynamic web applications.
+
+### Vite ("veet", french for "quick")
+
+[Vite](https://vitejs.dev/) is a modern build tool that significantly enhances the development experience in a React application. It is a build tool that converts **developer friendly code** into **browser friendly code**.
+
+As developer we often want to use tools and languages that browser may not be able to interprate directly. This include things like typescript, jsx, sass, less. Vite can take these format and convert them into plain javascript and css.
+
+When developing locally changes made to your React components are immediately reflected in the browser without needing a full page reload, which speeds up development and improves productivity. 
+
+When building for production Vite also simplifies the build process with optimized, production-ready bundles and supports advanced features like code splitting and dynamic imports out of the box. By streamlining both development and build processes, Vite allows developers to focus more on coding and less on configuration.
+
+### Getting started with React and Vite
+
+To get started with React and Vite run:
+
+```bash
+$ npm create vite@latest vite-hello-world -- --template react
+$ cd vite-hello-world
+$ npm install
+$ npm run dev
+```
+You should now have a local dev server running. Open ` http://localhost:5173` in your browser to see the results. If you make a change to the text in `App.jsx` you should see it reflect in the browser.

@@ -2,7 +2,7 @@
 title: "Using the VS Code Debugger"
 description: "Lorem ipsum dolor sit amet"
 pubDate: "May 10 2024"
-heroImage: "/vs-code-debugger.png"
+heroImage: "/debugger.webp"
 author: Jeremiah Swank
 authorImage: /jswank.jpg
 ---
