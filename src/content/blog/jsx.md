@@ -164,6 +164,30 @@ function Status({ status }) {
 
 These patterns provide flexibility in how you render components conditionally, helping you create dynamic and responsive user interfaces in React applications.
 
+### Rendering Lists
+
+Rendering lists of data in React is a common task that involves displaying multiple items from an array or collection in a structured format. A common approach to handle lists leverages the `map()` method.
+
+```tsx
+const items = [
+  { id: 1, name: 'Apple' },
+  { id: 2, name: 'Banana' },
+  { id: 3, name: 'Cherry' }
+];
+
+function FruitList() {
+  return (
+    <ul>
+      {items.map(item => (
+        <li key={item.id}>{item.name}</li>
+      ))}
+    </ul>
+  );
+}
+```
+
+When rendering lists, each element must have a unique `key` prop to help React identify which items have changed, are added, or are removed. This improves performance and helps React optimize the rendering process. The `key` should be a unique identifier, often derived from the data itself.
+
 ### Rendering Children
 
 In React, the children prop is a special prop that allows you to pass content or elements from a parent component to a child component. This is useful for creating reusable components that can wrap or contain other elements. Here's a simple example to illustrate how the children prop works:
@@ -201,3 +225,32 @@ function App() {
 ```
 
 In the `App` component, two `Card` components are used. Each one wraps different content. The content inside each Card component is passed as children and rendered inside the Card's div element.
+
+## Event Handling
+
+Event handling in React involves responding to user interactions such as clicks, form submissions, or keyboard inputs. React provides a straightforward and consistent way to handle these events through a synthetic event system, which wraps around the native browser events.
+
+React uses a synthetic event system to normalize events across different browsers. This synthetic event is a cross-browser wrapper around the native DOM events. It provides a consistent API and works with event delegation to improve performance.
+
+In React, event handlers are specified using camelCase syntax. Unlike in HTML, where event attributes are written in lowercase (e.g., onclick), React uses camelCase (e.g., onClick). Event handlers are assigned as functions, and they are passed directly to the React component’s JSX.
+
+```tsx
+function App() {
+  function handleClick() {
+    alert('Button clicked!');
+  }
+
+  function handleHover(){
+    console.log("Mouse hovered over the button");
+  }
+
+  return (
+    <div>
+      <button onClick={handleClick}>Click Me</button>
+      <div onMouseEnter={handleHover}>Hover Me</div>
+    </div>
+  );
+}
+```
+
+Event handling in React provides a consistent and efficient way to manage user interactions. By leveraging React’s synthetic event system developers can build interactive and responsive UIs. Understanding these concepts will help you handle user interactions effectively and maintain clean, functional React components.

@@ -174,7 +174,7 @@ function App() {
 
 ### Importing JSON
 
-With Vite, uou can import JSON files using the `import` keyword:
+With Vite, you can import JSON files using the `import` keyword:
 
 ```json
 // data.json

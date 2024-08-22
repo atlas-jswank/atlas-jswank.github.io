@@ -5,6 +5,7 @@ pubDate: "August 21 2024"
 heroImage: "/typescript-2.webp"
 author: Jeremiah Swank
 authorImage: /jswank.jpg
+published: false
 ---
 
 ### Primitive Types

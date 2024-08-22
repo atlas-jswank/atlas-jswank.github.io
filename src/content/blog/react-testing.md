@@ -5,6 +5,7 @@ pubDate: "August 20 2024"
 heroImage: "/unit-testing.webp"
 author: Jeremiah Swank
 authorImage: /jswank.jpg
+published: false
 ---
 
 Unit testing in React is a crucial practice that ensures individual components and functions within an application work as expected. By isolating these components and testing them independently, developers can catch bugs early in the development process, leading to more reliable and maintainable code. 
