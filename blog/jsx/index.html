@@ -110,6 +110,25 @@
 <span class="line"><span style="color:#E1E4E8">}</span></span>
 <span class="line"></span></code></pre>
 <p>These patterns provide flexibility in how you render components conditionally, helping you create dynamic and responsive user interfaces in React applications.</p>
+<h3 id="rendering-lists">Rendering Lists</h3>
+<p>Rendering lists of data in React is a common task that involves displaying multiple items from an array or collection in a structured format. A common approach to handle lists leverages the <code>map()</code> method.</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#D00414">const</span><span style="color:#1ED2AF"> items</span><span style="color:#D00414"> =</span><span style="color:#E1E4E8"> [</span></span>
+<span class="line"><span style="color:#E1E4E8">  { id: </span><span style="color:#1ED2AF">1</span><span style="color:#E1E4E8">, name: </span><span style="color:#F7F0DC">'Apple'</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">  { id: </span><span style="color:#1ED2AF">2</span><span style="color:#E1E4E8">, name: </span><span style="color:#F7F0DC">'Banana'</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">  { id: </span><span style="color:#1ED2AF">3</span><span style="color:#E1E4E8">, name: </span><span style="color:#F7F0DC">'Cherry'</span><span style="color:#E1E4E8"> }</span></span>
+<span class="line"><span style="color:#E1E4E8">];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">function</span><span style="color:#1ED2AF"> FruitList</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#D00414">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#1ED2AF">ul</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      {items.</span><span style="color:#1ED2AF">map</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">item</span><span style="color:#D00414"> =></span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;</span><span style="color:#1ED2AF">li</span><span style="color:#1ED2AF"> key</span><span style="color:#D00414">=</span><span style="color:#E1E4E8">{item.id}>{item.name}&#x3C;/</span><span style="color:#1ED2AF">li</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      ))}</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#1ED2AF">ul</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<p>When rendering lists, each element must have a unique <code>key</code> prop to help React identify which items have changed, are added, or are removed. This improves performance and helps React optimize the rendering process. The <code>key</code> should be a unique identifier, often derived from the data itself.</p>
 <h3 id="rendering-children">Rendering Children</h3>
 <p>In React, the children prop is a special prop that allows you to pass content or elements from a parent component to a child component. This is useful for creating reusable components that can wrap or contain other elements. Here’s a simple example to illustrate how the children prop works:</p>
 <pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#D00414">function</span><span style="color:#1ED2AF"> Card</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">props</span><span style="color:#E1E4E8">) {</span></span>
@@ -139,6 +158,28 @@
 <span class="line"><span style="color:#E1E4E8">  );</span></span>
 <span class="line"><span style="color:#E1E4E8">}</span></span>
 <span class="line"></span></code></pre>
-<p>In the <code>App</code> component, two <code>Card</code> components are used. Each one wraps different content. The content inside each Card component is passed as children and rendered inside the Card’s div element.</p>  </div> </div> </article> <footer data-astro-cid-sz7xmlte>
+<p>In the <code>App</code> component, two <code>Card</code> components are used. Each one wraps different content. The content inside each Card component is passed as children and rendered inside the Card’s div element.</p>
+<h2 id="event-handling">Event Handling</h2>
+<p>Event handling in React involves responding to user interactions such as clicks, form submissions, or keyboard inputs. React provides a straightforward and consistent way to handle these events through a synthetic event system, which wraps around the native browser events.</p>
+<p>React uses a synthetic event system to normalize events across different browsers. This synthetic event is a cross-browser wrapper around the native DOM events. It provides a consistent API and works with event delegation to improve performance.</p>
+<p>In React, event handlers are specified using camelCase syntax. Unlike in HTML, where event attributes are written in lowercase (e.g., onclick), React uses camelCase (e.g., onClick). Event handlers are assigned as functions, and they are passed directly to the React component’s JSX.</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#D00414">function</span><span style="color:#1ED2AF"> App</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#D00414">  function</span><span style="color:#1ED2AF"> handleClick</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#1ED2AF">    alert</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">'Button clicked!'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">  function</span><span style="color:#1ED2AF"> handleHover</span><span style="color:#E1E4E8">(){</span></span>
+<span class="line"><span style="color:#E1E4E8">    console.</span><span style="color:#1ED2AF">log</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">"Mouse hovered over the button"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#1ED2AF">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#1ED2AF">button</span><span style="color:#1ED2AF"> onClick</span><span style="color:#D00414">=</span><span style="color:#E1E4E8">{handleClick}>Click Me&#x3C;/</span><span style="color:#1ED2AF">button</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#1ED2AF">div</span><span style="color:#1ED2AF"> onMouseEnter</span><span style="color:#D00414">=</span><span style="color:#E1E4E8">{handleHover}>Hover Me&#x3C;/</span><span style="color:#1ED2AF">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#1ED2AF">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<p>Event handling in React provides a consistent and efficient way to manage user interactions. By leveraging React’s synthetic event system developers can build interactive and responsive UIs. Understanding these concepts will help you handle user interactions effectively and maintain clean, functional React components.</p>  </div> </div> </article> <footer data-astro-cid-sz7xmlte>
 &copy; 2024 Jeremiah Swank. All rights reserved.
 <div class="social-links" data-astro-cid-sz7xmlte> <a href="https://github.com/atlas-jswank" target="_blank" data-astro-cid-sz7xmlte> <span class="sr-only" data-astro-cid-sz7xmlte>Go to Jeremiah Swank's GitHub repo</span> <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32" astro-icon="social/github" data-astro-cid-sz7xmlte><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://www.linkedin.com/in/jeremiah-swank-0a3559264/" target="_blank" data-astro-cid-sz7xmlte> <span class="sr-only" data-astro-cid-sz7xmlte>Go to Jeremiah Swanks's LinkedIn</span> <svg style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" version="1.1" viewBox="0 0 512 512" width="32" height="32" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-astro-cid-sz7xmlte><path fill="currentColor" d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" data-astro-cid-sz7xmlte></path></svg> </a> </div> </footer>  </main> </body></html>
