@@ -1,4 +1,3 @@
-import type { Element } from "hast";
 import { select } from "hast-util-select";
 import { rehype } from "rehype";
 import { CONTINUE, SKIP, visit } from "unist-util-visit";
@@ -53,7 +52,7 @@ const getIDs = () => {
 const tabsProcessor = rehype()
   .data("settings", { fragment: true })
   .use(function tabs() {
-    return (tree: Element, file) => {
+    return (tree: any, file) => {
       file.data.panels = [];
       let isFirst = true;
       visit(tree, "element", (node) => {
@@ -69,6 +68,7 @@ const tabsProcessor = rehype()
         };
         if (dataIcon)
           panel.icon = String(dataIcon) as keyof typeof BuiltInIcons;
+        //@ts-ignore
         file.data.panels?.push(panel);
 
         // Remove `<TabItem>` props

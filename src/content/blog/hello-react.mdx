@@ -1,7 +1,7 @@
 ---
 title: "Hello React"
 description: "Lorem ipsum dolor sit amet"
-pubDate: "July 07 2024"
+pubDate: "August 24, 2024"
 heroImage: "/hello-react.webp"
 author: Jeremiah Swank
 authorImage: /jswank.jpg
@@ -20,19 +20,122 @@ authorImage: /jswank.jpg
 
 Overall, React.js provides a powerful and flexible framework for building high-performance, dynamic web applications.
 
+### React Components
+
+React components are the fundamental building blocks of a React application, designed to encapsulate and manage a portion of the user interface. Components allow developers to break down the UI into smaller, reusable pieces, each responsible for its own rendering and logic. Developers are able to colocate the structure (html), style (css) and interactivity (javascript). For example:
+
+```tsx
+<PageLayout>
+  <NavigationHeader>
+    <SearchBar />
+  </NavigationHeader>
+  <Sidebar />
+  <PageContents>
+    <TableOfContents />
+    <DocumentationText />
+  </PageContents>
+</PageLayout>
+```
+
+In this example we created components such as `PageLayout`, `NavigationHeader`, `SearchBar`, `Sidebar`, `PageContents`, `TableOfContents`, and `DocumentationText`. These components are reusable and can be used in different parts of the application if needed. Creating react components is similar to creating custom HTML elements.
+
+This modular approach enhances maintainability, reusability, and separation of concerns, making it easier to build complex user interfaces and manage application state effectively. Components can also be nested and composed together, enabling the creation of intricate UIs by combining smaller, well-defined parts.
+
+### React Props
+
+React props are a mechanism for passing data from a parent component to a child component in a React application. They are used to configure or customize child components and to pass data such as strings, numbers, objects, or functions. By leveraging props, developers can create more dynamic and reusable components, allowing them to render different outputs based on the values they receive. 
+
+```tsx
+<PageLayout columns="2">
+  <NavigationHeader isLoggedIn={true}>
+    <SearchBar value="what is react?" />
+  </NavigationHeader>
+</PageLayout>
+```
+
+In the above example `columns`, `isLoggedIn`, and `value` are examples of props. You can think of props as similar to attributes in HTML. Utlizing props promotes a clear and predictable flow of data throughout the application, facilitating better component communication and separation of concerns.
+
+### Creating a React Component
+
+In its most basic form, a React component is a function that returns a React element. To access props, you can use the `props` argument in the function. For example:
+
+```tsx
+function Greeting(props) {
+  return <h1>Hello, {props.name}!</h1>;
+}
+```
+Once a component is defined it can be used in other components. For example:
+
+```tsx
+function App() {
+  return (
+    <div>
+      <h1>My App</h1>
+      <Greeting name="John" />
+      <Greeting name="Jane" />
+    </div>
+  );
+}
+```
+
+Some things to keep in mind when creating react comonents:
+* Component function names must start with a capital letter.
+* Components must return JSX. (We will discuss JSX in mor detail below)
+* Components must be closed, either with a closing tag (`<Greeting>John</Greeting>`) or with a self-closing tag (`<Greeting name="John" />`).
+
+### JSX
+
+JSX, or JavaScript XML, is a syntax extension for JavaScript that allows developers to write HTML-like code within their JavaScript files. It is used in React to describe the structure of the user interface in a more intuitive and readable way. JSX closely resembles HTML, making it easier to visualize the layout and structure of components, but it compiles down to regular JavaScript objects. This syntax allows developers to embed expressions, use variables, and invoke functions directly within the markup.
+
+Consider the following example:
+
+```tsx
+function CountLength(props) {
+  return <h1>{props.word} is {props.word.length} characters long.</h1>;
+}
+
+function App() {
+  return (
+    <div>
+      <CountLength word="Hello, world!" />
+      <CountLength word="React rocks!" />
+    </div>
+  );
+}
+```
+
+In plain javascript this same code would look like this:
+
+```tsx
+
+function CountLength(props) {
+  return React.createElement("h1", {
+    children: [props.word, " is ", props.word.length, " characters long."]
+  });
+}
+function App() {
+  return React.createElement("div", {
+    children: [React.createElement(CountLength, {
+      word: "Hello, world!"
+    }), React.createElement(CountLength, {
+      word: "React rocks!"
+    })]
+  });
+}
+
+```
+
+You will find that writing your react code in JSX makes it much easier to read. Just know that browsers do not understand JSX so it will always need to be transpiled to plain javascript. That is why we use tools such as Vite.
+
 ### Vite ("veet", french for "quick")
 
 [Vite](https://vitejs.dev/) is a modern build tool that significantly enhances the development experience in a React application. It is a build tool that converts **developer friendly code** into **browser friendly code**.
 
-As developer we often want to use tools and languages that browser may not be able to interprate directly. This include things like typescript, jsx, sass, less. Vite can take these format and convert them into plain javascript and css.
-
-When developing locally changes made to your React components are immediately reflected in the browser without needing a full page reload, which speeds up development and improves productivity. 
-
-When building for production Vite also simplifies the build process with optimized, production-ready bundles and supports advanced features like code splitting and dynamic imports out of the box. By streamlining both development and build processes, Vite allows developers to focus more on coding and less on configuration.
+As developers we often want to use tools and languages that a browser may not be able to interpret directly. This include things like typescript, jsx, sass, less. Vite can take these formats and convert them into plain javascript and css.
 
 ### Getting started with React and Vite
 
-To get started with React and Vite run:
+Vite provides tooling to scaffold a starter applcication with a few commands. To get started with React and Vite run:
 
 ```bash
 $ npm create vite@latest vite-hello-world -- --template react
@@ -40,4 +143,46 @@ $ cd vite-hello-world
 $ npm install
 $ npm run dev
 ```
+
 You should now have a local dev server running. Open ` http://localhost:5173` in your browser to see the results. If you make a change to the text in `App.jsx` you should see it reflect in the browser.
+
+### Rendering React to the DOM
+
+Using Vite, most of the hard work of setting up a react app is done for you but it is important to understand how your react app is rendered to the DOM. Say you have an app component like this:
+
+```tsx
+// App.jsx
+function App() {
+  return <div className="app">Hello World</div>;
+}
+
+export default App;
+```
+
+And you have a `index.html` file like this:
+
+```html
+<html>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+
+```
+
+We need a way to attach our react app to the DOM in the HTML page. Here we have an empty div with an ID of `root`. This is where we want our react app to load. We also load a javascript file called `main.jsx`. 
+
+In the main.jsx file add the following:
+
+```tsx
+import ReactDOM from "react-dom/client";
+import App from "./App";
+
+// Render the App component to the root element
+const div = document.getElementById("root");
+const root = ReactDOM.createRoot(div);
+root.render(<App />);
+```
+
+This code uses the DOM API to find the div element with an ID of `root` then renders our `<App />` component to it. You will find boilerplate code like this in most react apps. This is the minimum amount of code needed to render a react app to the DOM.

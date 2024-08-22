@@ -16,20 +16,23 @@ const { html, panels } = processPanels(panelHtml);
     panels && (
       <div class="tablist-wrapper not-content">
         <ul role="tablist">
-          {panels.map(({ icon, label, panelId, tabId }, idx) => (
-            <li role="presentation" class="tab">
-              <a
-                role="tab"
-                href={"#" + panelId}
-                id={tabId}
-                aria-selected={idx === 0 ? "true" : "false"}
-                tabindex={idx !== 0 ? -1 : 0}
-              >
-                {icon && <Icon name={icon} />}
-                {label}
-              </a>
-            </li>
-          ))}
+          {
+            //@ts-ignore
+            panels.map(({ icon, label, panelId, tabId }, idx) => (
+              <li role="presentation" class="tab">
+                <a
+                  role="tab"
+                  href={"#" + panelId}
+                  id={tabId}
+                  aria-selected={idx === 0 ? "true" : "false"}
+                  tabindex={idx !== 0 ? -1 : 0}
+                >
+                  {icon && <Icon name={icon} />}
+                  {label}
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </div>
     )
@@ -169,7 +172,7 @@ const { html, panels } = processPanels(panelHtml);
     switchTab(
       newTab: HTMLAnchorElement | null | undefined,
       index: number,
-      shouldSync = true,
+      shouldSync = true
     ) {
       if (!newTab) return;
 
@@ -215,7 +218,7 @@ const { html, panels } = processPanels(panelHtml);
       for (const receiver of syncedTabs) {
         if (receiver === emitter) continue;
         const labelIndex = receiver.tabs.findIndex(
-          (tab) => tab.textContent === label,
+          (tab) => tab.textContent === label
         );
         if (labelIndex === -1) continue;
         receiver.switchTab(receiver.tabs[labelIndex], labelIndex, false);
