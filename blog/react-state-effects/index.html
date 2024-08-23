@@ -40,7 +40,7 @@
 <span class="line"><span style="color:#E1E4E8">}</span></span>
 <span class="line"></span></code></pre>
 <p>This make it handy to perform cleanup tasks when the component is removed from the page.</p>
-<p>Another common use case for <code>useEffects</code> is to perform an action whenever a state variable changes. The <code>useEffect</code> hook optionally takes an array of dependencies as its second argument. The effect function runs whenever the dependencies change, providing a way to synchronize the component’s state with external systems. For example:</p>
+<p>Another common use case for <code>useEffect</code> is to perform an action whenever a state variable changes. The <code>useEffect</code> hook optionally takes an array of dependencies as its second argument. The effect function runs whenever the dependencies change, providing a way to synchronize the component’s state with external systems. For example:</p>
 <pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#D00414">function</span><span style="color:#1ED2AF"> FooBar</span><span style="color:#E1E4E8">() {</span></span>
 <span class="line"><span style="color:#D00414">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#1ED2AF">foo</span><span style="color:#E1E4E8">, </span><span style="color:#1ED2AF">setFoo</span><span style="color:#E1E4E8">] </span><span style="color:#D00414">=</span><span style="color:#1ED2AF"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#1ED2AF">0</span><span style="color:#E1E4E8">);</span></span>
 <span class="line"><span style="color:#D00414">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#1ED2AF">bar</span><span style="color:#E1E4E8">, </span><span style="color:#1ED2AF">setBar</span><span style="color:#E1E4E8">] </span><span style="color:#D00414">=</span><span style="color:#1ED2AF"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#1ED2AF">0</span><span style="color:#E1E4E8">);</span></span>
@@ -63,7 +63,7 @@
 <span class="line"></span></code></pre>
 <p>This <code>useEffect</code> will store the values of foo and bar in local storage whenever they change but nothing happens when baz changes.</p>
 <h3 id="fetching-data">Fetching Data</h3>
-<p>Lets explore a common use case for <code>useEffect</code> in React: fecthing data from an API. Here we will integrate will an API for fetching pictures of Dogs. Here is the starter code:</p>
+<p>Lets explore a common use case for <code>useEffect</code> in React: fetching data from an API. Here we will integrate will an API for fetching pictures of Dogs. Here is the starter code:</p>
 <pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { useEffect } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "react"</span><span style="color:#E1E4E8">;</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#D00414">function</span><span style="color:#1ED2AF"> Dogs</span><span style="color:#E1E4E8">() {</span></span>
@@ -78,7 +78,7 @@
 <span class="line"><span style="color:#E1E4E8">  );</span></span>
 <span class="line"><span style="color:#E1E4E8">}</span></span>
 <span class="line"></span></code></pre>
-<p>We will use the fetch API to call the API. From there we need to store the data returned from the API in a state variable:</p>
+<p>We will use the fetch function to call the API. From there we need to store the data returned from the API in a state variable:</p>
 <pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#D00414">function</span><span style="color:#1ED2AF"> Dogs</span><span style="color:#E1E4E8">() {</span></span>
 <span class="line"><span style="color:#D00414">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#1ED2AF">dogs</span><span style="color:#E1E4E8">, </span><span style="color:#1ED2AF">setDogs</span><span style="color:#E1E4E8">] </span><span style="color:#D00414">=</span><span style="color:#1ED2AF"> useState</span><span style="color:#E1E4E8">([]);</span></span>
 <span class="line"></span>
@@ -142,7 +142,7 @@
 <p>You’ll notice there is a flicker before the images are displayed. This is because the effect hook doesn’t run until after the first render. We can add a loading state to show the user that the images are loading. Lets crate a new state variable to track the loading state:</p>
 <pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#D00414">function</span><span style="color:#1ED2AF"> Dogs</span><span style="color:#E1E4E8">() {</span></span>
 <span class="line"><span style="color:#D00414">  ...</span></span>
-<span class="line"><span style="color:#D00414">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#1ED2AF">loading</span><span style="color:#E1E4E8">, </span><span style="color:#1ED2AF">setLoading</span><span style="color:#E1E4E8">] </span><span style="color:#D00414">=</span><span style="color:#1ED2AF"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#1ED2AF">false</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#D00414">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#1ED2AF">loading</span><span style="color:#E1E4E8">, </span><span style="color:#1ED2AF">setLoading</span><span style="color:#E1E4E8">] </span><span style="color:#D00414">=</span><span style="color:#1ED2AF"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#1ED2AF">true</span><span style="color:#E1E4E8">);</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#1ED2AF">  useEffect</span><span style="color:#E1E4E8">(() </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
 <span class="line"><span style="color:#1ED2AF">    setLoading</span><span style="color:#E1E4E8">(</span><span style="color:#1ED2AF">true</span><span style="color:#E1E4E8">);</span></span>
