@@ -1,7 +1,7 @@
 ---
 title: "What is JSX?"
 description: "Lorem ipsum dolor sit amet"
-pubDate: "August 25, 2024"
+pubDate: "August 20 2024"
 heroImage: "/jsx.webp"
 author: Jeremiah Swank
 authorImage: /jswank.jpg

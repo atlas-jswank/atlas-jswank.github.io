@@ -1,7 +1,7 @@
 ---
 title: "ES Modules"
 description: "Lorem ipsum dolor sit amet"
-pubDate: "August 26, 2024"
+pubDate: "August 21, 2024"
 heroImage: "/es-modules.webp"
 author: Jeremiah Swank
 authorImage: /jswank.jpg

@@ -1,7 +1,7 @@
 ---
-title: "React State"
+title: "React State: useState"
 description: "Lorem ipsum dolor sit amet"
-pubDate: "August 27, 2024"
+pubDate: "August 23, 2024"
 heroImage: "/react-state.webp"
 author: Jeremiah Swank
 authorImage: /jswank.jpg
@@ -376,7 +376,6 @@ function FruiList() {
 }
 ```
  We now have a fully functioning paginated list!
-
 
  ### Conclusion
 
