@@ -28,7 +28,22 @@ function Baz(props) {
 }
 ```
 
-Here we have a state variable `name` that is set in the App components and then passed through three layers of child components until it reaches the `Baz` component. `Foo` and `Bar` do not utlize the name prop but must pass the data along so that it can reach the child component `Baz`. Every time we create a new instance of the `Foo` component we have to make sure it passes a name prop to its children. This is a problem common in react called "prop drilling"
+Here we have a state variable `name` that is set in the App components and then passed through three layers of child components until it reaches the `Baz` component. `Foo` and `Bar` do not utlize the name prop but must pass the data along so that it can reach the child component `Baz`. This is a problem common in react called "prop drilling"
+
+### Prop Drilling
+
+Prop drilling is a term used in React to describe the process of passing data from a parent component to a deeply nested child component through intermediate components. This technique involves "drilling" the props down through multiple layers of components, which can become cumbersome and lead to complex and hard-to-maintain code, especially in large applications.
+
+In prop drilling, a parent component passes data or functions to its direct child component via props. If the child component itself has children that also need access to the same data, the props are passed down through each intermediate component until they reach the desired nested child.
+
+#### Problems with Prop Drilling
+
+**Maintainability:** As the component hierarchy grows, the number of levels through which props must be passed increases, making it harder to maintain and understand the flow of data.
+
+**Reusability:** Intermediate components that don't need the data themselves become cluttered with props they merely pass down, reducing their reusability and increasing their complexity.
+
+**Scalability:** For large applications with deeply nested components, managing and passing props through many levels can become unwieldy and error-prone.
+
 
 ### Context Providers
 
