@@ -141,7 +141,7 @@ Next you need to update the state variable when the user types in the input fiel
 <input type="text" onChange={(e) => setFilter(e.target.value)} />
 ```
 
-Now you can filter the array of fruites base on the value of filter:
+Now you can filter the array of fruits based on the value of the filter:
 
 ```tsx
 function FruiList() {
@@ -325,13 +325,13 @@ Now we can use the array slice method to select a subset of the data array. Here
 const currentPage = data.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 ```
 
-This is will limit the rows of data to the `PAGE_SIZE`. To change the page we need to increment and decrement the page state variable using the buttons:
+This will limit the rows of data to the `PAGE_SIZE`. To change the page we need to increment and decrement the page state variable using the buttons:
 
 ```tsx
 <button onClick={() => setPage(page - 1)}>Previous</button>
 <button onClick={() => setPage(page + 1)}>Next</button>
 ```
-To make sure we dont go beyond valid page values we need to disable the next/previous button. Lets create a varaible to track if there are more pages:
+To make sure we dont go beyond valid page values we need to disable the next/previous button. Lets create some variables to track teh page boundaries:
 
 ```tsx
 const hasMore = data.length > page * PAGE_SIZE;

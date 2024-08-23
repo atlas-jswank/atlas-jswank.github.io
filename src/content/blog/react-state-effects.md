@@ -57,7 +57,7 @@ function FooBar() {
 
 This make it handy to perform cleanup tasks when the component is removed from the page.
 
-Another common use case for `useEffects` is to perform an action whenever a state variable changes. The `useEffect` hook optionally takes an array of dependencies as its second argument. The effect function runs whenever the dependencies change, providing a way to synchronize the component's state with external systems. For example:
+Another common use case for `useEffect` is to perform an action whenever a state variable changes. The `useEffect` hook optionally takes an array of dependencies as its second argument. The effect function runs whenever the dependencies change, providing a way to synchronize the component's state with external systems. For example:
 
 ```tsx
 function FooBar() {
@@ -85,7 +85,7 @@ This `useEffect` will store the values of foo and bar in local storage whenever 
 
 ### Fetching Data
 
-Lets explore a common use case for `useEffect` in React: fecthing data from an API. Here we will integrate will an API for fetching pictures of Dogs. Here is the starter code:
+Lets explore a common use case for `useEffect` in React: fetching data from an API. Here we will integrate will an API for fetching pictures of Dogs. Here is the starter code:
 
 ```tsx
 import { useEffect } from "react";
@@ -103,7 +103,7 @@ function Dogs() {
 }
 ```
 
-We will use the fetch API to call the API. From there we need to store the data returned from the API in a state variable:
+We will use the fetch function to call the API. From there we need to store the data returned from the API in a state variable:
 
 ```tsx
 function Dogs() {
@@ -187,7 +187,7 @@ You'll notice there is a flicker before the images are displayed. This is becaus
 ```tsx
 function Dogs() {
   ...
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true);
