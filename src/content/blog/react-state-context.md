@@ -102,3 +102,16 @@ Context Providers can be used to manage and provide global settings or configura
 ### Conclusion
 
 Context Providers are a versatile tool for managing and distributing state or configuration across a component tree. By leveraging context providers, you can simplify data flow, avoid prop drilling, and ensure a consistent application state across your React components.
+
+
+```tsx
+function App() {
+  return <h1>Hello, world!</h1>;
+}
+```
+
+```tsx
+const element = document.createElement('h1');
+element.textContent = 'Hello, world!';
+document.body.appendChild(element);
+```

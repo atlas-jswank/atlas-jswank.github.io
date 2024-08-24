@@ -24,66 +24,69 @@ Overall, React.js provides a powerful and flexible framework for building high-p
 
 React components are the fundamental building blocks of a React application, designed to encapsulate and manage a portion of the user interface. Components allow developers to break down the UI into smaller, reusable pieces, each responsible for its own rendering and logic. Developers are able to colocate the structure (html), style (css) and interactivity (javascript). For example:
 
-```tsx
-<PageLayout>
-  <NavigationHeader>
-    <SearchBar />
-  </NavigationHeader>
-  <Sidebar />
-  <PageContents>
-    <TableOfContents />
-    <DocumentationText />
-  </PageContents>
-</PageLayout>
-```
-
-In this example we created components such as `PageLayout`, `NavigationHeader`, `SearchBar`, `Sidebar`, `PageContents`, `TableOfContents`, and `DocumentationText`. These components are reusable and can be used in different parts of the application if needed. Creating react components is similar to creating custom HTML elements.
-
-This modular approach enhances maintainability, reusability, and separation of concerns, making it easier to build complex user interfaces and manage application state effectively. Components can also be nested and composed together, enabling the creation of intricate UIs by combining smaller, well-defined parts.
-
-### React Props
-
-React props are a mechanism for passing data from a parent component to a child component in a React application. They are used to configure or customize child components and to pass data such as strings, numbers, objects, or functions. By leveraging props, developers can create more dynamic and reusable components, allowing them to render different outputs based on the values they receive. 
+In its most basic form, a React component is a function that returns html. For example, here is a functional component called `Greeting`:
 
 ```tsx
-<PageLayout columns="2">
-  <NavigationHeader isLoggedIn={true}>
-    <SearchBar value="what is react?" />
-  </NavigationHeader>
-</PageLayout>
-```
-
-In the above example `columns`, `isLoggedIn`, and `value` are examples of props. You can think of props as similar to attributes in HTML. Utlizing props promotes a clear and predictable flow of data throughout the application, facilitating better component communication and separation of concerns.
-
-### Creating a React Component
-
-In its most basic form, a React component is a function that returns a React element. To access props, you can use the `props` argument in the function. For example:
-
-```tsx
-function Greeting(props) {
-  return <h1>Hello, {props.name}!</h1>;
+function Greeting() {
+  return <h1>Hello, Atlas!</h1>;
 }
 ```
-Once a component is defined it can be used in other components. For example:
+We can use this component in our application like this:
 
 ```tsx
+
+
 function App() {
   return (
+    <div id="container">
+      <Greeting />
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
     <div>
-      <h1>My App</h1>
-      <Greeting name="John" />
-      <Greeting name="Jane" />
-    </div>
   );
 }
 ```
+
+This modular approach enhances maintainability, reusability, and separation of concerns, making it easier to build complex user interfaces and manage application state effectively. 
+
+Components can also be nested and composed together, enabling the creation of intricate UIs by combining smaller, well-defined parts.
 
 Some things to keep in mind when creating react comonents:
 * Component function names must start with a capital letter.
 * Components must return JSX. (We will discuss JSX in mor detail below)
 * Components must be closed, either with a closing tag (`<Greeting>John</Greeting>`) or with a self-closing tag (`<Greeting name="John" />`).
 
+
+
+### React Props
+
+React props are a mechanism for passing data from a parent component to a child component in a React application. They are used to configure or customize child components and to pass data such as strings, numbers, objects, or functions.
+
+To access the props within a funcational component we can use the `props` argument in the function. For example:
+
+```tsx
+function Greeting(props) {
+  return <h1>Hello, {props.name}!</h1>;
+}
+```
+
+By leveraging props, developers can create more dynamic and reusable components, allowing them to render different outputs based on the values they receive:
+
+```tsx
+function App() {
+  return (
+    <div id="container">
+      <Greeting name="Atlas" />
+      <Greeting name="Lumi" />
+    <div>
+  );
+}
+```
+
+You can think of props as similar to attributes in HTML. Utlizing props promotes a clear and predictable flow of data throughout the application, facilitating better component communication and separation of concerns.
+
 ### JSX
+
+You may have noticed this syntax for createing react components doesnt look like valid javascript. In javascript you cannot just return html from a javascript function. This is used in react a special syntax called JSX.
 
 JSX, or JavaScript XML, is a syntax extension for JavaScript that allows developers to write HTML-like code within their JavaScript files. It is used in React to describe the structure of the user interface in a more intuitive and readable way. JSX closely resembles HTML, making it easier to visualize the layout and structure of components, but it compiles down to regular JavaScript objects. This syntax allows developers to embed expressions, use variables, and invoke functions directly within the markup.
 
@@ -125,7 +128,9 @@ function App() {
 
 ```
 
-You will find that writing your react code in JSX makes it much easier to read. Just know that browsers do not understand JSX so it will always need to be transpiled to plain javascript. That is why we use tools such as Vite.
+Utilimately this javascript version is what the browser will execute. Just know that browsers do not understand JSX so it will always need to be transpiled to plain javascript. That is why we use tools such as Vite. 
+
+You will find that writing your react code in JSX makes it much easier to read.
 
 ### Vite ("veet", french for "quick")
 
