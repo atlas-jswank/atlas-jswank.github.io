@@ -19,8 +19,8 @@
 <span class="line"><span style="color:#E1E4E8">  );</span></span>
 <span class="line"><span style="color:#E1E4E8">}</span></span>
 <span class="line"></span></code></pre>
-<p>Here there is a count variable that is changed anytime the button is clicked. But this code does not work because react does not know to rerender whenever the variable changes. In this case react renders once with a value of 0 when it first loads and then never again even as the value of count changes.</p>
-<p>We need a way to notify react that the component should rerender when certain variables change. This is where state comes in.</p>
+<p>Here there is a count variable that is changed anytime the button is clicked. This actually doesnt do anything because react does not know to rerender whenever the variable changes. In this case react renders once with a value of 0 when it first loads and then never again even as the value of count changes.</p>
+<p>We need a way to notify react that the component should rerender when certain variables change. This is where state hooks comes in.</p>
 <h3 id="the-usestate-hook">The useState Hook</h3>
 <p>In functional components, state is managed using the useState hook. This hook provides a way to declare state variables and update them.</p>
 <pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { useState } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> 'react'</span><span style="color:#E1E4E8">;</span></span>
