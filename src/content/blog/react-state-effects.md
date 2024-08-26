@@ -177,7 +177,7 @@ From here we can modify the `useEffect` hook to fetch more dogs when the value o
     fetch(`https://dog.ceo/api/breed/bulldog/french/images/random/${count}`)
       .then((response) => response.json())
       .then((data) => setDogs(data.message));
-  }, [count]); // run effect everytime coutn changes
+  }, [count]); // run effect everytime count changes
 ```
 
 There are two imporant change here. The count variable is added to the API request in the fetch function. We also added the `count` variable to the dependency array. This is necessary to rerun the effect hook whenever count changes. Without this the effect only runs once when the component first mounts.
@@ -212,7 +212,7 @@ function Dogs() {
 }
 ```
 
-Here we set the loading to rue at the start of the effect hook and set loading to false after the data is fetched. We conditionally render a loading message when loading is true. This gives a better user experience when loading data from the API is running slow.
+Here we set the loading to true at the start of the effect hook and set loading to false after the data is fetched. We conditionally render a loading message when loading is true. This gives a better user experience when loading data from the API is running slow.
 
 ### Conclusion
 

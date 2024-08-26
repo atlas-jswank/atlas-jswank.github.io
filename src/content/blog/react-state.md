@@ -30,9 +30,9 @@ function Counter() {
 }
 ```
 
-Here there is a count variable that is changed anytime the button is clicked. But this code does not work because react does not know to rerender whenever the variable changes. In this case react renders once with a value of 0 when it first loads and then never again even as the value of count changes.
+Here there is a count variable that is changed anytime the button is clicked. This actually doesnt do anything because react does not know to rerender whenever the variable changes. In this case react renders once with a value of 0 when it first loads and then never again even as the value of count changes.
 
-We need a way to notify react that the component should rerender when certain variables change. This is where state comes in.
+We need a way to notify react that the component should rerender when certain variables change. This is where state hooks comes in.
 
 ### The useState Hook
 
