@@ -1,8 +1,8 @@
 ---
 title: "React Unit Testing"
 description: "Lorem ipsum dolor sit amet"
-pubDate: "August 20 2024"
-heroImage: "/unit-testing.webp"
+pubDate: "August 29 2024"
+heroImage: "/unit-tests.webp"
 author: Jeremiah Swank
 authorImage: /jswank.jpg
 published: false
