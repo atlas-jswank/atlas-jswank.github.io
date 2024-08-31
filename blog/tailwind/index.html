@@ -20,7 +20,6 @@
 </ul>
 <h3 id="tailwind-with-react">Tailwind with React</h3>
 <p>When working with React, Tailwind’s utility-first approach truly shines. React developers often face the challenge of maintaining CSS in JS or scoped styles. In other words we want our components styles to only apply to a specific comonent and not bleed into the rest of the application causing side effects. This keeps your component files clean and easy to manage.  With Tailwind, you can style your components directly in the JSX using utility classes.</p>
-<p>While it might seem counterintuitive, Tailwind can actually make your code more readable. The utility class names are descriptive and often self-explanatory, making it easier to understand how a component is styled at a glance.</p>
 <h3 id="installing-tailwind">Installing Tailwind</h3>
 <p>Install <code>tailwindcss</code> and its peer dependencies, then generate your <code>tailwind.config.js</code> and <code>postcss.config.js</code> files:</p>
 <pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#1ED2AF">npm</span><span style="color:#F7F0DC"> install</span><span style="color:#1ED2AF"> -D</span><span style="color:#F7F0DC"> tailwindcss</span><span style="color:#F7F0DC"> postcss</span><span style="color:#F7F0DC"> autoprefixer</span></span>
@@ -45,70 +44,95 @@
 <span class="line"><span style="color:#D00414">@tailwind</span><span style="color:#E1E4E8"> utilities;</span></span>
 <span class="line"></span></code></pre>
 <p>Run your build process with <code>npm run dev</code> and you should see your Tailwind styles applied to your HTML.</p>
-<h3 id="the-color-palette">The Color Palette</h3>
-<p>The color system in Tailwind CSS is one of its most powerful and flexible features, allowing developers to apply colors quickly and consistently across a project. Tailwind’s color system is designed to be intuitive, customizable, and aligned with modern design best practices.</p>
-<p>Tailwind uses a standardized naming convention for colors, which consists of a color name followed by a numeric shade value. The color names represent the base colors, and the numeric values represent the intensity or shade of that color. <code>blue-50</code> is a very light blue. <code>blue-500</code> refers to a medium shade of blue. <code>blue-950</code> is a very dark blue. To see all the possible colors and their shades, check out the <a href="https://tailwindcss.com/docs/customizing-colors">Tailwind Color Palette</a>.</p>
-<p>Colors can be applied using utility classes in various contexts:</p>
+<h3 id="using-tailwind-with-react">Using Tailwind with React</h3>
+<p>Lets take a look at a real world example of styling a react component with tailwind:</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#D00414">function</span><span style="color:#1ED2AF"> Navbar</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#D00414">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#1ED2AF">nav</span><span style="color:#1ED2AF"> className</span><span style="color:#D00414">=</span><span style="color:#F7F0DC">"bg-gray-800 p-4"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#1ED2AF">ul</span><span style="color:#1ED2AF"> className</span><span style="color:#D00414">=</span><span style="color:#F7F0DC">"flex space-x-4"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;</span><span style="color:#1ED2AF">li</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">          &#x3C;</span><span style="color:#1ED2AF">a</span><span style="color:#1ED2AF"> href</span><span style="color:#D00414">=</span><span style="color:#F7F0DC">"#"</span><span style="color:#1ED2AF"> className</span><span style="color:#D00414">=</span><span style="color:#F7F0DC">"text-white hover:text-gray-400"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">            Home</span></span>
+<span class="line"><span style="color:#E1E4E8">          &#x3C;/</span><span style="color:#1ED2AF">a</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;/</span><span style="color:#1ED2AF">li</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;</span><span style="color:#1ED2AF">li</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">          &#x3C;</span><span style="color:#1ED2AF">a</span><span style="color:#1ED2AF"> href</span><span style="color:#D00414">=</span><span style="color:#F7F0DC">"#"</span><span style="color:#1ED2AF"> className</span><span style="color:#D00414">=</span><span style="color:#F7F0DC">"text-white hover:text-gray-400"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">            About</span></span>
+<span class="line"><span style="color:#E1E4E8">          &#x3C;/</span><span style="color:#1ED2AF">a</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;/</span><span style="color:#1ED2AF">li</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;</span><span style="color:#1ED2AF">li</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">          &#x3C;</span><span style="color:#1ED2AF">a</span><span style="color:#1ED2AF"> href</span><span style="color:#D00414">=</span><span style="color:#F7F0DC">"#"</span><span style="color:#1ED2AF"> className</span><span style="color:#D00414">=</span><span style="color:#F7F0DC">"text-white hover:text-gray-400"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">            Contact</span></span>
+<span class="line"><span style="color:#E1E4E8">          &#x3C;/</span><span style="color:#1ED2AF">a</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;/</span><span style="color:#1ED2AF">li</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;/</span><span style="color:#1ED2AF">ul</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#1ED2AF">nav</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<p><strong>Explanations:</strong></p>
 <ul>
-<li><strong>Background color:</strong> bg-{color}-{shade} Example: bg-red-500</li>
-<li><strong>Text color:</strong> text-{color}-{shade} Example: text-green-700</li>
-<li><strong>Border color:</strong> border-{color}-{shade} Example: border-purple-300</li>
-<li><strong>Divide color:</strong> divide-{color}-{shade} Example: divide-gray-400</li>
-<li><strong>Placeholder color:</strong> placeholder-{color}-{shade} Example: placeholder-pink-500</li>
+<li><code>bg-gray-800</code>: Sets the background color of the navbar to dark gray. In tailwind the default color shades range from 50 to 950. 50 being the lightest and 950 being the darkest.</li>
+<li><code>p-4</code>: Adds padding around the navbar. 1 unit of padding is equal to 0.25rem so 4 units of padding is equivalent to 1rem.</li>
+<li><code>flex space-x-4</code>: Uses flexbox for layout and adds 1 rem of space between the items.</li>
+<li><code>text-white</code>: Sets the text color of the links to white.</li>
+<li><code>hover:text-gray-400</code>: Changes the text color to gray when hovering over the links.</li>
 </ul>
-<p>Tailwind also includes opacity utilities that work well with the color system. You can control the opacity of text, backgrounds, borders, and other elements using classes like <code>opacity-50</code> for 50% opacity, <code>opacity-75</code> for 75% opacity, etc.</p>
-<h3 id="the-sizing-system">The Sizing System</h3>
-<p>The sizing system in Tailwind CSS is a flexible and intuitive set of utilities that allow you to control the dimensions of elements, including width, height, padding, margin, and more. This system is designed to make it easy to create responsive, consistent layouts without writing custom CSS.</p>
-<h4 id="fixed-units">Fixed Units</h4>
-<p>Tailwind standardizes on <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#ems_and_rems">rem units</a> for fixed sizing where <code>1</code> is equal to <code>0.25rem</code>. So <code>4</code> would be <code>1rem</code>, <code>16</code> would be <code>4rem</code>, etc.</p>
+<p>While it might seem counterintuitive, Tailwind can actually make your code more readable. The utility class names are descriptive and often self-explanatory, making it easier to understand how a component is styled at a glance.</p>
+<h3 id="common-utility-classes">Common Utility Classes</h3>
+<p>Tailwind provides a wide range of utility classes that can be used to style your components. There are too many to cover in this article. Here are some links to common utility classes:</p>
 <ul>
-<li><code>w-8</code> sets the width to 2rem.</li>
-<li><code>h-16</code> sets the height to 4rem.</li>
+<li><a href="https://tailwindcss.com/docs/padding">Padding</a></li>
+<li><a href="https://tailwindcss.com/docs/margin">Margin</a></li>
+<li><a href="https://tailwindcss.com/docs/height">Height</a></li>
+<li><a href="https://tailwindcss.com/docs/width">Width</a></li>
+<li><a href="https://tailwindcss.com/docs/font-size">Font Size</a></li>
+<li><a href="https://tailwindcss.com/docs/background-color">Background Color</a></li>
+<li><a href="https://tailwindcss.com/docs/border-width">Border Width</a></li>
+<li><a href="https://tailwindcss.com/docs/border-color">Border Color</a></li>
+<li><a href="https://tailwindcss.com/docs/border-radius">Border Radius</a></li>
 </ul>
-<h4 id="percentage-units">Percentage Units</h4>
-<p>Tailwind also supports percentage-based sizing, which can be useful for creating responsive layouts.</p>
+<p>To find more utlitiy classes use the quick search bar in the tailwind documentation.</p>
+<h3 id="flexbox-layouts">Flexbox layouts</h3>
+<p>Tailwind CSS provides a wide array of utility classes to make working with Flexbox simple and intuitive. Suppose you want to create a container that centers its content both horizontally and vertically.</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#1ED2AF">div</span><span style="color:#1ED2AF"> className</span><span style="color:#D00414">=</span><span style="color:#F7F0DC">"flex items-center justify-center h-screen"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#1ED2AF">div</span><span style="color:#1ED2AF"> className</span><span style="color:#D00414">=</span><span style="color:#F7F0DC">"text-white bg-blue-500 p-8 rounded"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    Centered Content</span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#1ED2AF">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#1ED2AF">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"></span></code></pre>
+<p><strong>Explanation:</strong></p>
 <ul>
-<li><code>w-1/2</code> sets the width to 50%.</li>
-<li><code>h-1/4</code> sets the height to 25%.</li>
-<li><code>w-full</code> sets the width to 100%.</li>
+<li><strong>flex:</strong> Sets the outer div as a flex container.</li>
+<li><strong>items-center:</strong> Centers the content vertically within the container.</li>
+<li><strong>justify-center:</strong> Centers the content horizontally within the container.</li>
+<li><strong>h-screen:</strong> Sets the height of the container to be 100% of the viewport height, making it a full-screen container.</li>
+<li><strong>text-white bg-blue-500 p-8 rounded:</strong> Styles the inner div with white text, a blue background, padding, and rounded corners.</li>
 </ul>
-<h4 id="viewport-units">Viewport Units</h4>
-<p>Viewport units are a useful way to set dimensions based on the viewport size.</p>
+<p>This setup will center the “Centered Content” box both horizontally and vertically within the browser window.</p>
+<h3 id="responsive-layouts">Responsive Layouts</h3>
+<p>Responsive layouts are crucial in modern web development, allowing your site or application to adapt to different screen sizes and devices. Tailwind CSS makes creating responsive layouts straightforward with its built-in responsive utilities.</p>
+<h4 id="responsive-breakpoints">Responsive Breakpoints</h4>
+<p>Tailwind provides default responsive breakpoints, which you can use to apply different styles at various screen widths. These breakpoints are:</p>
 <ul>
-<li><code>w-screen</code> sets the width to 100vw or 100% of the viewport width.</li>
-<li><code>h-min</code> sets the height to <code>min-content</code>.</li>
-<li><code>w-max</code> sets the width to <code>max-content</code></li>
-<li><code>h-fit</code> sets the width to <code>fit-content</code></li>
+<li><strong>sm (Small):</strong> min-width: 640px</li>
+<li><strong>md (Medium):</strong> min-width: 768px</li>
+<li><strong>lg (Large):</strong> min-width: 1024px</li>
+<li><strong>xl (Extra Large):</strong> min-width: 1280px</li>
+<li><strong>2xl (2X Large):</strong> min-width: 1536px</li>
 </ul>
-<h4 id="height-and-width">Height and Width</h4>
-<p>We’ve already showed how to set the height with <code>h-{size}</code> and the width with <code>w-{size}</code> but there are some additional utilities that can be useful.</p>
+<p>You can use these breakpoints to conditionally apply styles based on the screen size.</p>
+<h4 id="responsive-flexbox-layout">Responsive Flexbox Layout</h4>
+<p>To create responsive layouts, you prepend the breakpoint prefix to any utility class. For example:</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#1ED2AF">div</span><span style="color:#1ED2AF"> className</span><span style="color:#D00414">=</span><span style="color:#F7F0DC">"flex flex-col md:flex-row"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#1ED2AF">div</span><span style="color:#1ED2AF"> className</span><span style="color:#D00414">=</span><span style="color:#F7F0DC">"bg-blue-500 p-4"</span><span style="color:#E1E4E8">>Column 1&#x3C;/</span><span style="color:#1ED2AF">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#1ED2AF">div</span><span style="color:#1ED2AF"> className</span><span style="color:#D00414">=</span><span style="color:#F7F0DC">"bg-green-500 p-4"</span><span style="color:#E1E4E8">>Column 2&#x3C;/</span><span style="color:#1ED2AF">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#1ED2AF">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"></span></code></pre>
+<p><strong>Explanation:</strong></p>
 <ul>
-<li><code>min-w-{size}</code>: sets the minimum width property. Example <code>min-w-0</code></li>
-<li><code>max-h-{size}</code>: sets the maximum height property. Example <code>max-h-screen</code></li>
-</ul>
-<h4 id="margin-and-padding">Margin and Padding</h4>
-<p>Margin and padding are useful for controlling the spacing between elements and controlling the size of the space between content and the edges of the page.</p>
-<p><strong>Margin</strong>:</p>
-<ul>
-<li><code>m-{size}</code>: sets the margin property.</li>
-<li><code>mx-{size}</code>: sets the horizontal margin (left and right) property.</li>
-<li><code>my-{size}</code>: sets the vertical margin (top and bottom) property.</li>
-<li><code>mt-{size}</code>: sets the margin-top property.</li>
-<li><code>mr-{size}</code>: sets the margin-right property.</li>
-<li><code>mb-{size}</code>: sets the margin-bottom property.</li>
-<li><code>ml-{size}</code>: sets the margin-left property.</li>
-</ul>
-<p><strong>Padding</strong>:</p>
-<ul>
-<li><code>p-{size}</code>: sets the padding property.</li>
-<li><code>px-{size}</code>: sets the horizontal padding (left and right) property.</li>
-<li><code>py-{size}</code>: sets the vertical padding (top and bottom) property.</li>
-<li><code>pt-{size}</code>: sets the padding-top property.</li>
-<li><code>pr-{size}</code>: sets the padding-right property.</li>
-<li><code>pb-{size}</code>: sets the padding-bottom property.</li>
-<li><code>pl-{size}</code>: sets the padding-left property.</li>
-</ul>
-<h3 id="typography-system">Typography System</h3>
-<p>Tailwind includes a typography system that allows you to control the font size, line height, letter spacing, and more.</p>  </div> </div> </article> <footer data-astro-cid-sz7xmlte>
+<li><strong>flex flex-col:</strong> By default, the flex container arranges items in a column (vertically).</li>
+<li><strong>md:flex-row:</strong> On medium screens and up, the flex container arranges items in a row (horizontally).</li>
+</ul>  </div> </div> </article> <footer data-astro-cid-sz7xmlte>
 &copy; 2024 Jeremiah Swank. All rights reserved.
 <div class="social-links" data-astro-cid-sz7xmlte> <a href="https://github.com/atlas-jswank" target="_blank" data-astro-cid-sz7xmlte> <span class="sr-only" data-astro-cid-sz7xmlte>Go to Jeremiah Swank's GitHub repo</span> <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32" astro-icon="social/github" data-astro-cid-sz7xmlte><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://www.linkedin.com/in/jeremiah-swank-0a3559264/" target="_blank" data-astro-cid-sz7xmlte> <span class="sr-only" data-astro-cid-sz7xmlte>Go to Jeremiah Swanks's LinkedIn</span> <svg style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" version="1.1" viewBox="0 0 512 512" width="32" height="32" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-astro-cid-sz7xmlte><path fill="currentColor" d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" data-astro-cid-sz7xmlte></path></svg> </a> </div> </footer>  </main> </body></html>
