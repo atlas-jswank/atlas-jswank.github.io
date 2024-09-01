@@ -406,6 +406,23 @@ async function fetchData(): Promise<User> {
 ```
 In this example, `fetchData` is an `async` function that fetches data from a URL and returns it as JSON. The await keyword is used to pause the execution of the function until the promise settles, and it makes the asynchronous code look and behave a bit more like synchronous code. While `data` is a type `User` because the function contains the `async` keyword, the return type of the function is `Promise<User>`.
 
+### Typescript and React
+
+Because react components are just javascript functions, typescript can be used to easily type check your component props.
+
+```tsx
+type ButtonProps = {
+    onClick: () => void;
+    label: string;
+};
+
+function Button({ onClick, label }: ButtonProps) => (
+    <button onClick={onClick}>{label}</button>
+);
+```
+
+Here button take two props, a function called onClick and a string called label. When using the react components if both props are not set typescript will give an error. You should always make sure to clearly define types for your props to avoid any runtime errors.
+
 ### Conclusion
 
 TypeScript is a powerful superset of JavaScript that adds static typing to the language, enabling developers to catch errors early in the development process and enhancing code readability and maintainability. The ability to explicitly define the shape of objects, function parameters, and return types, allows developers to write more predictable and robust code. 

@@ -35,9 +35,21 @@ Here’s an example of how you might use snapshot testing in a React component w
 **1. Install Vitest and React Testing Library (if you haven't already):**
 
 ```bash
-npm install vitest @testing-library/react @testing-library/jest-dom
+npm install vitest @testing-library/react @testing-library/jest-dom jsdom
 ```
-**2. Create a React Component:**
+
+**2. Configure vite to use jsdom**
+
+```tsx
+//vite.config.ts
+export default defineConfig({
+  plugins: [react()],
+  test: {
+    environment: 'jsdom'
+  },
+});
+```
+**3. Create a React Component:**
 ```tsx
 //Button.tsx
 type Props = {
@@ -48,7 +60,7 @@ export function Button({ label }: Props) {
   return <button>{label}</button>;
 }
 ```
-**3. Write a Snapshot Test:**
+**4. Write a Snapshot Test:**
 
 ```tsx
 //Button.test.tsx
@@ -68,7 +80,7 @@ In this example:
 * `render(<Button label="Click me" />)` renders the Button component.
 * `toMatchSnapshot()` compares the current output to the saved snapshot.
 
-**4. Run the Test:**
+**5. Run the Test:**
 
 ```bash
 npx vitest run
@@ -92,7 +104,7 @@ exports[`Button renders correctly 1`] = `
 
 Alertnativley you can use `toMatchInlineSnapshot()` matcher to output the snapshot inline in the test. This works well for small components but can be a bit verbose for larger components.
 
-**5. Handling Snapshot Changes:**
+**6. Handling Snapshot Changes:**
 
 If you make changes to the Button component (e.g., changing the label or adding styles), the next test run will fail if the output no longer matches the snapshot. If the changes are intentional, you can update the snapshot by running:
 
@@ -252,3 +264,57 @@ npx vitest --coverage
 ```
 
 By running `npx vitest run --coverage`, Vitest will generate code coverage reports that help you understand which parts of your code are tested and which are not. You can customize the reports through the configuration file, choosing from different report formats and specifying which files or directories to include or exclude.
+
+### Continuous Integration
+
+Continuous Integration (CI) is a software development practice where developers frequently merge their code changes into a central repository, after which automated builds and tests are run. This practice helps ensure that the codebase remains stable and that new changes do not break existing functionality. GitHub Actions is a powerful tool for implementing CI by automating workflows directly in your GitHub repository.
+
+**Create a Workflow File**
+
+First, create a YAML file in your repository within the `.github/workflows` directory. Name file `ci.yml`.
+
+**Define the Workflow Configuration**
+
+Edit the `ci.yml` file to define the workflow configuration. Here’s a simple example of a workflow that installs dependencies, runs unit tests and test coverage on every push to the main branch:
+
+```yaml
+name: Continuous Integration
+on:
+  push:
+    branches:
+      - main
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: npm install
+      - name: Run Unit Tests
+        run: npm run test
+      - name: Run Test Coverage
+        run: npm run coverage
+```
+
+**Understanding the Configuration**
+
+* **name:** This specifies the name of the workflow.
+* **on:** This defines the events that will trigger the workflow. In this case, any push to the main branch.
+* **jobs:** This section defines the jobs that the workflow will execute. The example contains a single job called `test`.
+* **runs-on:** This specifies the type of virtual environment. Here, it uses the latest version of Ubuntu.
+* **steps:** These are the sequential tasks that the workflow executes. It uses existing GitHub Actions like `actions/checkout` to clone the repository and `actions/setup-node` to set up Node.js. It then runs commands to install dependencies and execute tests
+
+**Activate and Monitor the Workflow**
+
+Once you commit and push this .yml file to your repository, GitHub Actions will automatically recognize it and start running the defined workflow based on the trigger events. You can monitor the progress and results of these actions in the “Actions” tab of your GitHub repository.
+
+**Benefits of CI with GitHub Actions**
+
+* **Automation:** Every commit is automatically built and tested, reducing manual work and speeding up the development process.
+* **Immediate Feedback:** Developers get immediate feedback on their commits, allowing them to quickly fix issues.
+* **Consistency:** Ensures that tests are consistently run in a clean, standardized environment.
