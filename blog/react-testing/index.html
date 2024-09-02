@@ -78,6 +78,71 @@
 <li><strong>Quick Feedback:</strong> Developers get quick feedback when a component’s output changes.</li>
 <li><strong>Simple to Implement:</strong> Snapshot tests are easy to write and can cover large parts of your UI with minimal code.</li>
 </ul>
+<h3 id="mocking">Mocking</h3>
+<p>Mock Service Worker (MSW) is a library that intercepts network requests on the client side, allowing developers to test web applications without relying on an actual backend server. By using service worker API to intercept and modify requests, MSW enables seamless integration of mock responses into the application’s natural workflow. This method of intercepting requests at the network level ensures that the application’s code does not have to be modified for testing purposes, promoting maintainable and realistic tests.</p>
+<p>MSW is particularly useful during testing to test error handling and loading states without requiring an active network connection or a live backend. This approach not only speeds up development and testing processes but also provides a controlled environment for robust offline testing, making it an invaluable tool for modern web developers.</p>
+<p>To use MSW, install the library using npm:</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#1ED2AF">npm</span><span style="color:#F7F0DC"> install</span><span style="color:#F7F0DC"> msw@latest</span><span style="color:#1ED2AF"> --save-dev</span></span>
+<span class="line"></span></code></pre>
+<p>Create a mock file with all of the http mocks you want to use.</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#6A737D">//mock.ts</span></span>
+<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { setupServer } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "msw/node"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { http, HttpResponse } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "msw"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> const</span><span style="color:#1ED2AF"> handlers</span><span style="color:#D00414"> =</span><span style="color:#E1E4E8"> [</span></span>
+<span class="line"><span style="color:#E1E4E8">  http.</span><span style="color:#1ED2AF">get</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#F7F0DC">    "https://api.example.com/api/v1/data"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    () </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#D00414">      return</span><span style="color:#E1E4E8"> HttpResponse.</span><span style="color:#1ED2AF">json</span><span style="color:#E1E4E8">([</span></span>
+<span class="line"><span style="color:#E1E4E8">       {</span></span>
+<span class="line"><span style="color:#E1E4E8">         id: </span><span style="color:#1ED2AF">1</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">         title: </span><span style="color:#F7F0DC">"Lorem Ipsum"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">         description: </span><span style="color:#F7F0DC">"Lorem ipsum dolor sit amet, consectetur adipiscing elit."</span></span>
+<span class="line"><span style="color:#E1E4E8">       },</span></span>
+<span class="line"><span style="color:#E1E4E8">       {</span></span>
+<span class="line"><span style="color:#E1E4E8">         id: </span><span style="color:#1ED2AF">2</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">         title: </span><span style="color:#F7F0DC">"Lorem Ipsum"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">         description: </span><span style="color:#F7F0DC">"Lorem ipsum dolor sit amet, consectetur adipiscing elit."</span></span>
+<span class="line"><span style="color:#E1E4E8">       }</span></span>
+<span class="line"><span style="color:#E1E4E8">      ]);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  ),</span></span>
+<span class="line"><span style="color:#E1E4E8">];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> const</span><span style="color:#1ED2AF"> server</span><span style="color:#D00414"> =</span><span style="color:#1ED2AF"> setupServer</span><span style="color:#E1E4E8">(</span><span style="color:#D00414">...</span><span style="color:#E1E4E8">handlers);</span></span>
+<span class="line"></span></code></pre>
+<p>Create a setup file to vitest to start and stop the mock server.</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#6A737D">//vitest.setup.ts</span></span>
+<span class="line"><span style="color:#D00414">import</span><span style="color:#F7F0DC"> "@testing-library/jest-dom/vitest"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { afterAll, beforeAll } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "vitest"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { server } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "./mocks"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { afterEach } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "node:test"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#1ED2AF">beforeAll</span><span style="color:#E1E4E8">(() </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  server.</span><span style="color:#1ED2AF">listen</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#1ED2AF">afterEach</span><span style="color:#E1E4E8">(() </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  server.</span><span style="color:#1ED2AF">resetHandlers</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#1ED2AF">afterAll</span><span style="color:#E1E4E8">(() </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  server.</span><span style="color:#1ED2AF">close</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span></code></pre>
+<p>Finally update your vite config to run your setup file:</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#6A737D">//vite.config.ts</span></span>
+<span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> default</span><span style="color:#1ED2AF"> defineConfig</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  plugins: [</span><span style="color:#1ED2AF">react</span><span style="color:#E1E4E8">()],</span></span>
+<span class="line"><span style="color:#E1E4E8">  test: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    environment: </span><span style="color:#F7F0DC">"jsdom"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    setupFiles: [</span><span style="color:#F7F0DC">"./vitest.setup.ts"</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span></code></pre>
+<p>Now when running your tests any network requests should return the mocked data instead of hitting the real API.</p>
 <h3 id="writing-tests-with-react-testing-library">Writing tests with React Testing Library</h3>
 <p>Snapshot testing should be used judiciously. Over-reliance on snapshots can lead to brittle tests that require frequent updates even for minor changes. It’s best to combine snapshot testing with other forms of testing to ensure comprehensive coverage.</p>
 <p>Here’s a unit test example for the FooBar component using React Testing Library. The test will verify that the component behaves correctly when the buttons are clicked, toggling the display of “Foo” and “Bar”.</p>
