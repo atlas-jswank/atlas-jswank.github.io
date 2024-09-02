@@ -119,7 +119,85 @@ This command will regenerate the snapshot to match the new output.
 * **Quick Feedback:** Developers get quick feedback when a component's output changes.
 * **Simple to Implement:** Snapshot tests are easy to write and can cover large parts of your UI with minimal code.
 
- ### Writing tests with React Testing Library
+### Mocking
+
+Mock Service Worker (MSW) is a library that intercepts network requests on the client side, allowing developers to test web applications without relying on an actual backend server. By using service worker API to intercept and modify requests, MSW enables seamless integration of mock responses into the application’s natural workflow. This method of intercepting requests at the network level ensures that the application’s code does not have to be modified for testing purposes, promoting maintainable and realistic tests. 
+
+MSW is particularly useful during testing to test error handling and loading states without requiring an active network connection or a live backend. This approach not only speeds up development and testing processes but also provides a controlled environment for robust offline testing, making it an invaluable tool for modern web developers.
+
+To use MSW, install the library using npm:
+
+```bash
+npm install msw@latest --save-dev
+```
+
+Create a mock file with all of the http mocks you want to use.
+```tsx
+//mock.ts
+import { setupServer } from "msw/node";
+import { http, HttpResponse } from "msw";
+
+export const handlers = [
+  http.get(
+    "https://api.example.com/api/v1/data",
+    () => {
+      return HttpResponse.json([
+       {
+         id: 1,
+         title: "Lorem Ipsum",
+         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+       },
+       {
+         id: 2,
+         title: "Lorem Ipsum",
+         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+       }
+      ]);
+    }
+  ),
+];
+
+export const server = setupServer(...handlers);
+```
+
+Create a setup file to vitest to start and stop the mock server.
+
+```tsx
+//vitest.setup.ts
+import "@testing-library/jest-dom/vitest";
+
+import { afterAll, beforeAll } from "vitest";
+import { server } from "./mocks";
+import { afterEach } from "node:test";
+
+
+beforeAll(() => {
+  server.listen();
+});
+
+afterEach(() => {
+  server.resetHandlers();
+});
+
+afterAll(() => {
+  server.close();
+});
+```
+
+Finally update your vite config to run your setup file:
+```tsx
+//vite.config.ts
+export default defineConfig({
+  plugins: [react()],
+  test: {
+    environment: "jsdom",
+    setupFiles: ["./vitest.setup.ts"],
+  },
+});
+```
+Now when running your tests any network requests should return the mocked data instead of hitting the real API.
+
+### Writing tests with React Testing Library
 
 Snapshot testing should be used judiciously. Over-reliance on snapshots can lead to brittle tests that require frequent updates even for minor changes. It's best to combine snapshot testing with other forms of testing to ensure comprehensive coverage.
 
