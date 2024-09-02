@@ -1,0 +1,214 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-bvzihdzo> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/png" href="/favicon.png"><meta name="generator" content="Astro v4.11.5"><!-- Font preloads --><link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin><link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://example.com/blog/react-custom-hooks/"><!-- Primary Meta Tags --><title>React State: Custom Hooks | in{struct} blog </title><meta name="title" content="React State: Custom Hooks | in{struct} blog "><meta name="description" content="Lorem ipsum dolor sit amet"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/blog/react-custom-hooks/"><meta property="og:title" content="React State: Custom Hooks | in{struct} blog "><meta property="og:description" content="Lorem ipsum dolor sit amet"><meta property="og:image" content="https://example.com/blog-placeholder-1.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://example.com/blog/react-custom-hooks/"><meta property="twitter:title" content="React State: Custom Hooks | in{struct} blog "><meta property="twitter:description" content="Lorem ipsum dolor sit amet"><meta property="twitter:image" content="https://example.com/blog-placeholder-1.jpg"><link rel="stylesheet" href="/assets/about.DtBl5kP2.css">
+<style>.author[data-astro-cid-bvzihdzo]{display:flex;align-items:center;justify-content:center;flex-direction:column;padding-top:48px;color:var(--blue-light)}.author[data-astro-cid-bvzihdzo] span[data-astro-cid-bvzihdzo]{line-height:1.3}.author-image[data-astro-cid-bvzihdzo]{border-radius:50px}main[data-astro-cid-bvzihdzo]{width:100%;max-width:100%;margin:0;padding:0}.hero-image[data-astro-cid-bvzihdzo]{width:100%;margin-top:3rem}.hero-image[data-astro-cid-bvzihdzo] img[data-astro-cid-bvzihdzo]{display:block;margin:0 auto;border-radius:12px;box-shadow:var(--box-shadow)}.prose-wrapper[data-astro-cid-bvzihdzo]{color:var(--blue);background-color:var(--off-white-light);margin-top:3rem;border-top-left-radius:30px;border-top-right-radius:30px}.prose[data-astro-cid-bvzihdzo]{width:1020px;max-width:calc(100% - 2em);margin:auto;padding:1em}.title[data-astro-cid-bvzihdzo]{margin-bottom:1em;padding:1em 0;text-align:center;line-height:1}.title[data-astro-cid-bvzihdzo] h1[data-astro-cid-bvzihdzo]{margin:0 0 .5em}.date[data-astro-cid-bvzihdzo]{margin-bottom:.5em;color:rgb(var(--gray))}.last-updated-on[data-astro-cid-bvzihdzo]{font-style:italic}hr[data-astro-cid-bvzihdzo]{border-top:1px solid var(--blue)}
+</style></head> <body data-astro-cid-bvzihdzo> <header data-astro-cid-3ef6ksr2> <nav data-astro-cid-3ef6ksr2> <h2 data-astro-cid-3ef6ksr2> <img src="/logo.png" alt="Logo" class="logo" data-astro-cid-3ef6ksr2> <a href="/" data-astro-cid-3ef6ksr2>in{struct} blog</a> </h2> <div class="internal-links" data-astro-cid-3ef6ksr2> <!-- <HeaderLink href="/">Home</HeaderLink> --> <!-- <HeaderLink href="/about">About</HeaderLink> --> </div> <div class="social-links" data-astro-cid-3ef6ksr2> <a href="https://github.com/atlas-jswank" target="_blank" data-astro-cid-3ef6ksr2> <span class="sr-only" data-astro-cid-3ef6ksr2>Go to Jeremiah Swanks's GitHub repo</span> <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32" data-astro-cid-3ef6ksr2><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" data-astro-cid-3ef6ksr2></path></svg> </a> <a href="https://www.linkedin.com/in/jeremiah-swank-0a3559264/" target="_blank" data-astro-cid-3ef6ksr2> <span class="sr-only" data-astro-cid-3ef6ksr2>Go to Jeremiah Swanks's LinkedIn</span> <svg style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" version="1.1" viewBox="0 0 512 512" width="32" height="32" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-astro-cid-3ef6ksr2><path fill="currentColor" d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" data-astro-cid-3ef6ksr2></path></svg> </a> </div> </nav> </header>  <main data-astro-cid-bvzihdzo> <article data-astro-cid-bvzihdzo> <div class="hero-image" data-astro-cid-bvzihdzo> <img width="1020" height="510" src="/react-custom-hooks.webp" alt="" data-astro-cid-bvzihdzo> </div> <div class="prose-wrapper" data-astro-cid-bvzihdzo> <div class="prose" data-astro-cid-bvzihdzo> <div class="author" data-astro-cid-bvzihdzo> <img width="70" height="70" src="/jswank.jpg" alt="author" class="author-image" data-astro-cid-bvzihdzo> <span data-astro-cid-bvzihdzo>Jeremiah Swank</span> <span data-astro-cid-bvzihdzo><time datetime="2024-08-26T05:00:00.000Z"> Aug 26, 2024 </time></span> </div> <div class="title" data-astro-cid-bvzihdzo> <h1 data-astro-cid-bvzihdzo>React State: Custom Hooks</h1> </div>  <p>React custom hooks have become a powerful tool for developers, enabling them to write cleaner, more maintainable code by encapsulating reusable logic into functions. Whether you’re new to React or an experienced developer, understanding how to create and use custom hooks can significantly enhance your development workflow. In this blog post, we’ll explore what custom hooks are, why they’re useful, and how you can create them to solve common challenges in React applications.</p>
+<h3 id="what-are-custom-hooks">What Are Custom Hooks?</h3>
+<p>Custom hooks are JavaScript functions that allow you to reuse stateful logic across multiple components in a React application. They leverage the power of React’s built-in hooks (<code>useState</code>, <code>useEffect</code>, <code>useContext</code>, etc.) to manage state and side effects, but they can be abstracted into reusable functions. Custom hooks provide a way to extract component logic and make it reusable, improving code organization and maintainability.</p>
+<h3 id="why-use-custom-hooks">Why Use Custom Hooks?</h3>
+<ul>
+<li>
+<p><strong>Code Reusability:</strong> Custom hooks allow you to extract and reuse logic that’s shared between multiple components, reducing code duplication and ensuring consistency.</p>
+</li>
+<li>
+<p><strong>Separation of Concerns:</strong> By isolating logic into custom hooks, you can keep your components focused on rendering UIwhile hooks handle managing state.</p>
+</li>
+<li>
+<p><strong>Improved Readability:</strong> Custom hooks help in making your components cleaner and easier to understand by abstracting complex logic away from the component body.</p>
+</li>
+<li>
+<p><strong>Testability:</strong> Encapsulating logic into hooks makes it easier to test individual pieces of functionality, improving the overall test coverage of your application.</p>
+</li>
+</ul>
+<h3 id="custom-hook-examples">Custom Hook Examples</h3>
+<p><strong>useLocalStorage</strong></p>
+<p>Used for syncing state with localStorage to persist data across page reloads.</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { useState } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "react"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> function</span><span style="color:#1ED2AF"> useLocalStorage</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">key</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">initialValue</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#D00414">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#1ED2AF">storedValue</span><span style="color:#E1E4E8">, </span><span style="color:#1ED2AF">setStoredValue</span><span style="color:#E1E4E8">] </span><span style="color:#D00414">=</span><span style="color:#1ED2AF"> useState</span><span style="color:#E1E4E8">(() </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#D00414">    const</span><span style="color:#1ED2AF"> item</span><span style="color:#D00414"> =</span><span style="color:#E1E4E8"> window.localStorage.</span><span style="color:#1ED2AF">getItem</span><span style="color:#E1E4E8">(key);</span></span>
+<span class="line"><span style="color:#D00414">    if</span><span style="color:#E1E4E8"> (</span><span style="color:#D00414">!</span><span style="color:#E1E4E8">item) {</span></span>
+<span class="line"><span style="color:#E1E4E8">      window.localStorage.</span><span style="color:#1ED2AF">setItem</span><span style="color:#E1E4E8">(key, initialValue);</span></span>
+<span class="line"><span style="color:#D00414">      return</span><span style="color:#E1E4E8"> initialValue;</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#D00414">    return</span><span style="color:#E1E4E8"> item;</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">  const</span><span style="color:#1ED2AF"> setValue</span><span style="color:#D00414"> =</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">value</span><span style="color:#E1E4E8">) </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#1ED2AF">    setStoredValue</span><span style="color:#E1E4E8">(value);</span></span>
+<span class="line"><span style="color:#E1E4E8">    window.localStorage.</span><span style="color:#1ED2AF">setItem</span><span style="color:#E1E4E8">(key, value);</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">  return</span><span style="color:#E1E4E8"> [storedValue, setValue];</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"></span></code></pre>
+<p>Here a form uses the <code>useLocalStorage</code> hook to store the user’s name in local storage. If a user refreshed the page the form does not lose the data they entered.</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> React </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { useLocalStorage } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> './useLocalStorage'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">function</span><span style="color:#1ED2AF"> App</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#D00414">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#1ED2AF">name</span><span style="color:#E1E4E8">, </span><span style="color:#1ED2AF">setName</span><span style="color:#E1E4E8">] </span><span style="color:#D00414">=</span><span style="color:#1ED2AF"> useLocalStorage</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">'name'</span><span style="color:#E1E4E8">, </span><span style="color:#F7F0DC">'Lumu'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#1ED2AF">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#1ED2AF">input</span></span>
+<span class="line"><span style="color:#1ED2AF">        type</span><span style="color:#D00414">=</span><span style="color:#F7F0DC">"text"</span></span>
+<span class="line"><span style="color:#1ED2AF">        value</span><span style="color:#D00414">=</span><span style="color:#E1E4E8">{name}</span></span>
+<span class="line"><span style="color:#1ED2AF">        onChange</span><span style="color:#D00414">=</span><span style="color:#E1E4E8">{(</span><span style="color:#FFAB70">e</span><span style="color:#E1E4E8">) </span><span style="color:#D00414">=></span><span style="color:#1ED2AF"> setName</span><span style="color:#E1E4E8">(e.target.value)}</span></span>
+<span class="line"><span style="color:#E1E4E8">      /></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#1ED2AF">p</span><span style="color:#E1E4E8">>Stored name: {name}&#x3C;/</span><span style="color:#1ED2AF">p</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#1ED2AF">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"></span></code></pre>
+<p><strong>useFetch</strong></p>
+<p>For fetching data from an API and managing loading and error states.</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { useState, useEffect } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> function</span><span style="color:#1ED2AF"> useFetch</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">url</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#D00414">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#1ED2AF">data</span><span style="color:#E1E4E8">, </span><span style="color:#1ED2AF">setData</span><span style="color:#E1E4E8">] </span><span style="color:#D00414">=</span><span style="color:#1ED2AF"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#1ED2AF">null</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#D00414">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#1ED2AF">loading</span><span style="color:#E1E4E8">, </span><span style="color:#1ED2AF">setLoading</span><span style="color:#E1E4E8">] </span><span style="color:#D00414">=</span><span style="color:#1ED2AF"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#1ED2AF">true</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#D00414">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#1ED2AF">error</span><span style="color:#E1E4E8">, </span><span style="color:#1ED2AF">setError</span><span style="color:#E1E4E8">] </span><span style="color:#D00414">=</span><span style="color:#1ED2AF"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#1ED2AF">null</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#1ED2AF">  useEffect</span><span style="color:#E1E4E8">(() </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#1ED2AF">    setLoading</span><span style="color:#E1E4E8">(</span><span style="color:#1ED2AF">true</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#1ED2AF">    fetch</span><span style="color:#E1E4E8">(url)</span></span>
+<span class="line"><span style="color:#E1E4E8">      .</span><span style="color:#1ED2AF">then</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">response</span><span style="color:#E1E4E8">) </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#D00414">        if</span><span style="color:#E1E4E8"> (</span><span style="color:#D00414">!</span><span style="color:#E1E4E8">response.ok) {</span></span>
+<span class="line"><span style="color:#D00414">          throw</span><span style="color:#D00414"> new</span><span style="color:#1ED2AF"> Error</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">'Network response was not ok'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">        }</span></span>
+<span class="line"><span style="color:#D00414">        return</span><span style="color:#E1E4E8"> response.</span><span style="color:#1ED2AF">json</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">      })</span></span>
+<span class="line"><span style="color:#E1E4E8">      .</span><span style="color:#1ED2AF">then</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">data</span><span style="color:#E1E4E8">) </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#1ED2AF">        setData</span><span style="color:#E1E4E8">(data);</span></span>
+<span class="line"><span style="color:#1ED2AF">        setLoading</span><span style="color:#E1E4E8">(</span><span style="color:#1ED2AF">false</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">      })</span></span>
+<span class="line"><span style="color:#E1E4E8">      .</span><span style="color:#1ED2AF">catch</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">error</span><span style="color:#E1E4E8">) </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#1ED2AF">        setError</span><span style="color:#E1E4E8">(error);</span></span>
+<span class="line"><span style="color:#1ED2AF">        setLoading</span><span style="color:#E1E4E8">(</span><span style="color:#1ED2AF">false</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">      });</span></span>
+<span class="line"><span style="color:#E1E4E8">  }, [url]);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">  return</span><span style="color:#E1E4E8"> { data, loading, error };</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"></span></code></pre>
+<p>Here data is fetched from the APi when the component mounts. It shows a laoding state before the fetch completes and an error state if the request fails.</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> React </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { useFetch } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> './useFetch'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">function</span><span style="color:#1ED2AF"> DataDisplay</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#D00414">  const</span><span style="color:#E1E4E8"> { </span><span style="color:#1ED2AF">data</span><span style="color:#E1E4E8">, </span><span style="color:#1ED2AF">loading</span><span style="color:#E1E4E8">, </span><span style="color:#1ED2AF">error</span><span style="color:#E1E4E8"> } </span><span style="color:#D00414">=</span><span style="color:#1ED2AF"> useFetch</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">'https://jsonplaceholder.typicode.com/todos'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">  if</span><span style="color:#E1E4E8"> (loading) </span><span style="color:#D00414">return</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#1ED2AF">p</span><span style="color:#E1E4E8">>Loading...&#x3C;/</span><span style="color:#1ED2AF">p</span><span style="color:#E1E4E8">>;</span></span>
+<span class="line"><span style="color:#D00414">  if</span><span style="color:#E1E4E8"> (error) </span><span style="color:#D00414">return</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#1ED2AF">p</span><span style="color:#E1E4E8">>Error: {error.message}&#x3C;/</span><span style="color:#1ED2AF">p</span><span style="color:#E1E4E8">>;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">  return</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#1ED2AF">pre</span><span style="color:#E1E4E8">>{</span><span style="color:#1ED2AF">JSON</span><span style="color:#E1E4E8">.</span><span style="color:#1ED2AF">stringify</span><span style="color:#E1E4E8">(data, </span><span style="color:#1ED2AF">null</span><span style="color:#E1E4E8">, </span><span style="color:#1ED2AF">2</span><span style="color:#E1E4E8">)}&#x3C;/</span><span style="color:#1ED2AF">pre</span><span style="color:#E1E4E8">>;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<p><strong>useToggle</strong></p>
+<p>Used for managing a boolean state for toggling functionality.</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { useState } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> function</span><span style="color:#1ED2AF"> useToggle</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">initialValue</span><span style="color:#D00414"> =</span><span style="color:#1ED2AF"> false</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#D00414">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#1ED2AF">value</span><span style="color:#E1E4E8">, </span><span style="color:#1ED2AF">setValue</span><span style="color:#E1E4E8">] </span><span style="color:#D00414">=</span><span style="color:#1ED2AF"> useState</span><span style="color:#E1E4E8">(initialValue);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">  const</span><span style="color:#1ED2AF"> toggle</span><span style="color:#D00414"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#D00414">=></span><span style="color:#1ED2AF"> setValue</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">prev</span><span style="color:#E1E4E8">) </span><span style="color:#D00414">=></span><span style="color:#D00414"> !</span><span style="color:#E1E4E8">prev);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">  return</span><span style="color:#E1E4E8"> [value, toggle];</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<p>Here a button toggles the visibility of a paragraph.</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> React </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { useToggle } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> './useToggle'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">function</span><span style="color:#1ED2AF"> ToggleComponent</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#D00414">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#1ED2AF">isToggled</span><span style="color:#E1E4E8">, </span><span style="color:#1ED2AF">toggle</span><span style="color:#E1E4E8">] </span><span style="color:#D00414">=</span><span style="color:#1ED2AF"> useToggle</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#1ED2AF">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#1ED2AF">button</span><span style="color:#1ED2AF"> onClick</span><span style="color:#D00414">=</span><span style="color:#E1E4E8">{toggle}></span></span>
+<span class="line"><span style="color:#E1E4E8">        {isToggled </span><span style="color:#D00414">?</span><span style="color:#F7F0DC"> 'Hide'</span><span style="color:#D00414"> :</span><span style="color:#F7F0DC"> 'Show'</span><span style="color:#E1E4E8">} Content</span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;/</span><span style="color:#1ED2AF">button</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      {isToggled </span><span style="color:#D00414">&#x26;&#x26;</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#1ED2AF">p</span><span style="color:#E1E4E8">>This content is visible!&#x3C;/</span><span style="color:#1ED2AF">p</span><span style="color:#E1E4E8">>}</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#1ED2AF">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<p><strong>useWindowSize</strong></p>
+<p>Used for tracking and responding to changes in the window size.</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { useState, useEffect } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> function</span><span style="color:#1ED2AF"> useWindowSize</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#D00414">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#1ED2AF">windowSize</span><span style="color:#E1E4E8">, </span><span style="color:#1ED2AF">setWindowSize</span><span style="color:#E1E4E8">] </span><span style="color:#D00414">=</span><span style="color:#1ED2AF"> useState</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">    width: window.innerWidth,</span></span>
+<span class="line"><span style="color:#E1E4E8">    height: window.innerHeight,</span></span>
+<span class="line"><span style="color:#E1E4E8">  });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#1ED2AF">  useEffect</span><span style="color:#E1E4E8">(() </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#D00414">    const</span><span style="color:#1ED2AF"> handleResize</span><span style="color:#D00414"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#1ED2AF">      setWindowSize</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">        width: window.innerWidth,</span></span>
+<span class="line"><span style="color:#E1E4E8">        height: window.innerHeight,</span></span>
+<span class="line"><span style="color:#E1E4E8">      });</span></span>
+<span class="line"><span style="color:#E1E4E8">    };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">    window.</span><span style="color:#1ED2AF">addEventListener</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">'resize'</span><span style="color:#E1E4E8">, handleResize);</span></span>
+<span class="line"><span style="color:#D00414">    return</span><span style="color:#E1E4E8"> () </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> { </span><span style="color:#6A737D">//remove listeneer when component unmounts</span></span>
+<span class="line"><span style="color:#E1E4E8">      window.</span><span style="color:#1ED2AF">removeEventListener</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">'resize'</span><span style="color:#E1E4E8">, handleResize);</span></span>
+<span class="line"><span style="color:#E1E4E8">    };</span></span>
+<span class="line"><span style="color:#E1E4E8">  }, []);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">  return</span><span style="color:#E1E4E8"> windowSize;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"></span></code></pre>
+<p>This component rerenders as the window size changes, showing the new dimensions of the window.</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> React </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> 'react'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { useWindowSize } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> './useWindowSize'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">function</span><span style="color:#1ED2AF"> ResponsiveComponent</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#D00414">  const</span><span style="color:#E1E4E8"> { </span><span style="color:#1ED2AF">width</span><span style="color:#E1E4E8">, </span><span style="color:#1ED2AF">height</span><span style="color:#E1E4E8"> } </span><span style="color:#D00414">=</span><span style="color:#1ED2AF"> useWindowSize</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#1ED2AF">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#1ED2AF">p</span><span style="color:#E1E4E8">>Window width: {width}px&#x3C;/</span><span style="color:#1ED2AF">p</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#1ED2AF">p</span><span style="color:#E1E4E8">>Window height: {height}px&#x3C;/</span><span style="color:#1ED2AF">p</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#1ED2AF">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<p>These examples show how custom hooks can encapsulate reusable logic and improve the organization of your code by separating concerns into modular units.</p>
+<h3 id="how-to-create-a-custom-hook">How to Create a Custom Hook</h3>
+<p>Creating a custom hook is straightforward. Here’s a step-by-step guide on how to create a simple custom hook:</p>
+<ul>
+<li>
+<p><strong>Define the Hook Function:</strong> Start by defining a function that will serve as your custom hook. It should start with the word “use” to adhere to React’s convention and ensure it’s treated as a hook.</p>
+</li>
+<li>
+<p><strong>Use Built-in Hooks:</strong> Inside your custom hook, use React’s built-in hooks to manage state, side effects, or context as needed.</p>
+</li>
+<li>
+<p><strong>Return Values:</strong> Return the values or functions that you want to expose to the components using the hook.</p>
+</li>
+<li>
+<p><strong>Use the Hook:</strong> Import and use your custom hook in functional components just like any other hook.</p>
+</li>
+</ul>
+<h3 id="best-practices">Best Practices</h3>
+<ul>
+<li>
+<p><strong>Naming Convention:</strong> Always prefix custom hook names with <code>“use”</code> to follow React’s hook naming convention and to ensure they are treated as hooks by the linter and React’s rules.</p>
+</li>
+<li>
+<p><strong>Reuse Logic Wisely:</strong> Custom hooks are ideal for extracting reusable logic. Avoid overcomplicating them by including too much functionality; aim for focused, single-responsibility hooks.</p>
+</li>
+<li>
+<p><strong>Document Well:</strong> Since custom hooks encapsulate logic that may be used across different components, it’s essential to document their behavior and usage clearly for future reference and other developers.</p>
+</li>
+</ul>
+<h3 id="conclusion">Conclusion</h3>
+<p>Custom hooks in React offer a powerful way to encapsulate and reuse logic, leading to cleaner, more maintainable code. By understanding how to create and use custom hooks effectively, you can enhance your React applications and improve both development efficiency and code quality. Start exploring custom hooks today and unlock new possibilities for your React projects!</p>  </div> </div> </article> <footer data-astro-cid-sz7xmlte>
+&copy; 2024 Jeremiah Swank. All rights reserved.
+<div class="social-links" data-astro-cid-sz7xmlte> <a href="https://github.com/atlas-jswank" target="_blank" data-astro-cid-sz7xmlte> <span class="sr-only" data-astro-cid-sz7xmlte>Go to Jeremiah Swank's GitHub repo</span> <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32" astro-icon="social/github" data-astro-cid-sz7xmlte><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://www.linkedin.com/in/jeremiah-swank-0a3559264/" target="_blank" data-astro-cid-sz7xmlte> <span class="sr-only" data-astro-cid-sz7xmlte>Go to Jeremiah Swanks's LinkedIn</span> <svg style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" version="1.1" viewBox="0 0 512 512" width="32" height="32" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-astro-cid-sz7xmlte><path fill="currentColor" d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" data-astro-cid-sz7xmlte></path></svg> </a> </div> </footer>  </main> </body></html>
