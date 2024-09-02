@@ -1,7 +1,7 @@
 ---
 title: "React Unit Testing"
 description: "Lorem ipsum dolor sit amet"
-pubDate: "August 29 2024"
+pubDate: "August 30 2024"
 heroImage: "/unit-tests.webp"
 author: Jeremiah Swank
 authorImage: /jswank.jpg
@@ -311,7 +311,9 @@ jobs:
 
 **Activate and Monitor the Workflow**
 
-Once you commit and push this .yml file to your repository, GitHub Actions will automatically recognize it and start running the defined workflow based on the trigger events. You can monitor the progress and results of these actions in the “Actions” tab of your GitHub repository.
+Once you commit and push this `.yml` file to your repository, GitHub Actions will automatically recognize it and start running the defined workflow based on the trigger events. You can monitor the progress and results of these actions in the “Actions” tab of your GitHub repository.
+
+![CI Workflow](../assets/ci-action.png)
 
 **Benefits of CI with GitHub Actions**
 

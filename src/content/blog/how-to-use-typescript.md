@@ -1,7 +1,7 @@
 ---
 title: "How to use Typescript"
 description: "Lorem ipsum dolor sit amet"
-pubDate: "August 28 2024"
+pubDate: "August 29 2024"
 heroImage: "/typescript-2.webp"
 author: Jeremiah Swank
 authorImage: /jswank.jpg

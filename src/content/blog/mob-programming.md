@@ -1,7 +1,7 @@
 ---
 title: "Mob Programming"
 description: "Lorem ipsum dolor sit amet"
-pubDate: "September 9 2024"
+pubDate: "September 2 2024"
 heroImage: "/mob-programming.webp"
 author: Jeremiah Swank
 authorImage: /jswank.jpg
