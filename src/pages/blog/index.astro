@@ -7,7 +7,7 @@ import { getCollection } from "astro:content";
 import FormattedDate from "../../components/FormattedDate.astro";
 
 const posts = (await getCollection("blog")).sort(
-  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
+  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
 );
 ---
 
@@ -18,6 +18,7 @@ const posts = (await getCollection("blog")).sort(
     <style>
       main {
         width: 960px;
+        margin-top: 140px;
       }
       ul {
         display: flex;

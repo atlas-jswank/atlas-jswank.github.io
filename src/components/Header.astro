@@ -2,7 +2,7 @@
 import { SITE_TITLE } from "../consts";
 ---
 
-<header>
+<header class="sticky">
   <nav>
     <h2>
       <img src="/logo.png" alt="Logo" class="logo" />
@@ -48,15 +48,40 @@ import { SITE_TITLE } from "../consts";
 
 <style>
   header {
+    /* position: absolute; */
+    /* width: 100%; */
     margin: 0;
-    padding: 0 1em;
+    /* padding: 0 1em; */
     background: var(--off-white-light);
     color: var(--blue);
     box-shadow: 0 2px 8px var(--blue);
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
-    padding: 1rem 1.3rem;
+    padding: 1rem 0;
+
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+
+    animation: grow-progress both linear;
+    animation-timeline: scroll();
+    animation-range: 0 150px;
   }
+
+  @keyframes grow-progress {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-110px);
+    }
+  }
+
+  header::after {
+    height: 104px;
+  }
+
   h2 {
     margin: 0;
     font-size: 1em;
@@ -68,10 +93,12 @@ import { SITE_TITLE } from "../consts";
   h2 a.active {
     text-decoration: none;
   }
+
   nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0 1.3rem;
   }
   nav a {
     padding: 1em 0.5em;
