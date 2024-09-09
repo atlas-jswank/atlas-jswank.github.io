@@ -1,5 +1,232 @@
 <!DOCTYPE html><html lang="en" data-astro-cid-bvzihdzo> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/png" href="/favicon.png"><meta name="generator" content="Astro v4.11.5"><!-- Font preloads --><link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin><link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://example.com/blog/redux/"><!-- Primary Meta Tags --><title>Redux: Advanced State Management | in{struct} blog </title><meta name="title" content="Redux: Advanced State Management | in{struct} blog "><meta name="description" content="Lorem ipsum dolor sit amet"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/blog/redux/"><meta property="og:title" content="Redux: Advanced State Management | in{struct} blog "><meta property="og:description" content="Lorem ipsum dolor sit amet"><meta property="og:image" content="https://example.com/blog-placeholder-1.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://example.com/blog/redux/"><meta property="twitter:title" content="Redux: Advanced State Management | in{struct} blog "><meta property="twitter:description" content="Lorem ipsum dolor sit amet"><meta property="twitter:image" content="https://example.com/blog-placeholder-1.jpg"><link rel="stylesheet" href="/assets/about.DNzP87XY.css">
 <style>.author[data-astro-cid-bvzihdzo]{display:flex;align-items:center;justify-content:center;flex-direction:column;padding-top:48px;color:var(--blue-light)}.author[data-astro-cid-bvzihdzo] span[data-astro-cid-bvzihdzo]{line-height:1.3}.author-image[data-astro-cid-bvzihdzo]{border-radius:50px}main[data-astro-cid-bvzihdzo]{width:100%;max-width:100%;margin:140px 0 0;padding:0}.hero-image[data-astro-cid-bvzihdzo]{width:100%;margin-top:3rem}.hero-image[data-astro-cid-bvzihdzo] img[data-astro-cid-bvzihdzo]{display:block;margin:0 auto;border-radius:12px;box-shadow:var(--box-shadow)}.prose-wrapper[data-astro-cid-bvzihdzo]{color:var(--blue);background-color:var(--off-white-light);margin-top:3rem;border-top-left-radius:30px;border-top-right-radius:30px}.prose[data-astro-cid-bvzihdzo]{width:1020px;max-width:calc(100% - 2em);margin:auto;padding:1em}.title[data-astro-cid-bvzihdzo]{margin-bottom:1em;padding:1em 0;text-align:center;line-height:1}.title[data-astro-cid-bvzihdzo] h1[data-astro-cid-bvzihdzo]{margin:0 0 .5em}.date[data-astro-cid-bvzihdzo]{margin-bottom:.5em;color:rgb(var(--gray))}.last-updated-on[data-astro-cid-bvzihdzo]{font-style:italic}hr[data-astro-cid-bvzihdzo]{border-top:1px solid var(--blue)}
-</style></head> <body data-astro-cid-bvzihdzo> <header class="sticky" data-astro-cid-3ef6ksr2> <nav data-astro-cid-3ef6ksr2> <h2 data-astro-cid-3ef6ksr2> <img src="/logo.png" alt="Logo" class="logo" data-astro-cid-3ef6ksr2> <a href="/" data-astro-cid-3ef6ksr2>in{struct} blog</a> </h2> <div class="internal-links" data-astro-cid-3ef6ksr2> <!-- <HeaderLink href="/">Home</HeaderLink> --> <!-- <HeaderLink href="/about">About</HeaderLink> --> </div> <div class="social-links" data-astro-cid-3ef6ksr2> <a href="https://github.com/atlas-jswank" target="_blank" data-astro-cid-3ef6ksr2> <span class="sr-only" data-astro-cid-3ef6ksr2>Go to Jeremiah Swanks's GitHub repo</span> <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32" data-astro-cid-3ef6ksr2><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" data-astro-cid-3ef6ksr2></path></svg> </a> <a href="https://www.linkedin.com/in/jeremiah-swank-0a3559264/" target="_blank" data-astro-cid-3ef6ksr2> <span class="sr-only" data-astro-cid-3ef6ksr2>Go to Jeremiah Swanks's LinkedIn</span> <svg style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" version="1.1" viewBox="0 0 512 512" width="32" height="32" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-astro-cid-3ef6ksr2><path fill="currentColor" d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" data-astro-cid-3ef6ksr2></path></svg> </a> </div> </nav> </header>  <main data-astro-cid-bvzihdzo> <article data-astro-cid-bvzihdzo> <div class="hero-image" data-astro-cid-bvzihdzo> <img width="1020" height="510" src="/redux.webp" alt="" data-astro-cid-bvzihdzo> </div> <div class="prose-wrapper" data-astro-cid-bvzihdzo> <div class="prose" data-astro-cid-bvzihdzo> <div class="author" data-astro-cid-bvzihdzo> <img width="70" height="70" src="/jswank.jpg" alt="author" class="author-image" data-astro-cid-bvzihdzo> <span data-astro-cid-bvzihdzo>Jeremiah Swank</span> <span data-astro-cid-bvzihdzo><time datetime="2024-09-15T05:00:00.000Z"> Sep 15, 2024 </time></span> </div> <div class="title" data-astro-cid-bvzihdzo> <h1 data-astro-cid-bvzihdzo>Redux: Advanced State Management</h1> </div>    </div> </div> </article> <footer data-astro-cid-sz7xmlte>
+</style></head> <body data-astro-cid-bvzihdzo> <header class="sticky" data-astro-cid-3ef6ksr2> <nav data-astro-cid-3ef6ksr2> <h2 data-astro-cid-3ef6ksr2> <img src="/logo.png" alt="Logo" class="logo" data-astro-cid-3ef6ksr2> <a href="/" data-astro-cid-3ef6ksr2>in{struct} blog</a> </h2> <div class="internal-links" data-astro-cid-3ef6ksr2> <!-- <HeaderLink href="/">Home</HeaderLink> --> <!-- <HeaderLink href="/about">About</HeaderLink> --> </div> <div class="social-links" data-astro-cid-3ef6ksr2> <a href="https://github.com/atlas-jswank" target="_blank" data-astro-cid-3ef6ksr2> <span class="sr-only" data-astro-cid-3ef6ksr2>Go to Jeremiah Swanks's GitHub repo</span> <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32" data-astro-cid-3ef6ksr2><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" data-astro-cid-3ef6ksr2></path></svg> </a> <a href="https://www.linkedin.com/in/jeremiah-swank-0a3559264/" target="_blank" data-astro-cid-3ef6ksr2> <span class="sr-only" data-astro-cid-3ef6ksr2>Go to Jeremiah Swanks's LinkedIn</span> <svg style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" version="1.1" viewBox="0 0 512 512" width="32" height="32" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-astro-cid-3ef6ksr2><path fill="currentColor" d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" data-astro-cid-3ef6ksr2></path></svg> </a> </div> </nav> </header>  <main data-astro-cid-bvzihdzo> <article data-astro-cid-bvzihdzo> <div class="hero-image" data-astro-cid-bvzihdzo> <img width="1020" height="510" src="/redux.webp" alt="" data-astro-cid-bvzihdzo> </div> <div class="prose-wrapper" data-astro-cid-bvzihdzo> <div class="prose" data-astro-cid-bvzihdzo> <div class="author" data-astro-cid-bvzihdzo> <img width="70" height="70" src="/jswank.jpg" alt="author" class="author-image" data-astro-cid-bvzihdzo> <span data-astro-cid-bvzihdzo>Jeremiah Swank</span> <span data-astro-cid-bvzihdzo><time datetime="2024-09-15T05:00:00.000Z"> Sep 15, 2024 </time></span> </div> <div class="title" data-astro-cid-bvzihdzo> <h1 data-astro-cid-bvzihdzo>Redux: Advanced State Management</h1> </div>  <p>In modern web development, managing the state of an application can become a complex task, especially as the application grows in size. To solve this problem, developers use state management libraries like <strong>Redux</strong>, which is built upon a design pattern called <strong>Flux</strong>. This blog post will explain the core concepts of Redux, the Flux design pattern, and when you should consider using Redux in your applications.</p>
+<h3 id="the-flux-design-pattern">The Flux Design Pattern</h3>
+<p><strong>Flux</strong> is an architecture pattern created by Facebook to manage data flow in an application. The core idea behind Flux is <strong>unidirectional data flow</strong>, which ensures that data changes in a predictable and organized manner.</p>
+<p>Here are the main components of the Flux pattern:</p>
+<ol>
+<li><strong>Actions:</strong> These are objects that represent an event that has happened. The event could be something like “User Clicked a Button” or “Data Fetch Succeeded”.</li>
+<li><strong>Dispatcher:</strong> The dispatcher is a central hub that manages all the actions in the application. When an action is dispatched, the dispatcher sends it to all the stores (state containers).</li>
+<li><strong>Stores:</strong> In Flux, stores manage the state and business logic. They listen to actions, update their data accordingly, and emit a change event when the state has been updated.</li>
+<li><strong>View:</strong> Views are typically your user interface components (e.g., React components). They listen for state changes in the store and update the UI accordingly.</li>
+</ol>
+<h3 id="what-is-redux">What is Redux?</h3>
+<p>Redux is a popular state management library for JavaScript applications, especially those built with React. It provides a central place (or “store”) to keep the application’s state and ensures that the state changes in a predictable and testable way.</p>
+<p>At its core, Redux is based on a few key principles:</p>
+<ol>
+<li><strong>Single Source of Truth:</strong> The entire state of your application is stored in a global object called the “store”.</li>
+<li><strong>State is Read-Only:</strong> The only way to change the state is to emit an action, an object describing the change.</li>
+<li><strong>Changes are Made with Pure Functions:</strong> To specify how the state tree is transformed by actions, you write pure functions called reducers. The reducer takes the current state and the action as arguments, and returns the new state.</li>
+</ol>
+<h3 id="how-redux-relates-to-flux">How Redux Relates to Flux</h3>
+<p>Redux follows a unidirectional data flow, similar to Flux, where:</p>
+<ol>
+<li>An <strong>action</strong> is dispatched.</li>
+<li>The <strong>reducer</strong> receives the action and computes the new state.</li>
+<li>The updated state is stored in the <strong>store</strong>.</li>
+<li>The <strong>view</strong> (usually React components) listens to the store and re-renders based on the updated state.</li>
+</ol>
+<p>By centralizing the state and enforcing predictable state updates, Redux solves many issues of managing complex state across an application.</p>
+<h3 id="when-to-use-redux">When to Use Redux</h3>
+<p>While Redux is a powerful tool, it’s not necessary for every application. Here are some cases where you would want to consider using Redux:</p>
+<ol>
+<li>
+<p><strong>When your application has a lot of shared state:</strong> If multiple components across different parts of the application need to share and update the same data, Redux makes this easier by providing a single source of truth.</p>
+</li>
+<li>
+<p><strong>When your state management is complex:</strong> If your state involves multiple nested objects, interdependent updates, or changes that need to be propagated across various parts of your application, Redux’s structure and organization help to simplify this complexity.</p>
+</li>
+<li>
+<p><strong>When you need predictable state updates:</strong> Because Redux enforces that the state can only be updated through actions and reducers, debugging and testing your application becomes easier, as you always know how the state was updated.</p>
+</li>
+</ol>
+<h4 id="getting-started-with-redux">Getting Started with Redux</h4>
+<p>We’ll install <strong>React-Redux</strong>, and <strong>Redux Toolkit</strong>.</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>npm install @reduxjs/toolkit react-redux</span></span>
+<span class="line"><span></span></span></code></pre>
+<h4 id="creating-the-redux-store">Creating the Redux Store</h4>
+<p>In the <code>src</code> directory, create a new file named <code>store.ts</code>.</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { configureStore } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> '@reduxjs/toolkit'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> const</span><span style="color:#1ED2AF"> store</span><span style="color:#D00414"> =</span><span style="color:#1ED2AF"> configureStore</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  reducer: {},</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// These types are helpful for the typescript autocomplete</span></span>
+<span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> type</span><span style="color:#1ED2AF"> RootState</span><span style="color:#D00414"> =</span><span style="color:#1ED2AF"> ReturnType</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#D00414">typeof</span><span style="color:#E1E4E8"> store.getState>;</span></span>
+<span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> type</span><span style="color:#1ED2AF"> AppDispatch</span><span style="color:#D00414"> =</span><span style="color:#D00414"> typeof</span><span style="color:#E1E4E8"> store.dispatch;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">//Add types to dispatch and selector hooks</span></span>
+<span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> const</span><span style="color:#1ED2AF"> useAppDispatch</span><span style="color:#D00414"> =</span><span style="color:#E1E4E8"> useDispatch.</span><span style="color:#1ED2AF">withTypes</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#1ED2AF">AppDispatch</span><span style="color:#E1E4E8">>();</span></span>
+<span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> const</span><span style="color:#1ED2AF"> useAppSelector</span><span style="color:#D00414"> =</span><span style="color:#E1E4E8"> useSelector.</span><span style="color:#1ED2AF">withTypes</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#1ED2AF">RootState</span><span style="color:#E1E4E8">>();</span></span>
+<span class="line"></span></code></pre>
+<p>In your App component wrap your app in the Provider component. This will make the data from the redux store available to all the components in your application.</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { Provider } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "react-redux"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> store </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "./store"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { ShoppingList } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "./ShoppingList/ShoppingList"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">function</span><span style="color:#1ED2AF"> App</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#D00414">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#1ED2AF">Provider</span><span style="color:#1ED2AF"> store</span><span style="color:#D00414">=</span><span style="color:#E1E4E8">{store}></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#1ED2AF">ShoppingList</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#1ED2AF">Provider</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<h4 id="defining-the-shopping-list-slice">Defining the Shopping List Slice</h4>
+<p>Next create the slice to hold the shopping list data. In a file called <code>src/slices/shoppingListSlice.ts</code> add the following:</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { createSlice } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "@reduxjs/toolkit"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">const</span><span style="color:#1ED2AF"> initialState</span><span style="color:#D00414"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  items: [</span></span>
+<span class="line"><span style="color:#E1E4E8">    { id: </span><span style="color:#F7F0DC">"1"</span><span style="color:#E1E4E8">, name: </span><span style="color:#F7F0DC">"Item 1"</span><span style="color:#E1E4E8">, completed: </span><span style="color:#1ED2AF">false</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">    { id: </span><span style="color:#F7F0DC">"2"</span><span style="color:#E1E4E8">, name: </span><span style="color:#F7F0DC">"Item 2"</span><span style="color:#E1E4E8">, completed: </span><span style="color:#1ED2AF">true</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">  ],</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> const</span><span style="color:#1ED2AF"> listSlice</span><span style="color:#D00414"> =</span><span style="color:#1ED2AF"> createSlice</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  name: </span><span style="color:#F7F0DC">"shoppingList"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  initialState,</span></span>
+<span class="line"><span style="color:#E1E4E8">  reducers: {},</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> default</span><span style="color:#E1E4E8"> listSlice.reducer;</span></span>
+<span class="line"></span></code></pre>
+<p>Here we created a slice called <code>shoppingList</code>  and added an initial state with two items.</p>
+<p>Next go back to your <code>store.ts</code> and add the reducer from the shopping list slice:</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> shoppingListReducer </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "./slices/shoppingListSlice"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> const</span><span style="color:#1ED2AF"> store</span><span style="color:#D00414"> =</span><span style="color:#1ED2AF"> configureStore</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  reducer: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    shoppingList: shoppingListReducer,</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span></code></pre>
+<p>Now the data from the shopping list slice is available anywhere in the applciation. We can use the <code>useAppSelector</code> hook to access the data.</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { useAppSelector } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "./store"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> function</span><span style="color:#1ED2AF"> ShoppingList</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#D00414">  const</span><span style="color:#1ED2AF"> items</span><span style="color:#D00414"> =</span><span style="color:#1ED2AF"> useAppSelector</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">state</span><span style="color:#E1E4E8">) </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> state.shoppingList.items);</span></span>
+<span class="line"><span style="color:#D00414">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#1ED2AF">ul</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      {items.</span><span style="color:#1ED2AF">map</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">item</span><span style="color:#E1E4E8">) </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;</span><span style="color:#1ED2AF">li</span><span style="color:#1ED2AF"> key</span><span style="color:#D00414">=</span><span style="color:#E1E4E8">{item.id}>{item.name}&#x3C;/</span><span style="color:#1ED2AF">li</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">      ))}</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#1ED2AF">ul</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<p>The <code>useSelector</code> hook allows React components to access and read data from the Redux store. It serves as the primary way to “select” parts of the global state in a component.</p>
+<h4 id="creating-the-actions-and-reducers">Creating the Actions and Reducers</h4>
+<p>At this point we have a working Redux store with a slice that holds the shopping list data and we can read that data in our react components. Now we need to create the actions and reducers in order to update the state.</p>
+<h5 id="add-items-action">Add Items Action</h5>
+<p>Back in the shoppingListSlice.ts file, add the following <code>addItem</code> reducer function:</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> const</span><span style="color:#1ED2AF"> listSlice</span><span style="color:#D00414"> =</span><span style="color:#1ED2AF"> createSlice</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  name: </span><span style="color:#F7F0DC">"shoppingList"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  initialState,</span></span>
+<span class="line"><span style="color:#E1E4E8">  reducers: {</span></span>
+<span class="line"><span style="color:#1ED2AF">    addItem</span><span style="color:#E1E4E8">: (</span><span style="color:#FFAB70">state</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">action</span><span style="color:#D00414">:</span><span style="color:#1ED2AF"> PayloadAction</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#1ED2AF">string</span><span style="color:#E1E4E8">>) </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">      state.items.</span><span style="color:#1ED2AF">push</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">        id: Date.</span><span style="color:#1ED2AF">now</span><span style="color:#E1E4E8">().</span><span style="color:#1ED2AF">toString</span><span style="color:#E1E4E8">(),</span></span>
+<span class="line"><span style="color:#E1E4E8">        name: action.payload,</span></span>
+<span class="line"><span style="color:#E1E4E8">        completed: </span><span style="color:#1ED2AF">false</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      });</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">//Dont forget to export the actions</span></span>
+<span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> const</span><span style="color:#E1E4E8"> { </span><span style="color:#1ED2AF">addItem</span><span style="color:#E1E4E8"> } </span><span style="color:#D00414">=</span><span style="color:#E1E4E8"> listSlice.actions;</span></span>
+<span class="line"></span></code></pre>
+<p>This function takes the current state and an action payload. The text of the new list is passed in the action payload. To trigger this action, we need to dispatch it from our component.</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { useAppDispatch } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "../store"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { addItem } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "../slices/shoppingListSlice"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> function</span><span style="color:#1ED2AF"> AddItemForm</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#D00414">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#1ED2AF">newItem</span><span style="color:#E1E4E8">, </span><span style="color:#1ED2AF">setNewItem</span><span style="color:#E1E4E8">] </span><span style="color:#D00414">=</span><span style="color:#1ED2AF"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">""</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#D00414">  const</span><span style="color:#1ED2AF"> dispatch</span><span style="color:#D00414"> =</span><span style="color:#1ED2AF"> useAppDispatch</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">  const</span><span style="color:#1ED2AF"> handleSubmit</span><span style="color:#D00414"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#D00414">    if</span><span style="color:#E1E4E8"> (newItem.</span><span style="color:#1ED2AF">trim</span><span style="color:#E1E4E8">() </span><span style="color:#D00414">!==</span><span style="color:#F7F0DC"> ""</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#1ED2AF">      dispatch</span><span style="color:#E1E4E8">(</span><span style="color:#1ED2AF">addItem</span><span style="color:#E1E4E8">(newItem));</span></span>
+<span class="line"><span style="color:#1ED2AF">      setNewItem</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">""</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#D00414">  ...</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<p>Here we use the <code>useAppDispatch</code> hook to get the dispatch function from the store. We then dispatch the <code>addItem</code> action with the new item as the payload. We can now succesfully add items to the shopping list in our redux store.</p>
+<h5 id="toggle-item-completed-action">Toggle Item Completed Action</h5>
+<p>Next we need to add an action to toggle the completed status of an item. Add the following code to the <code>shoppingListSlice.ts</code> file:</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> const</span><span style="color:#1ED2AF"> listSlice</span><span style="color:#D00414"> =</span><span style="color:#1ED2AF"> createSlice</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  name: </span><span style="color:#F7F0DC">"shoppingList"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  initialState,</span></span>
+<span class="line"><span style="color:#E1E4E8">  reducers: {</span></span>
+<span class="line"><span style="color:#1ED2AF">    addItem</span><span style="color:#E1E4E8">: (</span><span style="color:#FFAB70">state</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">action</span><span style="color:#D00414">:</span><span style="color:#1ED2AF"> PayloadAction</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#1ED2AF">string</span><span style="color:#E1E4E8">>) </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">      state.items.</span><span style="color:#1ED2AF">push</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">        id: Date.</span><span style="color:#1ED2AF">now</span><span style="color:#E1E4E8">().</span><span style="color:#1ED2AF">toString</span><span style="color:#E1E4E8">(),</span></span>
+<span class="line"><span style="color:#E1E4E8">        name: action.payload,</span></span>
+<span class="line"><span style="color:#E1E4E8">        completed: </span><span style="color:#1ED2AF">false</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      });</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#1ED2AF">    toggleItem</span><span style="color:#E1E4E8">: (</span><span style="color:#FFAB70">state</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">action</span><span style="color:#D00414">:</span><span style="color:#1ED2AF"> PayloadAction</span><span style="color:#E1E4E8">&#x3C;</span><span style="color:#1ED2AF">string</span><span style="color:#E1E4E8">>) </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#D00414">      const</span><span style="color:#1ED2AF"> todo</span><span style="color:#D00414"> =</span><span style="color:#E1E4E8"> state.items.</span><span style="color:#1ED2AF">find</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">todo</span><span style="color:#E1E4E8">) </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> todo.id </span><span style="color:#D00414">===</span><span style="color:#E1E4E8"> action.payload);</span></span>
+<span class="line"><span style="color:#D00414">      if</span><span style="color:#E1E4E8"> (todo) {</span></span>
+<span class="line"><span style="color:#E1E4E8">        todo.completed </span><span style="color:#D00414">=</span><span style="color:#D00414"> !</span><span style="color:#E1E4E8">todo.completed;</span></span>
+<span class="line"><span style="color:#E1E4E8">      }</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">//Dont forget to export the actions</span></span>
+<span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> const</span><span style="color:#E1E4E8"> { </span><span style="color:#1ED2AF">addItem</span><span style="color:#E1E4E8">, </span><span style="color:#1ED2AF">toggleItem</span><span style="color:#E1E4E8"> } </span><span style="color:#D00414">=</span><span style="color:#E1E4E8"> listSlice.actions;</span></span>
+<span class="line"></span></code></pre>
+<p>Once the reducer function is defined we can dispatch the action from our component to toggle the completed status of an item.</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> function</span><span style="color:#1ED2AF"> ShoppingListItem</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#D00414">  const</span><span style="color:#1ED2AF"> dispatch</span><span style="color:#D00414"> =</span><span style="color:#1ED2AF"> useAppDispatch</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#D00414">  const</span><span style="color:#1ED2AF"> toggleItemCompletion</span><span style="color:#D00414"> =</span><span style="color:#E1E4E8"> () </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#1ED2AF">    dispatch</span><span style="color:#E1E4E8">(</span><span style="color:#1ED2AF">toggleItem</span><span style="color:#E1E4E8">(id));</span></span>
+<span class="line"><span style="color:#E1E4E8">  };</span></span>
+<span class="line"><span style="color:#D00414">  ...</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<h4 id="persisting-state-to-local-storage">Persisting State to Local Storage</h4>
+<p>Now that we have actions to add and toggle items, we can persist the state to local storage so that our data is saved even when the user refreshes the page. Start by adding the <code>redux-persist</code> library to your project.</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#1ED2AF">npm</span><span style="color:#F7F0DC"> i</span><span style="color:#F7F0DC"> redux-persist</span></span>
+<span class="line"></span></code></pre>
+<p>Next add <code>redux-persist</code> to the <code>store.ts</code> file.</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { persistReducer, persistStore } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "redux-persist"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">const</span><span style="color:#1ED2AF"> persistedShoppingListReducer</span><span style="color:#D00414"> =</span><span style="color:#1ED2AF"> persistReducer</span><span style="color:#E1E4E8">(</span></span>
+<span class="line"><span style="color:#E1E4E8">  { key: </span><span style="color:#F7F0DC">"shoppingList"</span><span style="color:#E1E4E8">, storage },</span></span>
+<span class="line"><span style="color:#E1E4E8">  shoppingListReducer</span></span>
+<span class="line"><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> const</span><span style="color:#1ED2AF"> store</span><span style="color:#D00414"> =</span><span style="color:#1ED2AF"> configureStore</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  reducer: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    shoppingList: persistedShoppingListReducer,</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> const</span><span style="color:#1ED2AF"> persistor</span><span style="color:#D00414"> =</span><span style="color:#1ED2AF"> persistStore</span><span style="color:#E1E4E8">(store);</span></span>
+<span class="line"></span></code></pre>
+<p>The next step is to wrap the app in a PersistGate component in the same place as the Provider component. This will ensure the component doesnt render until the data has been loaded from local storage.</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { PersistGate } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "redux-persist/integration/react"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { persistor, store } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "./store"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">function</span><span style="color:#1ED2AF"> App</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#D00414">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#1ED2AF">Provider</span><span style="color:#1ED2AF"> store</span><span style="color:#D00414">=</span><span style="color:#E1E4E8">{store}></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#1ED2AF">PersistGate</span><span style="color:#1ED2AF"> loading</span><span style="color:#D00414">=</span><span style="color:#E1E4E8">{</span><span style="color:#1ED2AF">null</span><span style="color:#E1E4E8">} </span><span style="color:#1ED2AF">persistor</span><span style="color:#D00414">=</span><span style="color:#E1E4E8">{persistor}></span></span>
+<span class="line"><span style="color:#E1E4E8">        &#x3C;</span><span style="color:#1ED2AF">ShoppingList</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;/</span><span style="color:#1ED2AF">PersistGate</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#1ED2AF">Provider</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<p>And thats it! Now we have state data that is persisted to local storage and can be access if the page is refreshed.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>Redux is a powerful state management tool that provides a predictable and testable way to manage state in JavaScript applications. By leveraging the principles of the Flux design pattern and centralizing the state into a single store, Redux simplifies complex state management in large applications.</p>
+<p>However, it’s important to evaluate whether your application truly needs Redux, as it can introduce extra complexity when used unnecessarily. For simple applications or small state management needs, React’s built-in tools might be more than enough.</p>  </div> </div> </article> <footer data-astro-cid-sz7xmlte>
 &copy; 2024 Jeremiah Swank. All rights reserved.
 <div class="social-links" data-astro-cid-sz7xmlte> <a href="https://github.com/atlas-jswank" target="_blank" data-astro-cid-sz7xmlte> <span class="sr-only" data-astro-cid-sz7xmlte>Go to Jeremiah Swank's GitHub repo</span> <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32" astro-icon="social/github" data-astro-cid-sz7xmlte><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://www.linkedin.com/in/jeremiah-swank-0a3559264/" target="_blank" data-astro-cid-sz7xmlte> <span class="sr-only" data-astro-cid-sz7xmlte>Go to Jeremiah Swanks's LinkedIn</span> <svg style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" version="1.1" viewBox="0 0 512 512" width="32" height="32" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-astro-cid-sz7xmlte><path fill="currentColor" d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" data-astro-cid-sz7xmlte></path></svg> </a> </div> </footer>  </main> </body></html>
