@@ -47,6 +47,7 @@
 <h4 id="creating-the-redux-store">Creating the Redux Store</h4>
 <p>In the <code>src</code> directory, create a new file named <code>store.ts</code>.</p>
 <pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { configureStore } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> '@reduxjs/toolkit'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { useDispatch, useSelector } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "react-redux"</span><span style="color:#E1E4E8">;</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> const</span><span style="color:#1ED2AF"> store</span><span style="color:#D00414"> =</span><span style="color:#1ED2AF"> configureStore</span><span style="color:#E1E4E8">({</span></span>
 <span class="line"><span style="color:#E1E4E8">  reducer: {},</span></span>
@@ -108,11 +109,16 @@
 <span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> function</span><span style="color:#1ED2AF"> ShoppingList</span><span style="color:#E1E4E8">() {</span></span>
 <span class="line"><span style="color:#D00414">  const</span><span style="color:#1ED2AF"> items</span><span style="color:#D00414"> =</span><span style="color:#1ED2AF"> useAppSelector</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">state</span><span style="color:#E1E4E8">) </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> state.shoppingList.items);</span></span>
 <span class="line"><span style="color:#D00414">  return</span><span style="color:#E1E4E8"> (</span></span>
-<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#1ED2AF">ul</span><span style="color:#E1E4E8">></span></span>
-<span class="line"><span style="color:#E1E4E8">      {items.</span><span style="color:#1ED2AF">map</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">item</span><span style="color:#E1E4E8">) </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> (</span></span>
-<span class="line"><span style="color:#E1E4E8">        &#x3C;</span><span style="color:#1ED2AF">li</span><span style="color:#1ED2AF"> key</span><span style="color:#D00414">=</span><span style="color:#E1E4E8">{item.id}>{item.name}&#x3C;/</span><span style="color:#1ED2AF">li</span><span style="color:#E1E4E8">></span></span>
-<span class="line"><span style="color:#E1E4E8">      ))}</span></span>
-<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#1ED2AF">ul</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">     &#x3C;</span><span style="color:#1ED2AF">ul</span><span style="color:#1ED2AF"> className</span><span style="color:#D00414">=</span><span style="color:#F7F0DC">"space-y-2"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">        {items.</span><span style="color:#1ED2AF">map</span><span style="color:#E1E4E8">((</span><span style="color:#FFAB70">item</span><span style="color:#E1E4E8">) </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">          &#x3C;</span><span style="color:#1ED2AF">ShoppingListItem</span></span>
+<span class="line"><span style="color:#1ED2AF">            key</span><span style="color:#D00414">=</span><span style="color:#E1E4E8">{item.id}</span></span>
+<span class="line"><span style="color:#1ED2AF">            id</span><span style="color:#D00414">=</span><span style="color:#E1E4E8">{item.id}</span></span>
+<span class="line"><span style="color:#1ED2AF">            completed</span><span style="color:#D00414">=</span><span style="color:#E1E4E8">{item.completed}</span></span>
+<span class="line"><span style="color:#1ED2AF">            name</span><span style="color:#D00414">=</span><span style="color:#E1E4E8">{item.name}</span></span>
+<span class="line"><span style="color:#E1E4E8">          /></span></span>
+<span class="line"><span style="color:#E1E4E8">        ))}</span></span>
+<span class="line"><span style="color:#E1E4E8">     &#x3C;/</span><span style="color:#1ED2AF">ul</span><span style="color:#E1E4E8">></span></span>
 <span class="line"><span style="color:#E1E4E8">  );</span></span>
 <span class="line"><span style="color:#E1E4E8">}</span></span>
 <span class="line"></span></code></pre>

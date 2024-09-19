@@ -1,30 +1,135 @@
 <!DOCTYPE html><html lang="en" data-astro-cid-bvzihdzo> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/png" href="/favicon.png"><meta name="generator" content="Astro v4.11.5"><!-- Font preloads --><link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin><link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://example.com/blog/react-testing/"><!-- Primary Meta Tags --><title>React Unit Testing | in{struct} blog </title><meta name="title" content="React Unit Testing | in{struct} blog "><meta name="description" content="Lorem ipsum dolor sit amet"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://example.com/blog/react-testing/"><meta property="og:title" content="React Unit Testing | in{struct} blog "><meta property="og:description" content="Lorem ipsum dolor sit amet"><meta property="og:image" content="https://example.com/blog-placeholder-1.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://example.com/blog/react-testing/"><meta property="twitter:title" content="React Unit Testing | in{struct} blog "><meta property="twitter:description" content="Lorem ipsum dolor sit amet"><meta property="twitter:image" content="https://example.com/blog-placeholder-1.jpg"><link rel="stylesheet" href="/assets/about.DNzP87XY.css">
 <style>.author[data-astro-cid-bvzihdzo]{display:flex;align-items:center;justify-content:center;flex-direction:column;padding-top:48px;color:var(--blue-light)}.author[data-astro-cid-bvzihdzo] span[data-astro-cid-bvzihdzo]{line-height:1.3}.author-image[data-astro-cid-bvzihdzo]{border-radius:50px}main[data-astro-cid-bvzihdzo]{width:100%;max-width:100%;margin:140px 0 0;padding:0}.hero-image[data-astro-cid-bvzihdzo]{width:100%;margin-top:3rem}.hero-image[data-astro-cid-bvzihdzo] img[data-astro-cid-bvzihdzo]{display:block;margin:0 auto;border-radius:12px;box-shadow:var(--box-shadow)}.prose-wrapper[data-astro-cid-bvzihdzo]{color:var(--blue);background-color:var(--off-white-light);margin-top:3rem;border-top-left-radius:30px;border-top-right-radius:30px}.prose[data-astro-cid-bvzihdzo]{width:1020px;max-width:calc(100% - 2em);margin:auto;padding:1em}.title[data-astro-cid-bvzihdzo]{margin-bottom:1em;padding:1em 0;text-align:center;line-height:1}.title[data-astro-cid-bvzihdzo] h1[data-astro-cid-bvzihdzo]{margin:0 0 .5em}.date[data-astro-cid-bvzihdzo]{margin-bottom:.5em;color:rgb(var(--gray))}.last-updated-on[data-astro-cid-bvzihdzo]{font-style:italic}hr[data-astro-cid-bvzihdzo]{border-top:1px solid var(--blue)}
-</style></head> <body data-astro-cid-bvzihdzo> <header class="sticky" data-astro-cid-3ef6ksr2> <nav data-astro-cid-3ef6ksr2> <h2 data-astro-cid-3ef6ksr2> <img src="/logo.png" alt="Logo" class="logo" data-astro-cid-3ef6ksr2> <a href="/" data-astro-cid-3ef6ksr2>in{struct} blog</a> </h2> <div class="internal-links" data-astro-cid-3ef6ksr2> <!-- <HeaderLink href="/">Home</HeaderLink> --> <!-- <HeaderLink href="/about">About</HeaderLink> --> </div> <div class="social-links" data-astro-cid-3ef6ksr2> <a href="https://github.com/atlas-jswank" target="_blank" data-astro-cid-3ef6ksr2> <span class="sr-only" data-astro-cid-3ef6ksr2>Go to Jeremiah Swanks's GitHub repo</span> <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32" data-astro-cid-3ef6ksr2><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" data-astro-cid-3ef6ksr2></path></svg> </a> <a href="https://www.linkedin.com/in/jeremiah-swank-0a3559264/" target="_blank" data-astro-cid-3ef6ksr2> <span class="sr-only" data-astro-cid-3ef6ksr2>Go to Jeremiah Swanks's LinkedIn</span> <svg style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" version="1.1" viewBox="0 0 512 512" width="32" height="32" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-astro-cid-3ef6ksr2><path fill="currentColor" d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" data-astro-cid-3ef6ksr2></path></svg> </a> </div> </nav> </header>  <main data-astro-cid-bvzihdzo> <article data-astro-cid-bvzihdzo> <div class="hero-image" data-astro-cid-bvzihdzo> <img width="1020" height="510" src="/unit-tests.webp" alt="" data-astro-cid-bvzihdzo> </div> <div class="prose-wrapper" data-astro-cid-bvzihdzo> <div class="prose" data-astro-cid-bvzihdzo> <div class="author" data-astro-cid-bvzihdzo> <img width="70" height="70" src="/jswank.jpg" alt="author" class="author-image" data-astro-cid-bvzihdzo> <span data-astro-cid-bvzihdzo>Jeremiah Swank</span> <span data-astro-cid-bvzihdzo><time datetime="2024-08-30T05:00:00.000Z"> Aug 30, 2024 </time></span> </div> <div class="title" data-astro-cid-bvzihdzo> <h1 data-astro-cid-bvzihdzo>React Unit Testing</h1> </div>  <p>Unit testing in React is a crucial practice that ensures individual components and functions within an application work as expected. By isolating these components and testing them independently, developers can catch bugs early in the development process, leading to more reliable and maintainable code.</p>
+</style></head> <body data-astro-cid-bvzihdzo> <header class="sticky" data-astro-cid-3ef6ksr2> <nav data-astro-cid-3ef6ksr2> <h2 data-astro-cid-3ef6ksr2> <img src="/logo.png" alt="Logo" class="logo" data-astro-cid-3ef6ksr2> <a href="/" data-astro-cid-3ef6ksr2>in{struct} blog</a> </h2> <div class="internal-links" data-astro-cid-3ef6ksr2> <!-- <HeaderLink href="/">Home</HeaderLink> --> <!-- <HeaderLink href="/about">About</HeaderLink> --> </div> <div class="social-links" data-astro-cid-3ef6ksr2> <a href="https://github.com/atlas-jswank" target="_blank" data-astro-cid-3ef6ksr2> <span class="sr-only" data-astro-cid-3ef6ksr2>Go to Jeremiah Swanks's GitHub repo</span> <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32" data-astro-cid-3ef6ksr2><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" data-astro-cid-3ef6ksr2></path></svg> </a> <a href="https://www.linkedin.com/in/jeremiah-swank-0a3559264/" target="_blank" data-astro-cid-3ef6ksr2> <span class="sr-only" data-astro-cid-3ef6ksr2>Go to Jeremiah Swanks's LinkedIn</span> <svg style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" version="1.1" viewBox="0 0 512 512" width="32" height="32" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-astro-cid-3ef6ksr2><path fill="currentColor" d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" data-astro-cid-3ef6ksr2></path></svg> </a> </div> </nav> </header>  <main data-astro-cid-bvzihdzo> <article data-astro-cid-bvzihdzo> <div class="hero-image" data-astro-cid-bvzihdzo> <img width="1020" height="510" src="/unit-tests.webp" alt="" data-astro-cid-bvzihdzo> </div> <div class="prose-wrapper" data-astro-cid-bvzihdzo> <div class="prose" data-astro-cid-bvzihdzo> <div class="author" data-astro-cid-bvzihdzo> <img width="70" height="70" src="/jswank.jpg" alt="author" class="author-image" data-astro-cid-bvzihdzo> <span data-astro-cid-bvzihdzo>Jeremiah Swank</span> <span data-astro-cid-bvzihdzo><time datetime="2024-09-17T05:00:00.000Z"> Sep 17, 2024 </time></span> </div> <div class="title" data-astro-cid-bvzihdzo> <h1 data-astro-cid-bvzihdzo>React Unit Testing</h1> </div>  <p>Unit testing in React is a crucial practice that ensures individual components and functions within an application work as expected. By isolating these components and testing them independently, developers can catch bugs early in the development process, leading to more reliable and maintainable code.</p>
 <p>React’s component-based architecture lends itself well to unit testing, as each component can be treated as a small, testable unit. Tools like Vitest and React Testing Library are commonly used to create and run these tests, allowing developers to simulate user interactions, check outputs, and verify that components render correctly under different conditions. Through unit testing, React applications become more robust, easier to refactor, and better equipped to handle future changes.</p>
 <h3 id="vitest">Vitest</h3>
-<p><a href="https://vitest.dev/">Vitest</a> is a fast, modern testing framework for JavaScript and TypeScript applications, designed to work seamlessly with Vite, a popular build tool. It offers a similar API to Jest, making it easy for developers familiar with Jest to adopt Vitest. The key advantage of Vitest lies in its integration with Vite, allowing it to leverage Vite’s fast, efficient build process for running tests. This makes Vitest particularly well-suited for modern web applications, where speed and developer experience are paramount.</p>
+<p>Vitest is a fast, modern testing framework for JavaScript and TypeScript applications, designed to work seamlessly with Vite, a popular build tool. It offers a similar API to Jest, making it easy for developers familiar with Jest to adopt Vitest. The key advantage of Vitest lies in its integration with Vite, allowing it to leverage Vite’s fast, efficient build process for running tests. This makes Vitest particularly well-suited for modern web applications, where speed and developer experience are paramount.</p>
 <p>Vitest supports features like snapshot testing, mocking, and coverage reports, and it can be used to test both unit and end-to-end components. It’s known for its speed, thanks to its ability to run tests in parallel and hot-reload test files, which significantly enhances the developer’s productivity during the testing process.</p>
+<p>To get started with Vitest, you’ll need to install it as a development dependency in your project:</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#1ED2AF">npm</span><span style="color:#F7F0DC"> install</span><span style="color:#1ED2AF"> -D</span><span style="color:#F7F0DC"> vitest</span></span>
+<span class="line"></span></code></pre>
+<p>Next, you’ll want to add a script to your <code>package.json</code> file to run your tests:</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#6A737D">//package.json</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#FDAEB7;font-style:italic">    ...</span></span>
+<span class="line"><span style="color:#1ED2AF">    "scripts"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#FDAEB7;font-style:italic">        ...</span></span>
+<span class="line"><span style="color:#1ED2AF">         "test"</span><span style="color:#E1E4E8">: </span><span style="color:#F7F0DC">"vitest"</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<p>Define a basic test file. Vitest will automatically pickup files with <code>.test</code> in the name:</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#6A737D">//hello.test.ts</span></span>
+<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { test, expect } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "vitest"</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">// must import methods used for testing</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#1ED2AF">test</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">"My First Test"</span><span style="color:#E1E4E8">, () </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#1ED2AF">  expect</span><span style="color:#E1E4E8">(</span><span style="color:#1ED2AF">2</span><span style="color:#D00414"> +</span><span style="color:#1ED2AF"> 2</span><span style="color:#E1E4E8">).</span><span style="color:#1ED2AF">toBe</span><span style="color:#E1E4E8">(</span><span style="color:#1ED2AF">4</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span></code></pre>
+<p>It is important to note that in vitest you must import all methods used for testing includng <code>test</code> and <code>expect</code>. Make sure your are importing them from the vitest package and not from another node packages. Run your test script:</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#1ED2AF">npm</span><span style="color:#F7F0DC"> run</span><span style="color:#F7F0DC"> test</span></span>
+<span class="line"></span></code></pre>
+<p>And you should see the ourput for the tests in your console:</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#1ED2AF">✓</span><span style="color:#F7F0DC"> src/hello.test.ts</span><span style="color:#E1E4E8"> (1)</span></span>
+<span class="line"><span style="color:#1ED2AF">   ✓</span><span style="color:#F7F0DC"> My</span><span style="color:#F7F0DC"> First</span><span style="color:#F7F0DC"> Test</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#1ED2AF"> Test</span><span style="color:#F7F0DC"> Files</span><span style="color:#1ED2AF">  1</span><span style="color:#F7F0DC"> passed</span><span style="color:#E1E4E8"> (1)</span></span>
+<span class="line"><span style="color:#1ED2AF">      Tests</span><span style="color:#1ED2AF">  1</span><span style="color:#F7F0DC"> passed</span><span style="color:#E1E4E8"> (1)</span></span>
+<span class="line"><span style="color:#1ED2AF">   Start</span><span style="color:#F7F0DC"> at</span><span style="color:#F7F0DC">  10:37:38</span></span>
+<span class="line"><span style="color:#1ED2AF">   Duration</span><span style="color:#F7F0DC">  151ms</span><span style="color:#E1E4E8"> (transform </span><span style="color:#F7F0DC">15ms,</span><span style="color:#F7F0DC"> setup</span><span style="color:#F7F0DC"> 0ms,</span><span style="color:#F7F0DC"> collect</span><span style="color:#F7F0DC"> 10ms,</span><span style="color:#F7F0DC"> tests</span><span style="color:#F7F0DC"> 1ms,</span><span style="color:#F7F0DC"> environment</span><span style="color:#F7F0DC"> 0ms,</span><span style="color:#F7F0DC"> prepare</span><span style="color:#F7F0DC"> 30ms</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span></code></pre>
+<p>From here you can start to write tests for your files and vitest should pick them up automatically:</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#6A737D">//add.test.ts</span></span>
+<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { test, expect } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "vitest"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { add } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "./add"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#1ED2AF">test</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">"Test Add"</span><span style="color:#E1E4E8">, () </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#1ED2AF">  expect</span><span style="color:#E1E4E8">(</span><span style="color:#1ED2AF">add</span><span style="color:#E1E4E8">(</span><span style="color:#1ED2AF">2</span><span style="color:#E1E4E8">, </span><span style="color:#1ED2AF">2</span><span style="color:#E1E4E8">)).</span><span style="color:#1ED2AF">toBe</span><span style="color:#E1E4E8">(</span><span style="color:#1ED2AF">4</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span></code></pre>
+<p>VItest also provides methods for performing tasks before and after tests:</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { afterEach, afterAll, beforeAll, beforeEach } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "vitest"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#1ED2AF">beforeAll</span><span style="color:#E1E4E8">(() </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // run code here before all tests in the file</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"><span style="color:#1ED2AF">beforeEach</span><span style="color:#E1E4E8">(() </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // run code here before each tests in the file</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"><span style="color:#1ED2AF">afterEach</span><span style="color:#E1E4E8">(() </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // run code here after each tests in the file</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"><span style="color:#1ED2AF">afterAll</span><span style="color:#E1E4E8">(() </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // run code here after all tests in the file</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// add your tests down here</span></span>
+<span class="line"></span></code></pre>
+<h3 id="jsdom">JSDOM</h3>
+<p>If you are writing tests for the web you will run into issues where web APIs available in the browser are not available in your test environment. For example imagine you had a function like this:</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#6A737D">//navigate.ts</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">function</span><span style="color:#1ED2AF"> goToAboutPage</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">  window.location.href </span><span style="color:#D00414">=</span><span style="color:#F7F0DC"> "/about"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"></span></code></pre>
+<p>This function works perfectly in the browser but when running from your command line you will get this error:</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#1ED2AF"> FAIL</span><span style="color:#F7F0DC">  src/navigate.test.ts</span><span style="color:#D00414"> ></span><span style="color:#F7F0DC"> Test</span><span style="color:#F7F0DC"> Navigation</span></span>
+<span class="line"><span style="color:#1ED2AF">ReferenceError:</span><span style="color:#F7F0DC"> window</span><span style="color:#F7F0DC"> is</span><span style="color:#F7F0DC"> not</span><span style="color:#F7F0DC"> defined</span></span>
+<span class="line"><span style="color:#1ED2AF"> ❯</span><span style="color:#F7F0DC"> goToAboutPage</span><span style="color:#F7F0DC"> src/navigate.test.ts:4:3</span></span>
+<span class="line"><span style="color:#1ED2AF">      2</span><span style="color:#D00414">|</span><span style="color:#E1E4E8"> </span></span>
+<span class="line"><span style="color:#1ED2AF">      3</span><span style="color:#D00414">|</span><span style="color:#D00414"> function</span><span style="color:#1ED2AF"> goToAboutPage</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#1ED2AF">      4</span><span style="color:#D00414">|</span><span style="color:#1ED2AF">   window.location.href</span><span style="color:#F7F0DC"> =</span><span style="color:#F7F0DC"> "/about"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#D00414">       |</span><span style="color:#1ED2AF">   ^</span></span>
+<span class="line"><span style="color:#1ED2AF">      5</span><span style="color:#D00414">|</span><span style="color:#E1E4E8"> }</span></span>
+<span class="line"><span style="color:#1ED2AF">      6</span><span style="color:#D00414">|</span><span style="color:#E1E4E8"> </span></span>
+<span class="line"><span style="color:#1ED2AF"> ❯</span><span style="color:#F7F0DC"> src/navigate.test.ts:9:3</span></span>
+<span class="line"></span></code></pre>
+<p>This is because the <code>window</code> API only exists in the browser. It does not exist in the test environment. JSDOM provides an implementation of most browser APIs so that you can run your tests in a simulated browser environment. To use JSDOM, you’ll need to install it as a development dependency:</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#1ED2AF">npm</span><span style="color:#F7F0DC"> install</span><span style="color:#1ED2AF"> -D</span><span style="color:#F7F0DC"> jsdom</span></span>
+<span class="line"></span></code></pre>
+<p>By default vitest uses the node environment so you must update your <code>vite.config.ts</code> file to use the jsdom environment:</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#6A737D">/// &#x3C;</span><span style="color:#1ED2AF">reference</span><span style="color:#1ED2AF"> types</span><span style="color:#D00414">=</span><span style="color:#F7F0DC">"vitest/config"</span><span style="color:#6A737D"> /></span></span>
+<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { defineConfig } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "vite"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> react </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "@vitejs/plugin-react"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// https://vitejs.dev/config/</span></span>
+<span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> default</span><span style="color:#1ED2AF"> defineConfig</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  plugins: [</span><span style="color:#1ED2AF">react</span><span style="color:#E1E4E8">()],</span></span>
+<span class="line"><span style="color:#E1E4E8">  test: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    environment: </span><span style="color:#F7F0DC">"jsdom"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span></code></pre>
 <h3 id="react-testing-library">React Testing Library</h3>
-<p><a href="https://testing-library.com/docs/react-testing-library/intro/">React Testing Library</a> provides utilities to render components in a test environment, query the rendered output, and simulate user interactions such as clicks, typing, and form submissions. It emphasizes best practices like accessibility and encourages testing components as a whole, including their effects and interactions with other components or services. By prioritizing how components are used rather than how they’re built, React Testing Library helps ensure that tests remain aligned with the actual user experience.</p>
+<p>React Testing Library provides utilities to render components in a test environment, query the rendered output, and simulate user interactions such as clicks, typing, and form submissions. It emphasizes best practices like accessibility and encourages testing components as a whole, including their effects and interactions with other components or services. By prioritizing how components are used rather than how they’re built, React Testing Library helps ensure that tests remain aligned with the actual user experience.</p>
+<p>To setup React Testing Library, you’ll need to install the following packages:</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#1ED2AF">npm</span><span style="color:#F7F0DC"> i</span><span style="color:#1ED2AF"> -D</span><span style="color:#F7F0DC"> @testing-library/react</span><span style="color:#F7F0DC"> @testing-library/dom</span><span style="color:#F7F0DC"> @testing-library/jest-dom</span></span>
+<span class="line"></span></code></pre>
+<p>Create a <code>vitest.setup.ts</code> file in your project root and add the following code:</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#D00414">import</span><span style="color:#F7F0DC"> "@testing-library/jest-dom/vitest"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span></code></pre>
+<p>Then add the setup file to your vite config:</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#6A737D">/// &#x3C;</span><span style="color:#1ED2AF">reference</span><span style="color:#1ED2AF"> types</span><span style="color:#D00414">=</span><span style="color:#F7F0DC">"vitest/config"</span><span style="color:#6A737D"> /></span></span>
+<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { defineConfig } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "vite"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> react </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "@vitejs/plugin-react"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// https://vitejs.dev/config/</span></span>
+<span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> default</span><span style="color:#1ED2AF"> defineConfig</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  plugins: [</span><span style="color:#1ED2AF">react</span><span style="color:#E1E4E8">()],</span></span>
+<span class="line"><span style="color:#E1E4E8">  test: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    setupFiles: </span><span style="color:#F7F0DC">"vitest.setup.ts"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span></code></pre>
+<p>This will ensure all the custom matchers types are available in your tests. That is all the setup needed to get started with React testing library. Next we will explore some different testing methods that utilize react testing library.</p>
 <h3 id="snapshot-testing">Snapshot testing</h3>
 <p>Snapshot testing is a technique used to verify that the output of a component or function remains consistent over time. It works by capturing a “snapshot” of the rendered output (usually in the form of a JSON object) during the initial test run. This snapshot is then saved and compared against future test runs. If the output changes, the test will fail, alerting the developer to a potential unintended change in the component’s behavior or appearance.</p>
 <p>Snapshot testing is particularly useful in UI testing, where the structure of the rendered component (including its HTML, styles, and other outputs) can be compared against the expected structure to detect changes.</p>
 <h3 id="writing-snapshot-tests">Writing snapshot tests</h3>
 <p>Here’s an example of how you might use snapshot testing in a React component with Vitest:</p>
-<p><strong>1. Install Vitest and React Testing Library (if you haven’t already):</strong></p>
-<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#1ED2AF">npm</span><span style="color:#F7F0DC"> install</span><span style="color:#F7F0DC"> vitest</span><span style="color:#F7F0DC"> @testing-library/react</span><span style="color:#F7F0DC"> @testing-library/jest-dom</span><span style="color:#F7F0DC"> jsdom</span></span>
-<span class="line"></span></code></pre>
-<p><strong>2. Configure vite to use jsdom</strong></p>
-<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#6A737D">//vite.config.ts</span></span>
-<span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> default</span><span style="color:#1ED2AF"> defineConfig</span><span style="color:#E1E4E8">({</span></span>
-<span class="line"><span style="color:#E1E4E8">  plugins: [</span><span style="color:#1ED2AF">react</span><span style="color:#E1E4E8">()],</span></span>
-<span class="line"><span style="color:#E1E4E8">  test: {</span></span>
-<span class="line"><span style="color:#E1E4E8">    environment: </span><span style="color:#F7F0DC">'jsdom'</span></span>
-<span class="line"><span style="color:#E1E4E8">  },</span></span>
-<span class="line"><span style="color:#E1E4E8">});</span></span>
-<span class="line"></span></code></pre>
-<p><strong>3. Create a React Component:</strong></p>
+<p><strong>1. Create a React Component:</strong></p>
 <pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#6A737D">//Button.tsx</span></span>
 <span class="line"><span style="color:#D00414">type</span><span style="color:#1ED2AF"> Props</span><span style="color:#D00414"> =</span><span style="color:#E1E4E8"> {</span></span>
 <span class="line"><span style="color:#FFAB70">  label</span><span style="color:#D00414">:</span><span style="color:#1ED2AF"> string</span><span style="color:#E1E4E8">;</span></span>
@@ -34,7 +139,7 @@
 <span class="line"><span style="color:#D00414">  return</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#1ED2AF">button</span><span style="color:#E1E4E8">>{label}&#x3C;/</span><span style="color:#1ED2AF">button</span><span style="color:#E1E4E8">>;</span></span>
 <span class="line"><span style="color:#E1E4E8">}</span></span>
 <span class="line"></span></code></pre>
-<p><strong>4. Write a Snapshot Test:</strong></p>
+<p><strong>2. Write a Snapshot Test:</strong></p>
 <pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#6A737D">//Button.test.tsx</span></span>
 <span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { render } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "@testing-library/react"</span><span style="color:#E1E4E8">;</span></span>
 <span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { expect, test } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "vitest"</span><span style="color:#E1E4E8">;</span></span>
@@ -51,7 +156,7 @@
 <li><code>render(&#x3C;Button label="Click me" />)</code> renders the Button component.</li>
 <li><code>toMatchSnapshot()</code> compares the current output to the saved snapshot.</li>
 </ul>
-<p><strong>5. Run the Test:</strong></p>
+<p><strong>3. Run the Test:</strong></p>
 <pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#1ED2AF">npx</span><span style="color:#F7F0DC"> vitest</span><span style="color:#F7F0DC"> run</span></span>
 <span class="line"></span></code></pre>
 <p>During the first run, Vitest will create a snapshot file that contains the rendered output of the Button component. This file is stored in a <code>__snapshots__</code> directory next to your test file.</p>
@@ -66,8 +171,8 @@
 <span class="line"><span style="color:#F7F0DC">&#x3C;/div></span></span>
 <span class="line"><span style="color:#F7F0DC">`</span><span style="color:#E1E4E8">;</span></span>
 <span class="line"></span></code></pre>
-<p>Alertnativley you can use <code>toMatchInlineSnapshot()</code> matcher to output the snapshot inline in the test. This works well for small components but can be a bit verbose for larger components.</p>
-<p><strong>6. Handling Snapshot Changes:</strong></p>
+<p>Alternatively you can use <code>toMatchInlineSnapshot()</code> matcher to output the snapshot inline in the test. This works well for small components but can be a bit verbose for larger components.</p>
+<p><strong>4. Handling Snapshot Changes:</strong></p>
 <p>If you make changes to the Button component (e.g., changing the label or adding styles), the next test run will fail if the output no longer matches the snapshot. If the changes are intentional, you can update the snapshot by running:</p>
 <pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#1ED2AF">npx</span><span style="color:#F7F0DC"> vitest</span><span style="color:#1ED2AF"> -u</span></span>
 <span class="line"></span></code></pre>
@@ -78,134 +183,280 @@
 <li><strong>Quick Feedback:</strong> Developers get quick feedback when a component’s output changes.</li>
 <li><strong>Simple to Implement:</strong> Snapshot tests are easy to write and can cover large parts of your UI with minimal code.</li>
 </ul>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#1ED2AF">npm</span><span style="color:#F7F0DC"> install</span><span style="color:#1ED2AF"> -D</span><span style="color:#F7F0DC"> msw</span></span>
+<span class="line"></span></code></pre>
+<h3 id="dom-querying-with-react-testing-library">DOM Querying with React Testing Library</h3>
+<p>One of the most powerful features of React Testing Library is its ability to query the DOM. This allows you to simulate user interactions and assert on the state of your components. The query methods follow a naming pattern and its important to understand the different methods in order to understand which one to use in your test.</p>
+<h4 id="query-method-prefixes">Query Method Prefixes:</h4>
+<p>Queries are the methods that Testing Library gives you to find elements on the page. There are several ways to query elements:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Type of Query</th><th>0 Matches</th><th>1 Match</th><th>>1 Matches</th><th>(Async/Await)</th></tr></thead><tbody><tr><td><strong>Multiple Elements</strong></td><td></td><td></td><td></td><td></td></tr><tr><td>getBy…</td><td>Throw error</td><td>Return element</td><td>Throw error</td><td>No</td></tr><tr><td>queryBy…</td><td>Return null</td><td>Return element</td><td>Throw error</td><td>No</td></tr><tr><td>findBy…</td><td>Throw error</td><td>Return element</td><td>Throw error</td><td>Yes</td></tr><tr><td><strong>Multiple Elements</strong></td><td></td><td></td><td></td><td></td></tr><tr><td>getAllBy…</td><td>Throw error</td><td>Return array</td><td>Return array</td><td>No</td></tr><tr><td>queryAllBy…</td><td>Return null</td><td>Return array</td><td>Return array</td><td>No</td></tr><tr><td>findAllBy…</td><td>Throw error</td><td>Return array</td><td>Return array</td><td>Yes</td></tr></tbody></table>
+<p>All queries have their use case. You have to decide do you expect multiplte values to be returned or not? and do you need to async/await for the component to update first?</p>
+<h4 id="query-method-suffixes">Query Method Suffixes:</h4>
+<ul>
+<li><strong>ByLabelText:</strong> find by label or aria-label text content</li>
+<li><strong>ByPlaceholderText:</strong> find by input placeholder value</li>
+<li><strong>ByText:</strong> find by element text content</li>
+<li><strong>ByDisplayValue:</strong> find by form element current value</li>
+<li><strong>ByAltText:</strong> find by img alt attribute</li>
+<li><strong>ByTitle:</strong> find by title attribute or svg title tag</li>
+<li><strong>ByRole:</strong> find by aria role</li>
+<li><strong>ByTestId:</strong> find by data-testid attribute</li>
+</ul>
+<p>You combine a prefix and a suffix to get one of the possible query methods. Examples: <strong>getByLabelText, queryByDisplayValue, findByRole, getAllByTestId</strong>, etc. As you can see there are a lot of different ways to query the DOM.</p>
+<h3 id="example-unit-tests">Example Unit Tests</h3>
+<p>Lets explore some example unit tests using the React Testing Library.</p>
+<p><strong>Clicking a Button</strong></p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#6A737D">//Toggle.tsx</span></span>
+<span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> default</span><span style="color:#D00414"> function</span><span style="color:#1ED2AF"> Toggle</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#D00414">    const</span><span style="color:#E1E4E8"> [</span><span style="color:#1ED2AF">isToggled</span><span style="color:#E1E4E8">, </span><span style="color:#1ED2AF">setToggle</span><span style="color:#E1E4E8">] </span><span style="color:#D00414">=</span><span style="color:#E1E4E8"> React.</span><span style="color:#1ED2AF">useState</span><span style="color:#E1E4E8">(</span><span style="color:#1ED2AF">false</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#D00414">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#1ED2AF">button</span><span style="color:#1ED2AF"> onClick</span><span style="color:#D00414">=</span><span style="color:#E1E4E8">{() </span><span style="color:#D00414">=></span><span style="color:#1ED2AF"> setToggle</span><span style="color:#E1E4E8">(</span><span style="color:#D00414">!</span><span style="color:#E1E4E8">isToggled)}></span></span>
+<span class="line"><span style="color:#E1E4E8">      {isToggled </span><span style="color:#D00414">?</span><span style="color:#F7F0DC"> 'ON'</span><span style="color:#D00414"> :</span><span style="color:#F7F0DC"> 'OFF'</span><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/</span><span style="color:#1ED2AF">button</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  )</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">//Toggle.test.tsx</span></span>
+<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { afterEach, expect, test } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "vitest"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { cleanup, fireEvent, render, screen } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "@testing-library/react"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> Toggle </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "./Toggle"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#1ED2AF">afterEach</span><span style="color:#E1E4E8">(() </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#1ED2AF">    cleanup</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#1ED2AF">test</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">"Test Toggle"</span><span style="color:#E1E4E8">, () </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    //Arrange</span></span>
+<span class="line"><span style="color:#1ED2AF">    render</span><span style="color:#E1E4E8">(&#x3C;</span><span style="color:#1ED2AF">Toggle</span><span style="color:#E1E4E8"> />);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    //Act</span></span>
+<span class="line"><span style="color:#D00414">    const</span><span style="color:#1ED2AF"> off</span><span style="color:#D00414"> =</span><span style="color:#E1E4E8"> screen.</span><span style="color:#1ED2AF">getByText</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">"OFF"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    //Assert</span></span>
+<span class="line"><span style="color:#1ED2AF">    expect</span><span style="color:#E1E4E8">(off).</span><span style="color:#1ED2AF">toBeInTheDocument</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#1ED2AF">test</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">"Test Toggle Click"</span><span style="color:#E1E4E8">, () </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    //Arrange</span></span>
+<span class="line"><span style="color:#1ED2AF">    render</span><span style="color:#E1E4E8">(&#x3C;</span><span style="color:#1ED2AF">Toggle</span><span style="color:#E1E4E8"> />);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    //Act</span></span>
+<span class="line"><span style="color:#D00414">    const</span><span style="color:#1ED2AF"> off</span><span style="color:#D00414"> =</span><span style="color:#E1E4E8"> screen.</span><span style="color:#1ED2AF">getByText</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">"OFF"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    fireEvent.</span><span style="color:#1ED2AF">click</span><span style="color:#E1E4E8">(off);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">    const</span><span style="color:#1ED2AF"> on</span><span style="color:#D00414"> =</span><span style="color:#E1E4E8">  screen.</span><span style="color:#1ED2AF">getByText</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">"ON"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    screen.</span><span style="color:#1ED2AF">debug</span><span style="color:#E1E4E8">(on);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    //Assert</span></span>
+<span class="line"><span style="color:#1ED2AF">    expect</span><span style="color:#E1E4E8">(screen.</span><span style="color:#1ED2AF">getByText</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">"ON"</span><span style="color:#E1E4E8">)).</span><span style="color:#1ED2AF">toBeInTheDocument</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#1ED2AF">test</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">"Test Toggle Click Twice"</span><span style="color:#E1E4E8">, () </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    //Arrange</span></span>
+<span class="line"><span style="color:#1ED2AF">    render</span><span style="color:#E1E4E8">(&#x3C;</span><span style="color:#1ED2AF">Toggle</span><span style="color:#E1E4E8"> />);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    //Act</span></span>
+<span class="line"><span style="color:#D00414">    const</span><span style="color:#1ED2AF"> off</span><span style="color:#D00414"> =</span><span style="color:#E1E4E8"> screen.</span><span style="color:#1ED2AF">getByText</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">"OFF"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    fireEvent.</span><span style="color:#1ED2AF">click</span><span style="color:#E1E4E8">(off);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D00414">    const</span><span style="color:#1ED2AF"> on</span><span style="color:#D00414"> =</span><span style="color:#E1E4E8"> screen.</span><span style="color:#1ED2AF">getByText</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">"ON"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    fireEvent.</span><span style="color:#1ED2AF">click</span><span style="color:#E1E4E8">(on);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    //Assert</span></span>
+<span class="line"><span style="color:#1ED2AF">    expect</span><span style="color:#E1E4E8">(screen.</span><span style="color:#1ED2AF">getByText</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">"OFF"</span><span style="color:#E1E4E8">)).</span><span style="color:#1ED2AF">toBeInTheDocument</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#1ED2AF">    expect</span><span style="color:#E1E4E8">(screen.</span><span style="color:#1ED2AF">queryByText</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">"ON"</span><span style="color:#E1E4E8">)).not.</span><span style="color:#1ED2AF">toBeInTheDocument</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span></code></pre>
+<p><strong>Explanation:</strong></p>
+<ol>
+<li><code>afterEach</code> with <code>cleanup()</code>: Ensures that after each test, the rendered DOM is cleaned up so that there are no side effects between tests. This is essential for making sure each test runs in isolation and doesn’t interfere with other tests.</li>
+<li><code>render(&#x3C;Toggle />)</code>: Renders the Toggle component.</li>
+<li><code>screen.getByText("OFF")</code>: queries the DOM to check if the text “OFF” is present</li>
+<li><code>fireEvent.click()</code>: simulate a click on the button to trigger the click event</li>
+<li><code>screen.queryByText("ON")</code>: queries the DOM again to check if the text “ON” is present but does not throw an error if it is not found.</li>
+</ol>
+<p><strong>Clicking Icon Button with no Text</strong></p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#6A737D">//IconButton.tsx</span></span>
+<span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> default</span><span style="color:#D00414"> function</span><span style="color:#1ED2AF"> IconButton</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#D00414">  const</span><span style="color:#E1E4E8"> [</span><span style="color:#1ED2AF">isToggled</span><span style="color:#E1E4E8">, </span><span style="color:#1ED2AF">setToggle</span><span style="color:#E1E4E8">] </span><span style="color:#D00414">=</span><span style="color:#1ED2AF"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#1ED2AF">true</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#D00414">  return</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;></span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;</span><span style="color:#1ED2AF">button</span><span style="color:#1ED2AF"> onClick</span><span style="color:#D00414">=</span><span style="color:#E1E4E8">{() </span><span style="color:#D00414">=></span><span style="color:#1ED2AF"> setToggle</span><span style="color:#E1E4E8">(</span><span style="color:#D00414">!</span><span style="color:#E1E4E8">isToggled)}></span></span>
+<span class="line"><span style="color:#E1E4E8">        {isToggled </span><span style="color:#D00414">?</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#1ED2AF">Sun</span><span style="color:#E1E4E8"> /> </span><span style="color:#D00414">:</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#1ED2AF">Moon</span><span style="color:#E1E4E8"> />}</span></span>
+<span class="line"><span style="color:#E1E4E8">      &#x3C;/</span><span style="color:#1ED2AF">button</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;/></span></span>
+<span class="line"><span style="color:#E1E4E8">  );</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">//IconButton.test.tsx</span></span>
+<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { cleanup, fireEvent, render, screen } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "@testing-library/react"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { afterEach, expect, test } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "vitest"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> IconButton </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "./IconButton"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#1ED2AF">afterEach</span><span style="color:#E1E4E8">(() </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#1ED2AF">    cleanup</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#1ED2AF">test</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">"Test IconButton"</span><span style="color:#E1E4E8">, () </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    //Arrange</span></span>
+<span class="line"><span style="color:#1ED2AF">    render</span><span style="color:#E1E4E8">(&#x3C;</span><span style="color:#1ED2AF">IconButton</span><span style="color:#E1E4E8"> />);</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span></span>
+<span class="line"><span style="color:#6A737D">    //Act</span></span>
+<span class="line"><span style="color:#D00414">    const</span><span style="color:#1ED2AF"> sun</span><span style="color:#D00414"> =</span><span style="color:#E1E4E8"> screen.</span><span style="color:#1ED2AF">getByLabelText</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">"Sun"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span></span>
+<span class="line"><span style="color:#6A737D">    //Assert</span></span>
+<span class="line"><span style="color:#1ED2AF">    expect</span><span style="color:#E1E4E8">(sun).</span><span style="color:#1ED2AF">toBeInTheDocument</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#1ED2AF">test</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">"Test IconButton Toggle"</span><span style="color:#E1E4E8">, () </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">    //Arrange</span></span>
+<span class="line"><span style="color:#1ED2AF">    render</span><span style="color:#E1E4E8">(&#x3C;</span><span style="color:#1ED2AF">IconButton</span><span style="color:#E1E4E8"> />);</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span></span>
+<span class="line"><span style="color:#6A737D">    //Act</span></span>
+<span class="line"><span style="color:#D00414">    const</span><span style="color:#1ED2AF"> sun</span><span style="color:#D00414"> =</span><span style="color:#E1E4E8"> screen.</span><span style="color:#1ED2AF">getByLabelText</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">"Sun"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    fireEvent.</span><span style="color:#1ED2AF">click</span><span style="color:#E1E4E8">(sun);</span></span>
+<span class="line"><span style="color:#D00414">    const</span><span style="color:#1ED2AF"> moon</span><span style="color:#D00414"> =</span><span style="color:#E1E4E8"> screen.</span><span style="color:#1ED2AF">getByLabelText</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">"Moon"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    </span></span>
+<span class="line"><span style="color:#6A737D">    //Assert</span></span>
+<span class="line"><span style="color:#1ED2AF">    expect</span><span style="color:#E1E4E8">(moon).</span><span style="color:#1ED2AF">toBeInTheDocument</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span></code></pre>
+<p><strong>Explanation:</strong></p>
+<ol>
+<li><code>afterEach</code> with <code>cleanup()</code>: Ensures that after each test, the rendered DOM is cleaned up so that there are no side effects between tests. This is essential for making sure each test runs in isolation and doesn’t interfere with other tests.</li>
+<li><code>render(&#x3C;IconButton />)</code>: Renders the button component.</li>
+<li><code>screen.getByLabelText("Sun")</code>: queries the DOM based on the <code>aria-label</code> attribute of the images</li>
+<li><code>fireEvent.click()</code>: simulate a click on the button to trigger the click event</li>
+</ol>
 <h3 id="mocking">Mocking</h3>
 <p>Mock Service Worker (MSW) is a library that intercepts network requests on the client side, allowing developers to test web applications without relying on an actual backend server. By using service worker API to intercept and modify requests, MSW enables seamless integration of mock responses into the application’s natural workflow. This method of intercepting requests at the network level ensures that the application’s code does not have to be modified for testing purposes, promoting maintainable and realistic tests.</p>
 <p>MSW is particularly useful during testing to test error handling and loading states without requiring an active network connection or a live backend. This approach not only speeds up development and testing processes but also provides a controlled environment for robust offline testing, making it an invaluable tool for modern web developers.</p>
 <p>To use MSW, install the library using npm:</p>
-<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#1ED2AF">npm</span><span style="color:#F7F0DC"> install</span><span style="color:#F7F0DC"> msw@latest</span><span style="color:#1ED2AF"> --save-dev</span></span>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#1ED2AF">npm</span><span style="color:#F7F0DC"> install</span><span style="color:#1ED2AF"> -D</span><span style="color:#F7F0DC"> msw</span></span>
 <span class="line"></span></code></pre>
 <p>Create a mock file with all of the http mocks you want to use.</p>
-<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#6A737D">//mock.ts</span></span>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#6A737D">//mocks.ts</span></span>
 <span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { setupServer } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "msw/node"</span><span style="color:#E1E4E8">;</span></span>
 <span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { http, HttpResponse } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "msw"</span><span style="color:#E1E4E8">;</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> const</span><span style="color:#1ED2AF"> handlers</span><span style="color:#D00414"> =</span><span style="color:#E1E4E8"> [</span></span>
-<span class="line"><span style="color:#E1E4E8">  http.</span><span style="color:#1ED2AF">get</span><span style="color:#E1E4E8">(</span></span>
-<span class="line"><span style="color:#F7F0DC">    "https://api.example.com/api/v1/data"</span><span style="color:#E1E4E8">,</span></span>
-<span class="line"><span style="color:#E1E4E8">    () </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
-<span class="line"><span style="color:#D00414">      return</span><span style="color:#E1E4E8"> HttpResponse.</span><span style="color:#1ED2AF">json</span><span style="color:#E1E4E8">([</span></span>
-<span class="line"><span style="color:#E1E4E8">       {</span></span>
-<span class="line"><span style="color:#E1E4E8">         id: </span><span style="color:#1ED2AF">1</span><span style="color:#E1E4E8">,</span></span>
-<span class="line"><span style="color:#E1E4E8">         title: </span><span style="color:#F7F0DC">"Lorem Ipsum"</span><span style="color:#E1E4E8">,</span></span>
-<span class="line"><span style="color:#E1E4E8">         description: </span><span style="color:#F7F0DC">"Lorem ipsum dolor sit amet, consectetur adipiscing elit."</span></span>
-<span class="line"><span style="color:#E1E4E8">       },</span></span>
-<span class="line"><span style="color:#E1E4E8">       {</span></span>
-<span class="line"><span style="color:#E1E4E8">         id: </span><span style="color:#1ED2AF">2</span><span style="color:#E1E4E8">,</span></span>
-<span class="line"><span style="color:#E1E4E8">         title: </span><span style="color:#F7F0DC">"Lorem Ipsum"</span><span style="color:#E1E4E8">,</span></span>
-<span class="line"><span style="color:#E1E4E8">         description: </span><span style="color:#F7F0DC">"Lorem ipsum dolor sit amet, consectetur adipiscing elit."</span></span>
-<span class="line"><span style="color:#E1E4E8">       }</span></span>
-<span class="line"><span style="color:#E1E4E8">      ]);</span></span>
-<span class="line"><span style="color:#E1E4E8">    }</span></span>
-<span class="line"><span style="color:#E1E4E8">  ),</span></span>
+<span class="line"><span style="color:#E1E4E8">  http.</span><span style="color:#1ED2AF">get</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">"https://jsonplaceholder.typicode.com/posts/1"</span><span style="color:#E1E4E8">, () </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#D00414">    return</span><span style="color:#E1E4E8"> HttpResponse.</span><span style="color:#1ED2AF">json</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">      id: </span><span style="color:#1ED2AF">1</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      title: </span><span style="color:#F7F0DC">"Lorem Ipsum"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">      body: </span><span style="color:#F7F0DC">"Lorem ipsum dolor sit amet, consectetur adipiscing elit."</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    });</span></span>
+<span class="line"><span style="color:#E1E4E8">  }),</span></span>
 <span class="line"><span style="color:#E1E4E8">];</span></span>
+<span class="line"></span>
 <span class="line"></span>
 <span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> const</span><span style="color:#1ED2AF"> server</span><span style="color:#D00414"> =</span><span style="color:#1ED2AF"> setupServer</span><span style="color:#E1E4E8">(</span><span style="color:#D00414">...</span><span style="color:#E1E4E8">handlers);</span></span>
 <span class="line"></span></code></pre>
-<p>Create a setup file to vitest to start and stop the mock server.</p>
-<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#6A737D">//vitest.setup.ts</span></span>
-<span class="line"><span style="color:#D00414">import</span><span style="color:#F7F0DC"> "@testing-library/jest-dom/vitest"</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { afterAll, beforeAll } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "vitest"</span><span style="color:#E1E4E8">;</span></span>
+<p>This will return an array of two json object whenever <code>https://jsonplaceholder.typicode.com/posts/1</code> by a component during the tests. Now you can use this mock in your tests:</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#6A737D">//Posts.test.tsx</span></span>
+<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { afterAll, afterEach, beforeAll } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "vitest"</span><span style="color:#E1E4E8">;</span></span>
 <span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { server } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "./mocks"</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { afterEach } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "node:test"</span><span style="color:#E1E4E8">;</span></span>
 <span class="line"></span>
-<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Start server before all tests run</span></span>
 <span class="line"><span style="color:#1ED2AF">beforeAll</span><span style="color:#E1E4E8">(() </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
 <span class="line"><span style="color:#E1E4E8">  server.</span><span style="color:#1ED2AF">listen</span><span style="color:#E1E4E8">();</span></span>
 <span class="line"><span style="color:#E1E4E8">});</span></span>
 <span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Reset between tests to gaurantee test always start in the same state</span></span>
 <span class="line"><span style="color:#1ED2AF">afterEach</span><span style="color:#E1E4E8">(() </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
 <span class="line"><span style="color:#E1E4E8">  server.</span><span style="color:#1ED2AF">resetHandlers</span><span style="color:#E1E4E8">();</span></span>
 <span class="line"><span style="color:#E1E4E8">});</span></span>
 <span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Shutdown at the end of tests</span></span>
 <span class="line"><span style="color:#1ED2AF">afterAll</span><span style="color:#E1E4E8">(() </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
 <span class="line"><span style="color:#E1E4E8">  server.</span><span style="color:#1ED2AF">close</span><span style="color:#E1E4E8">();</span></span>
 <span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Put yout tests here</span></span>
 <span class="line"></span></code></pre>
-<p>Finally update your vite config to run your setup file:</p>
-<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#6A737D">//vite.config.ts</span></span>
-<span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> default</span><span style="color:#1ED2AF"> defineConfig</span><span style="color:#E1E4E8">({</span></span>
-<span class="line"><span style="color:#E1E4E8">  plugins: [</span><span style="color:#1ED2AF">react</span><span style="color:#E1E4E8">()],</span></span>
-<span class="line"><span style="color:#E1E4E8">  test: {</span></span>
-<span class="line"><span style="color:#E1E4E8">    environment: </span><span style="color:#F7F0DC">"jsdom"</span><span style="color:#E1E4E8">,</span></span>
-<span class="line"><span style="color:#E1E4E8">    setupFiles: [</span><span style="color:#F7F0DC">"./vitest.setup.ts"</span><span style="color:#E1E4E8">],</span></span>
-<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<p>Since data is loaded asyncronously you may need to use the <code>findBy</code> query in your tests:</p>
+<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#6A737D">//Post.test.tsx</span></span>
+<span class="line"><span style="color:#1ED2AF">test</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">"Test Post"</span><span style="color:#E1E4E8">, </span><span style="color:#D00414">async</span><span style="color:#E1E4E8"> () </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">  // Arrange</span></span>
+<span class="line"><span style="color:#1ED2AF">  render</span><span style="color:#E1E4E8">(&#x3C;</span><span style="color:#1ED2AF">Post</span><span style="color:#1ED2AF"> id</span><span style="color:#D00414">=</span><span style="color:#E1E4E8">{</span><span style="color:#1ED2AF">1</span><span style="color:#E1E4E8">} />);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // Act</span></span>
+<span class="line"><span style="color:#D00414">  const</span><span style="color:#1ED2AF"> heading</span><span style="color:#D00414"> =</span><span style="color:#D00414"> await</span><span style="color:#E1E4E8"> screen.</span><span style="color:#1ED2AF">findByRole</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">"heading"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#D00414">  const</span><span style="color:#1ED2AF"> body</span><span style="color:#D00414"> =</span><span style="color:#D00414"> await</span><span style="color:#E1E4E8"> screen.</span><span style="color:#1ED2AF">findByTestId</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">"post-body"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">  // Assert</span></span>
+<span class="line"><span style="color:#1ED2AF">  expect</span><span style="color:#E1E4E8">(heading).</span><span style="color:#1ED2AF">toHaveTextContent</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">"Lorem Ipsum"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#1ED2AF">  expect</span><span style="color:#E1E4E8">(body).</span><span style="color:#1ED2AF">toHaveTextContent</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">"Lorem ipsum dolor sit amet, consectetur adipiscing elit."</span><span style="color:#E1E4E8">);</span></span>
 <span class="line"><span style="color:#E1E4E8">});</span></span>
 <span class="line"></span></code></pre>
-<p>Now when running your tests any network requests should return the mocked data instead of hitting the real API.</p>
-<h3 id="writing-tests-with-react-testing-library">Writing tests with React Testing Library</h3>
-<p>Snapshot testing should be used judiciously. Over-reliance on snapshots can lead to brittle tests that require frequent updates even for minor changes. It’s best to combine snapshot testing with other forms of testing to ensure comprehensive coverage.</p>
-<p>Here’s a unit test example for the FooBar component using React Testing Library. The test will verify that the component behaves correctly when the buttons are clicked, toggling the display of “Foo” and “Bar”.</p>
-<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#6A737D">//FooBar.tsx</span></span>
-<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { useState } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "react"</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> function</span><span style="color:#1ED2AF"> FooBar</span><span style="color:#E1E4E8">() {</span></span>
-<span class="line"><span style="color:#D00414"> const</span><span style="color:#E1E4E8"> [</span><span style="color:#1ED2AF">showFoo</span><span style="color:#E1E4E8">, </span><span style="color:#1ED2AF">setShowFoo</span><span style="color:#E1E4E8">] </span><span style="color:#D00414">=</span><span style="color:#1ED2AF"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#1ED2AF">true</span><span style="color:#E1E4E8">);</span></span>
-<span class="line"><span style="color:#D00414"> const</span><span style="color:#E1E4E8"> [</span><span style="color:#1ED2AF">showBar</span><span style="color:#E1E4E8">, </span><span style="color:#1ED2AF">setShowBar</span><span style="color:#E1E4E8">] </span><span style="color:#D00414">=</span><span style="color:#1ED2AF"> useState</span><span style="color:#E1E4E8">(</span><span style="color:#1ED2AF">false</span><span style="color:#E1E4E8">);</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#D00414"> return</span><span style="color:#E1E4E8"> (</span></span>
-<span class="line"><span style="color:#E1E4E8">   &#x3C;</span><span style="color:#1ED2AF">div</span><span style="color:#E1E4E8">></span></span>
-<span class="line"><span style="color:#E1E4E8">     {showFoo </span><span style="color:#D00414">&#x26;&#x26;</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#1ED2AF">span</span><span style="color:#E1E4E8">>Foo&#x3C;/</span><span style="color:#1ED2AF">span</span><span style="color:#E1E4E8">>}</span></span>
-<span class="line"><span style="color:#E1E4E8">     {showBar </span><span style="color:#D00414">&#x26;&#x26;</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#1ED2AF">span</span><span style="color:#E1E4E8">>Bar&#x3C;/</span><span style="color:#1ED2AF">span</span><span style="color:#E1E4E8">>}</span></span>
-<span class="line"><span style="color:#E1E4E8">     &#x3C;</span><span style="color:#1ED2AF">button</span><span style="color:#1ED2AF"> onClick</span><span style="color:#D00414">=</span><span style="color:#E1E4E8">{() </span><span style="color:#D00414">=></span><span style="color:#1ED2AF"> setShowFoo</span><span style="color:#E1E4E8">(</span><span style="color:#D00414">!</span><span style="color:#E1E4E8">showFoo)}></span></span>
-<span class="line"><span style="color:#E1E4E8">       Toggle Foo</span></span>
-<span class="line"><span style="color:#E1E4E8">     &#x3C;/</span><span style="color:#1ED2AF">button</span><span style="color:#E1E4E8">></span></span>
-<span class="line"><span style="color:#E1E4E8">     &#x3C;</span><span style="color:#1ED2AF">button</span><span style="color:#1ED2AF"> onClick</span><span style="color:#D00414">=</span><span style="color:#E1E4E8">{() </span><span style="color:#D00414">=></span><span style="color:#1ED2AF"> setShowBar</span><span style="color:#E1E4E8">(</span><span style="color:#D00414">!</span><span style="color:#E1E4E8">showBar)}></span></span>
-<span class="line"><span style="color:#E1E4E8">       Toggle Bar</span></span>
-<span class="line"><span style="color:#E1E4E8">     &#x3C;/</span><span style="color:#1ED2AF">button</span><span style="color:#E1E4E8">></span></span>
-<span class="line"><span style="color:#E1E4E8">   &#x3C;/</span><span style="color:#1ED2AF">div</span><span style="color:#E1E4E8">></span></span>
-<span class="line"><span style="color:#E1E4E8"> );</span></span>
-<span class="line"><span style="color:#E1E4E8">}</span></span>
-<span class="line"></span></code></pre>
-<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#6A737D">// FooBar.test.js</span></span>
-<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { render, screen, fireEvent } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "@testing-library/react"</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { expect, test } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "vitest"</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#1ED2AF">test</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">'toggles "Foo" visibility when the "Toggle Foo" button is clicked'</span><span style="color:#E1E4E8">, () </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
-<span class="line"><span style="color:#1ED2AF">  render</span><span style="color:#E1E4E8">(&#x3C;</span><span style="color:#1ED2AF">FooBar</span><span style="color:#E1E4E8"> />);</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#D00414">  const</span><span style="color:#1ED2AF"> toggleFooButton</span><span style="color:#D00414"> =</span><span style="color:#E1E4E8"> screen.</span><span style="color:#1ED2AF">getByText</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">"Toggle Foo"</span><span style="color:#E1E4E8">);</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#6A737D">  // Click the "Toggle Foo" button to hide "Foo"</span></span>
-<span class="line"><span style="color:#E1E4E8">  fireEvent.</span><span style="color:#1ED2AF">click</span><span style="color:#E1E4E8">(toggleFooButton);</span></span>
-<span class="line"><span style="color:#1ED2AF">  expect</span><span style="color:#E1E4E8">(screen.</span><span style="color:#1ED2AF">queryByText</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">"Foo"</span><span style="color:#E1E4E8">)).not.</span><span style="color:#1ED2AF">toBeInTheDocument</span><span style="color:#E1E4E8">();</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#6A737D">  // Click the "Toggle Foo" button again to show "Foo"</span></span>
-<span class="line"><span style="color:#E1E4E8">  fireEvent.</span><span style="color:#1ED2AF">click</span><span style="color:#E1E4E8">(toggleFooButton);</span></span>
-<span class="line"><span style="color:#1ED2AF">  expect</span><span style="color:#E1E4E8">(screen.</span><span style="color:#1ED2AF">getByText</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">"Foo"</span><span style="color:#E1E4E8">)).</span><span style="color:#1ED2AF">toBeInTheDocument</span><span style="color:#E1E4E8">();</span></span>
-<span class="line"><span style="color:#E1E4E8">});</span></span>
-<span class="line"></span>
-<span class="line"></span></code></pre>
-<p><strong>Toggling “Foo”:</strong> This test simulates clicking the “Toggle Foo” button to hide “Foo”. After the first click, <code>screen.queryByText('Foo')</code> confirms that “Foo” is no longer in the DOM. Clicking the button again should bring “Foo” back, and <code>screen.getByText('Foo')</code> verifies this.</p>
-<pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#6A737D">// FooBar.test.js</span></span>
-<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { render, screen, fireEvent } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "@testing-library/react"</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"><span style="color:#D00414">import</span><span style="color:#E1E4E8"> { expect, test } </span><span style="color:#D00414">from</span><span style="color:#F7F0DC"> "vitest"</span><span style="color:#E1E4E8">;</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#1ED2AF">test</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">'toggles "Bar" visibility when the "Toggle Bar" button is clicked'</span><span style="color:#E1E4E8">, () </span><span style="color:#D00414">=></span><span style="color:#E1E4E8"> {</span></span>
-<span class="line"><span style="color:#1ED2AF">  render</span><span style="color:#E1E4E8">(&#x3C;</span><span style="color:#1ED2AF">FooBar</span><span style="color:#E1E4E8"> />);</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#D00414">  const</span><span style="color:#1ED2AF"> toggleBarButton</span><span style="color:#D00414"> =</span><span style="color:#E1E4E8"> screen.</span><span style="color:#1ED2AF">getByText</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">"Toggle Bar"</span><span style="color:#E1E4E8">);</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#6A737D">  // Click the "Toggle Bar" button to show "Bar"</span></span>
-<span class="line"><span style="color:#E1E4E8">  fireEvent.</span><span style="color:#1ED2AF">click</span><span style="color:#E1E4E8">(toggleBarButton);</span></span>
-<span class="line"><span style="color:#1ED2AF">  expect</span><span style="color:#E1E4E8">(screen.</span><span style="color:#1ED2AF">getByText</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">"Bar"</span><span style="color:#E1E4E8">)).</span><span style="color:#1ED2AF">toBeInTheDocument</span><span style="color:#E1E4E8">();</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#6A737D">  // Click the "Toggle Bar" button again to hide "Bar"</span></span>
-<span class="line"><span style="color:#E1E4E8">  fireEvent.</span><span style="color:#1ED2AF">click</span><span style="color:#E1E4E8">(toggleBarButton);</span></span>
-<span class="line"><span style="color:#1ED2AF">  expect</span><span style="color:#E1E4E8">(screen.</span><span style="color:#1ED2AF">queryByText</span><span style="color:#E1E4E8">(</span><span style="color:#F7F0DC">"Bar"</span><span style="color:#E1E4E8">)).not.</span><span style="color:#1ED2AF">toBeInTheDocument</span><span style="color:#E1E4E8">();</span></span>
-<span class="line"><span style="color:#E1E4E8">});</span></span>
-<span class="line"></span></code></pre>
-<p><strong>Toggling “Bar”:</strong> This test simulates clicking the “Toggle Bar” button to show “Bar”. <code>screen.getByText('Bar')</code> verifies that “Bar” appears after the first click. Clicking the button again should hide “Bar”, and <code>screen.queryByText('Bar')</code> ensures it’s no longer in the DOM.</p>
 <h3 id="testing-react-hooks">Testing react hooks</h3>
 <p>Testing React hooks with the <code>renderHook</code> function from React Testing Library is a common practice for isolating and verifying the behavior of custom hooks. Here’s an example of unit testing a simple custom hook using <code>renderHook</code>.</p>
 <p>Let’s create a custom hook called <code>useToggle</code> that manages a boolean state and provides a function to toggle it.</p>
