@@ -126,14 +126,14 @@
 <span class="line"></span></code></pre>
 <p>Now when you navigate to <code>http://localhost:3000/ui</code> you should see “Topics Page” displayed.</p>
 <h3 id="new-topics-page">New Topics Page</h3>
-<p>Create a new file <code>app/ui/topic/new/page.tsx</code> with the following content:</p>
+<p>Create a new file <code>app/ui/topics/new/page.tsx</code> with the following content:</p>
 <pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> default</span><span style="color:#D00414"> function</span><span style="color:#1ED2AF"> Page</span><span style="color:#E1E4E8">() {</span></span>
 <span class="line"><span style="color:#D00414">  return</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#1ED2AF">div</span><span style="color:#E1E4E8">>New Topics Page&#x3C;/</span><span style="color:#1ED2AF">div</span><span style="color:#E1E4E8">>;</span></span>
 <span class="line"><span style="color:#E1E4E8">}</span></span>
 <span class="line"></span></code></pre>
 <p>Now when you navigate to <code>http://localhost:3000/ui/topics/new</code> you should see “New Topics Page” displayed.</p>
 <h3 id="topic-page">Topic Page</h3>
-<p>Create a new file <code>app/ui/topic/[id]/page.tsx</code> with the following content:</p>
+<p>Create a new file <code>app/ui/topics/[id]/page.tsx</code> with the following content:</p>
 <pre class="astro-code github-dark" style="background-color:#00003c;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="tsx"><code><span class="line"><span style="color:#D00414">export</span><span style="color:#D00414"> default</span><span style="color:#D00414"> function</span><span style="color:#1ED2AF"> Page</span><span style="color:#E1E4E8">({ </span><span style="color:#FFAB70">params</span><span style="color:#E1E4E8"> }</span><span style="color:#D00414">:</span><span style="color:#E1E4E8"> { </span><span style="color:#FFAB70">params</span><span style="color:#D00414">:</span><span style="color:#E1E4E8"> { </span><span style="color:#FFAB70">id</span><span style="color:#D00414">:</span><span style="color:#1ED2AF"> string</span><span style="color:#E1E4E8"> } }) {</span></span>
 <span class="line"><span style="color:#D00414">  return</span><span style="color:#E1E4E8"> &#x3C;</span><span style="color:#1ED2AF">div</span><span style="color:#E1E4E8">>Topic Page: {params.id}&#x3C;/</span><span style="color:#1ED2AF">div</span><span style="color:#E1E4E8">>;</span></span>
 <span class="line"><span style="color:#E1E4E8">}</span></span>
