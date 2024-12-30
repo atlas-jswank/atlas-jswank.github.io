@@ -51,3 +51,7 @@ Drag and drop is the easiest way to deploy your app. However, you can configure 
 The downside is netlify will use "build minutes" to build and deploy your app. The [free tier](https://www.netlify.com/pricing/) only comes with a certain number of build minutes so you may not want to deploy everytime you push code to your repository.
 
 For instruction on deploying from git see this [blog post](https://www.netlify.com/blog/2016/09/29/a-step-by-step-guide-deploying-on-netlify/).
+
+### Optional: Redeploy
+
+If you need to redeploy, click on **Deploys** from the side menu. There should be a place to drag and drop your new files to update your site.
