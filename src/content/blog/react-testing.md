@@ -1,26 +1,186 @@
 ---
 title: "React Unit Testing"
 description: "Lorem ipsum dolor sit amet"
-pubDate: "August 30 2024"
+pubDate: "September 17, 2024"
 heroImage: "/unit-tests.webp"
 author: Jeremiah Swank
 authorImage: /jswank.jpg
-published: true
 ---
 
-Unit testing in React is a crucial practice that ensures individual components and functions within an application work as expected. By isolating these components and testing them independently, developers can catch bugs early in the development process, leading to more reliable and maintainable code. 
+Unit testing in React is a crucial practice that ensures individual components and functions within an application work as expected. By isolating these components and testing them independently, developers can catch bugs early in the development process, leading to more reliable and maintainable code.
 
-React's component-based architecture lends itself well to unit testing, as each component can be treated as a small, testable unit. Tools like Vitest and React Testing Library are commonly used to create and run these tests, allowing developers to simulate user interactions, check outputs, and verify that components render correctly under different conditions. Through unit testing, React applications become more robust, easier to refactor, and better equipped to handle future changes.
+React’s component-based architecture lends itself well to unit testing, as each component can be treated as a small, testable unit. Tools like Vitest and React Testing Library are commonly used to create and run these tests, allowing developers to simulate user interactions, check outputs, and verify that components render correctly under different conditions. Through unit testing, React applications become more robust, easier to refactor, and better equipped to handle future changes.
 
 ### Vitest
 
-[Vitest](https://vitest.dev/) is a fast, modern testing framework for JavaScript and TypeScript applications, designed to work seamlessly with Vite, a popular build tool. It offers a similar API to Jest, making it easy for developers familiar with Jest to adopt Vitest. The key advantage of Vitest lies in its integration with Vite, allowing it to leverage Vite's fast, efficient build process for running tests. This makes Vitest particularly well-suited for modern web applications, where speed and developer experience are paramount.
+Vitest is a fast, modern testing framework for JavaScript and TypeScript applications, designed to work seamlessly with Vite, a popular build tool. It offers a similar API to Jest, making it easy for developers familiar with Jest to adopt Vitest. The key advantage of Vitest lies in its integration with Vite, allowing it to leverage Vite’s fast, efficient build process for running tests. This makes Vitest particularly well-suited for modern web applications, where speed and developer experience are paramount.
 
-Vitest supports features like snapshot testing, mocking, and coverage reports, and it can be used to test both unit and end-to-end components. It's known for its speed, thanks to its ability to run tests in parallel and hot-reload test files, which significantly enhances the developer's productivity during the testing process.
+Vitest supports features like snapshot testing, mocking, and coverage reports, and it can be used to test both unit and end-to-end components. It’s known for its speed, thanks to its ability to run tests in parallel and hot-reload test files, which significantly enhances the developer’s productivity during the testing process.
+
+To get started with Vitest, you’ll need to install it as a development dependency in your project:
+
+```bash
+npm install -D vitest
+```
+
+Next, you'll want to add a script to your `package.json` file to run your tests:
+
+```json
+//package.json
+{
+    ...
+    "scripts": {
+        ...
+         "test": "vitest"
+    }
+}
+```
+
+Define a basic test file. Vitest will automatically pickup files with `.test` in the name:
+
+```tsx
+//hello.test.ts
+import { test, expect } from "vitest"; // must import methods used for testing
+
+test("My First Test", () => {
+  expect(2 + 2).toBe(4);
+});
+```
+ It is important to note that in vitest you must import all methods used for testing includng `test` and `expect`. Make sure your are importing them from the vitest package and not from another node packages. Run your test script:
+
+```bash
+npm run test
+```
+
+And you should see the ourput for the tests in your console:
+
+```bash
+✓ src/hello.test.ts (1)
+   ✓ My First Test
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  10:37:38
+   Duration  151ms (transform 15ms, setup 0ms, collect 10ms, tests 1ms, environment 0ms, prepare 30ms)
+```
+
+From here you can start to write tests for your files and vitest should pick them up automatically:
+
+```tsx
+//add.test.ts
+import { test, expect } from "vitest";
+import { add } from "./add";
+
+test("Test Add", () => {
+  expect(add(2, 2)).toBe(4);
+});
+```
+
+VItest also provides methods for performing tasks before and after tests:
+
+```tsx
+import { afterEach, afterAll, beforeAll, beforeEach } from "vitest";
+
+beforeAll(() => {
+  // run code here before all tests in the file
+});
+beforeEach(() => {
+  // run code here before each tests in the file
+});
+afterEach(() => {
+  // run code here after each tests in the file
+});
+afterAll(() => {
+  // run code here after all tests in the file
+});
+
+// add your tests down here
+```
+
+
+### JSDOM
+
+If you are writing tests for the web you will run into issues where web APIs available in the browser are not available in your test environment. For example imagine you had a function like this:
+
+```tsx
+//navigate.ts
+
+function goToAboutPage() {
+  window.location.href = "/about";
+}
+
+```
+
+This function works perfectly in the browser but when running from your command line you will get this error:
+
+```bash
+ FAIL  src/navigate.test.ts > Test Navigation
+ReferenceError: window is not defined
+ ❯ goToAboutPage src/navigate.test.ts:4:3
+      2| 
+      3| function goToAboutPage() {
+      4|   window.location.href = "/about";
+       |   ^
+      5| }
+      6| 
+ ❯ src/navigate.test.ts:9:3
+ ```
+
+ This is because the `window` API only exists in the browser. It does not exist in the test environment. JSDOM provides an implementation of most browser APIs so that you can run your tests in a simulated browser environment. To use JSDOM, you'll need to install it as a development dependency:
+
+```bash
+npm install -D jsdom
+```
+
+By default vitest uses the node environment so you must update your `vite.config.ts` file to use the jsdom environment:
+
+```tsx
+/// <reference types="vitest/config" />
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  test: {
+    environment: "jsdom",
+  },
+});
+```
 
 ### React Testing Library
 
-[React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) provides utilities to render components in a test environment, query the rendered output, and simulate user interactions such as clicks, typing, and form submissions. It emphasizes best practices like accessibility and encourages testing components as a whole, including their effects and interactions with other components or services. By prioritizing how components are used rather than how they're built, React Testing Library helps ensure that tests remain aligned with the actual user experience.
+React Testing Library provides utilities to render components in a test environment, query the rendered output, and simulate user interactions such as clicks, typing, and form submissions. It emphasizes best practices like accessibility and encourages testing components as a whole, including their effects and interactions with other components or services. By prioritizing how components are used rather than how they’re built, React Testing Library helps ensure that tests remain aligned with the actual user experience.
+
+To setup React Testing Library, you’ll need to install the following packages:
+
+```bash
+npm i -D @testing-library/react @testing-library/dom @testing-library/jest-dom
+```
+
+Create a `vitest.setup.ts` file in your project root and add the following code:
+
+```tsx
+import "@testing-library/jest-dom/vitest";
+```
+
+Then add the setup file to your vite config:
+
+```tsx
+/// <reference types="vitest/config" />
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  test: {
+    setupFiles: "vitest.setup.ts",
+  },
+});
+```
+
+This will ensure all the custom matchers types are available in your tests. That is all the setup needed to get started with React testing library. Next we will explore some different testing methods that utilize react testing library.
 
 ### Snapshot testing
 
@@ -32,24 +192,7 @@ Snapshot testing is particularly useful in UI testing, where the structure of th
 
 Here’s an example of how you might use snapshot testing in a React component with Vitest:
 
-**1. Install Vitest and React Testing Library (if you haven't already):**
-
-```bash
-npm install vitest @testing-library/react @testing-library/jest-dom jsdom
-```
-
-**2. Configure vite to use jsdom**
-
-```tsx
-//vite.config.ts
-export default defineConfig({
-  plugins: [react()],
-  test: {
-    environment: 'jsdom'
-  },
-});
-```
-**3. Create a React Component:**
+**1. Create a React Component:**
 ```tsx
 //Button.tsx
 type Props = {
@@ -60,7 +203,7 @@ export function Button({ label }: Props) {
   return <button>{label}</button>;
 }
 ```
-**4. Write a Snapshot Test:**
+**2. Write a Snapshot Test:**
 
 ```tsx
 //Button.test.tsx
@@ -80,14 +223,13 @@ In this example:
 * `render(<Button label="Click me" />)` renders the Button component.
 * `toMatchSnapshot()` compares the current output to the saved snapshot.
 
-**5. Run the Test:**
+**3. Run the Test:**
 
 ```bash
 npx vitest run
 ```
 
 During the first run, Vitest will create a snapshot file that contains the rendered output of the Button component. This file is stored in a `__snapshots__` directory next to your test file.
-
 
 ```tsx
 // __snapshots__/Button.test.tsx.snap
@@ -102,9 +244,9 @@ exports[`Button renders correctly 1`] = `
 `;
 ```
 
-Alertnativley you can use `toMatchInlineSnapshot()` matcher to output the snapshot inline in the test. This works well for small components but can be a bit verbose for larger components.
+Alternatively you can use `toMatchInlineSnapshot()` matcher to output the snapshot inline in the test. This works well for small components but can be a bit verbose for larger components.
 
-**6. Handling Snapshot Changes:**
+**4. Handling Snapshot Changes:**
 
 If you make changes to the Button component (e.g., changing the label or adding styles), the next test run will fail if the output no longer matches the snapshot. If the changes are intentional, you can update the snapshot by running:
 
@@ -119,159 +261,257 @@ This command will regenerate the snapshot to match the new output.
 * **Quick Feedback:** Developers get quick feedback when a component's output changes.
 * **Simple to Implement:** Snapshot tests are easy to write and can cover large parts of your UI with minimal code.
 
+
+```bash
+npm install -D msw
+```
+
+### DOM Querying with React Testing Library
+
+One of the most powerful features of React Testing Library is its ability to query the DOM. This allows you to simulate user interactions and assert on the state of your components. The query methods follow a naming pattern and its important to understand the different methods in order to understand which one to use in your test.
+
+#### Query Method Prefixes:
+
+Queries are the methods that Testing Library gives you to find elements on the page. There are several ways to query elements:
+
+|  Type of Query |  0 Matches | 1 Match  | >1 Matches  |  (Async/Await) |
+|---|---|---|---|---|
+|  **Multiple Elements** |   |   |   |   |
+|  getBy... | Throw error  | Return element  | Throw error  | No  |
+|  queryBy... | Return null	  | Return element  | Throw error  | No  |
+|  findBy... | Throw error  | Return element  | Throw error  | Yes  |
+|  **Multiple Elements** |   |   |   |   |
+|  getAllBy... | Throw error  | Return array  | Return array  | No  |
+|  queryAllBy... | Return null	  | Return array  | Return array  | No  |
+|  findAllBy... | Throw error  | Return array  | Return array  | Yes  |
+
+All queries have their use case. You have to decide do you expect multiplte values to be returned or not? and do you need to async/await for the component to update first?
+
+#### Query Method Suffixes:
+
+* **ByLabelText:** find by label or aria-label text content
+* **ByPlaceholderText:** find by input placeholder value
+* **ByText:** find by element text content
+* **ByDisplayValue:** find by form element current value
+* **ByAltText:** find by img alt attribute
+* **ByTitle:** find by title attribute or svg title tag
+* **ByRole:** find by aria role
+* **ByTestId:** find by data-testid attribute
+
+You combine a prefix and a suffix to get one of the possible query methods. Examples: **getByLabelText, queryByDisplayValue, findByRole, getAllByTestId**, etc. As you can see there are a lot of different ways to query the DOM.
+
+### Example Unit Tests
+
+Lets explore some example unit tests using the React Testing Library.
+
+**Clicking a Button**
+
+```tsx
+//Toggle.tsx
+export default function Toggle() {
+    const [isToggled, setToggle] = React.useState(false);
+  return (
+    <button onClick={() => setToggle(!isToggled)}>
+      {isToggled ? 'ON' : 'OFF'}
+    </button>
+  )
+}
+
+//Toggle.test.tsx
+import { afterEach, expect, test } from "vitest";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import Toggle from "./Toggle";
+
+afterEach(() => {
+    cleanup();
+});
+
+test("Test Toggle", () => {
+    //Arrange
+    render(<Toggle />);
+
+    //Act
+    const off = screen.getByText("OFF");
+
+    //Assert
+    expect(off).toBeInTheDocument();
+});
+
+test("Test Toggle Click", () => {
+    //Arrange
+    render(<Toggle />);
+
+    //Act
+    const off = screen.getByText("OFF");
+    fireEvent.click(off);
+
+    const on =  screen.getByText("ON");
+    screen.debug(on);
+
+    //Assert
+    expect(screen.getByText("ON")).toBeInTheDocument();
+});
+
+test("Test Toggle Click Twice", () => {
+    //Arrange
+    render(<Toggle />);
+
+    //Act
+    const off = screen.getByText("OFF");
+    fireEvent.click(off);
+
+    const on = screen.getByText("ON");
+    fireEvent.click(on);
+
+    //Assert
+    expect(screen.getByText("OFF")).toBeInTheDocument();
+    expect(screen.queryByText("ON")).not.toBeInTheDocument();
+});
+```
+
+**Explanation:**
+
+1. `afterEach` with `cleanup()`: Ensures that after each test, the rendered DOM is cleaned up so that there are no side effects between tests. This is essential for making sure each test runs in isolation and doesn't interfere with other tests.
+2. `render(<Toggle />)`: Renders the Toggle component.
+3. `screen.getByText("OFF")`: queries the DOM to check if the text "OFF" is present
+4. `fireEvent.click()`: simulate a click on the button to trigger the click event
+5. `screen.queryByText("ON")`: queries the DOM again to check if the text "ON" is present but does not throw an error if it is not found.
+
+**Clicking Icon Button with no Text**
+
+```tsx
+//IconButton.tsx
+export default function IconButton() {
+  const [isToggled, setToggle] = useState(true);
+  return (
+    <>
+      <button onClick={() => setToggle(!isToggled)}>
+        {isToggled ? <Sun /> : <Moon />}
+      </button>
+    </>
+  );
+}
+
+//IconButton.test.tsx
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { afterEach, expect, test } from "vitest";
+import IconButton from "./IconButton";
+
+afterEach(() => {
+    cleanup();
+});
+
+test("Test IconButton", () => {
+    //Arrange
+    render(<IconButton />);
+    
+    //Act
+    const sun = screen.getByLabelText("Sun");
+    
+    //Assert
+    expect(sun).toBeInTheDocument();
+});
+
+test("Test IconButton Toggle", () => {
+    //Arrange
+    render(<IconButton />);
+    
+    //Act
+    const sun = screen.getByLabelText("Sun");
+    fireEvent.click(sun);
+    const moon = screen.getByLabelText("Moon");
+    
+    //Assert
+    expect(moon).toBeInTheDocument();
+});
+```
+
+**Explanation:**
+
+1. `afterEach` with `cleanup()`: Ensures that after each test, the rendered DOM is cleaned up so that there are no side effects between tests. This is essential for making sure each test runs in isolation and doesn't interfere with other tests.
+2. `render(<IconButton />)`: Renders the button component.
+3. `screen.getByLabelText("Sun")`: queries the DOM based on the `aria-label` attribute of the images
+4. `fireEvent.click()`: simulate a click on the button to trigger the click event
+
 ### Mocking
 
-Mock Service Worker (MSW) is a library that intercepts network requests on the client side, allowing developers to test web applications without relying on an actual backend server. By using service worker API to intercept and modify requests, MSW enables seamless integration of mock responses into the application’s natural workflow. This method of intercepting requests at the network level ensures that the application’s code does not have to be modified for testing purposes, promoting maintainable and realistic tests. 
+Mock Service Worker (MSW) is a library that intercepts network requests on the client side, allowing developers to test web applications without relying on an actual backend server. By using service worker API to intercept and modify requests, MSW enables seamless integration of mock responses into the application’s natural workflow. This method of intercepting requests at the network level ensures that the application’s code does not have to be modified for testing purposes, promoting maintainable and realistic tests.
 
 MSW is particularly useful during testing to test error handling and loading states without requiring an active network connection or a live backend. This approach not only speeds up development and testing processes but also provides a controlled environment for robust offline testing, making it an invaluable tool for modern web developers.
 
 To use MSW, install the library using npm:
 
 ```bash
-npm install msw@latest --save-dev
+npm install -D msw
 ```
 
 Create a mock file with all of the http mocks you want to use.
+
 ```tsx
-//mock.ts
+//mocks.ts
 import { setupServer } from "msw/node";
 import { http, HttpResponse } from "msw";
 
 export const handlers = [
-  http.get(
-    "https://api.example.com/api/v1/data",
-    () => {
-      return HttpResponse.json([
-       {
-         id: 1,
-         title: "Lorem Ipsum",
-         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-       },
-       {
-         id: 2,
-         title: "Lorem Ipsum",
-         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-       }
-      ]);
-    }
-  ),
+  http.get("https://jsonplaceholder.typicode.com/posts/1", () => {
+    return HttpResponse.json({
+      id: 1,
+      title: "Lorem Ipsum",
+      body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    });
+  }),
 ];
+
 
 export const server = setupServer(...handlers);
 ```
 
-Create a setup file to vitest to start and stop the mock server.
+This will return an array of two json object whenever `https://jsonplaceholder.typicode.com/posts/1` by a component during the tests. Now you can use this mock in your tests:
 
 ```tsx
-//vitest.setup.ts
-import "@testing-library/jest-dom/vitest";
-
-import { afterAll, beforeAll } from "vitest";
+//Posts.test.tsx
+import { afterAll, afterEach, beforeAll } from "vitest";
 import { server } from "./mocks";
-import { afterEach } from "node:test";
 
-
+// Start server before all tests run
 beforeAll(() => {
   server.listen();
 });
 
+// Reset between tests to gaurantee test always start in the same state
 afterEach(() => {
   server.resetHandlers();
 });
 
+// Shutdown at the end of tests
 afterAll(() => {
   server.close();
 });
+
+// Put yout tests here
 ```
 
-Finally update your vite config to run your setup file:
-```tsx
-//vite.config.ts
-export default defineConfig({
-  plugins: [react()],
-  test: {
-    environment: "jsdom",
-    setupFiles: ["./vitest.setup.ts"],
-  },
-});
-```
-Now when running your tests any network requests should return the mocked data instead of hitting the real API.
-
-### Writing tests with React Testing Library
-
-Snapshot testing should be used judiciously. Over-reliance on snapshots can lead to brittle tests that require frequent updates even for minor changes. It's best to combine snapshot testing with other forms of testing to ensure comprehensive coverage.
-
-Here’s a unit test example for the FooBar component using React Testing Library. The test will verify that the component behaves correctly when the buttons are clicked, toggling the display of "Foo" and "Bar".
-
- ```tsx
- //FooBar.tsx
-import { useState } from "react";
-
-export function FooBar() {
-  const [showFoo, setShowFoo] = useState(true);
-  const [showBar, setShowBar] = useState(false);
-
-  return (
-    <div>
-      {showFoo && <span>Foo</span>}
-      {showBar && <span>Bar</span>}
-      <button onClick={() => setShowFoo(!showFoo)}>
-        Toggle Foo
-      </button>
-      <button onClick={() => setShowBar(!showBar)}>
-        Toggle Bar
-      </button>
-    </div>
-  );
-}
-```
+Since data is loaded asyncronously you may need to use the `findBy` query in your tests:
 
 ```tsx
-// FooBar.test.js
-import { render, screen, fireEvent } from "@testing-library/react";
-import { expect, test } from "vitest";
+//Post.test.tsx
+test("Test Post", async () => {
+  // Arrange
+  render(<Post id={1} />);
 
-test('toggles "Foo" visibility when the "Toggle Foo" button is clicked', () => {
-  render(<FooBar />);
+  // Act
+  const heading = await screen.findByRole("heading");
+  const body = await screen.findByTestId("post-body");
 
-  const toggleFooButton = screen.getByText("Toggle Foo");
-
-  // Click the "Toggle Foo" button to hide "Foo"
-  fireEvent.click(toggleFooButton);
-  expect(screen.queryByText("Foo")).not.toBeInTheDocument();
-
-  // Click the "Toggle Foo" button again to show "Foo"
-  fireEvent.click(toggleFooButton);
-  expect(screen.getByText("Foo")).toBeInTheDocument();
-});
-
-```
-**Toggling "Foo":** This test simulates clicking the "Toggle Foo" button to hide "Foo". After the first click, `screen.queryByText('Foo')` confirms that "Foo" is no longer in the DOM. Clicking the button again should bring "Foo" back, and `screen.getByText('Foo')` verifies this.
-
-```tsx
-// FooBar.test.js
-import { render, screen, fireEvent } from "@testing-library/react";
-import { expect, test } from "vitest";
-
-test('toggles "Bar" visibility when the "Toggle Bar" button is clicked', () => {
-  render(<FooBar />);
-
-  const toggleBarButton = screen.getByText("Toggle Bar");
-
-  // Click the "Toggle Bar" button to show "Bar"
-  fireEvent.click(toggleBarButton);
-  expect(screen.getByText("Bar")).toBeInTheDocument();
-
-  // Click the "Toggle Bar" button again to hide "Bar"
-  fireEvent.click(toggleBarButton);
-  expect(screen.queryByText("Bar")).not.toBeInTheDocument();
+  // Assert
+  expect(heading).toHaveTextContent("Lorem Ipsum");
+  expect(body).toHaveTextContent("Lorem ipsum dolor sit amet, consectetur adipiscing elit.");
 });
 ```
 
-**Toggling "Bar":** This test simulates clicking the "Toggle Bar" button to show "Bar". `screen.getByText('Bar')` verifies that "Bar" appears after the first click. Clicking the button again should hide "Bar", and `screen.queryByText('Bar')` ensures it’s no longer in the DOM.
 
 ### Testing react hooks
-  
+
 Testing React hooks with the `renderHook` function from React Testing Library is a common practice for isolating and verifying the behavior of custom hooks. Here's an example of unit testing a simple custom hook using `renderHook`.
 
 Let's create a custom hook called `useToggle` that manages a boolean state and provides a function to toggle it.
