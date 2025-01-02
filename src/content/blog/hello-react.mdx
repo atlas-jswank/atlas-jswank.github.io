@@ -52,7 +52,7 @@ Components can also be nested and composed together, enabling the creation of in
 
 Some things to keep in mind when creating react comonents:
 * Component function names must start with a capital letter.
-* Components must return JSX. (We will discuss JSX in mor detail below)
+* Components must return JSX. (We will discuss JSX in more detail below)
 * Components must be closed, either with a closing tag (`<Greeting>John</Greeting>`) or with a self-closing tag (`<Greeting name="John" />`).
 
 
@@ -61,7 +61,7 @@ Some things to keep in mind when creating react comonents:
 
 React props are a mechanism for passing data from a parent component to a child component in a React application. They are used to configure or customize child components and to pass data such as strings, numbers, objects, or functions.
 
-To access the props within a funcational component we can use the `props` argument in the function. For example:
+To access the props within a functional component we can use the `props` argument in the function. For example:
 
 ```tsx
 function Greeting(props) {
@@ -88,7 +88,7 @@ You can think of props as similar to attributes in HTML. Utlizing props promotes
 
 You may have noticed this syntax for creating react components doesnt look like valid javascript. In javascript you cannot just return html from a javascript function. While not required, react applications are generally written in a special syntax called JSX.
 
-JSX, or JavaScript XML, is a syntax extension for JavaScript that allows developers to write HTML-like code within their JavaScript files. It is used in React to describe the structure of the user interface in a more intuitive and readable way. JSX closely resembles HTML, making it easier to visualize the layout and structure of components, but it compiles down to regular JavaScript objects. This syntax allows developers to embed expressions, use variables, and invoke functions directly within the markup.
+JSX, or JavaScript XML, is a syntax extension for JavaScript that allows developers to write HTML-like code within their JavaScript files. It is used in React to describe the structure of the user interface in a more intuitive and readable way. JSX closely resembles HTML, making it easier to visualize the layout and structure of components, but it transcompiles down to regular JavaScript. This syntax allows developers to embed expressions, use variables, and invoke functions directly within the markup.
 
 Consider the following example:
 
